@@ -144,6 +144,82 @@ export const HomePage: React.FC = () => {
     }
   ];
 
+  // 4 Pillars for Section 5 — Philosophical Foundation
+  const philosophicalPillars = [
+    {
+      num: '01',
+      title: 'Curiosity',
+      subtitle: 'The Wonder of Asking Why',
+      character: 'Dodi',
+      characterRole: 'The Tiny Spark (Age 4)',
+      characterColor: '#0284C7',
+      realmTag: 'Terra Viva & Mythara',
+      image: '/philosophy-01-curiosity.jpg',
+      alt: 'Dodi in her yellow coat gently touching a glowing starlight flower in an enchanted moss grove',
+      accentColor: '#38BDF8',
+      pillBg: 'bg-sky-500/10 text-sky-800 border-sky-300/60',
+      badgeNum: 'bg-sky-100 text-sky-900 border-sky-300',
+      objectPosition: 'center 20%',
+      desc: 'Stories begin with questions. Zanarra inspires children to look closer, wonder boldly, and notice the quiet magic others overlook.',
+      wisdom: '“Why do trees share their quietest songs with the night?”',
+      wisdomAuthor: 'Dodi • Age 4'
+    },
+    {
+      num: '02',
+      title: 'Creativity',
+      subtitle: 'Inventive Trial & Fearless Error',
+      character: 'Tobo',
+      characterRole: 'The Clumsy Genius (Age 6)',
+      characterColor: '#D97706',
+      realmTag: 'Mechanika & Cosmara',
+      image: '/philosophy-02-creativity.jpg',
+      alt: 'Tobo laughing proudly with round glasses in his workshop as a brass clockwork songbird flutters to life with stardust sparks',
+      accentColor: '#F59E0B',
+      pillBg: 'bg-amber-500/10 text-amber-900 border-amber-300/60',
+      badgeNum: 'bg-amber-100 text-amber-900 border-amber-300',
+      objectPosition: 'center 20%',
+      desc: 'True ingenuity blooms through playful trial and error. Characters turn mishaps and broken parts into unforeseen mechanical miracles.',
+      wisdom: '“Mistakes are simply inventions waiting for their gears to catch up.”',
+      wisdomAuthor: 'Tobo • Age 6'
+    },
+    {
+      num: '03',
+      title: 'Connection',
+      subtitle: 'Empathy, Trust & Shared Heart',
+      character: 'Momo, Tobo & Dodi',
+      characterRole: 'The Adventurers & Chiku',
+      characterColor: '#E11D48',
+      realmTag: 'The Campfire & Sonika',
+      image: '/philosophy-03-connection.jpg',
+      alt: 'Momo, Tobo, Dodi and puppy Chiku sitting together under glowing paper lanterns on a twilight grassy hill',
+      accentColor: '#FB7185',
+      pillBg: 'bg-rose-500/10 text-rose-900 border-rose-300/60',
+      badgeNum: 'bg-rose-100 text-rose-900 border-rose-300',
+      objectPosition: 'center 35%',
+      desc: 'Deep empathy, vulnerability, and genuine teamwork sit at the bedrock of every journey. In Zanarra, no friend ever journeys alone.',
+      wisdom: '“No realm is too vast when you walk it hand in hand.”',
+      wisdomAuthor: 'The Trio’s Creed'
+    },
+    {
+      num: '04',
+      title: 'Discovery',
+      subtitle: 'Boundless Horizons & Living Lore',
+      character: 'Momo',
+      characterRole: 'The Fearless Leader (Age 7)',
+      characterColor: '#059669',
+      realmTag: 'Cosmara & Celestial Isles',
+      image: '/philosophy-04-discovery.jpg',
+      alt: 'Momo standing atop an ancient rune terrace with a glowing astrolabe compass gazing at floating celestial islands and auroras',
+      accentColor: '#34D399',
+      pillBg: 'bg-emerald-500/10 text-emerald-900 border-emerald-300/60',
+      badgeNum: 'bg-emerald-100 text-emerald-900 border-emerald-300',
+      objectPosition: 'center 25%',
+      desc: 'From living ecologies to celestial astrophysics, each realm unlocks natural pathways to wonder through high-stakes narrative adventure.',
+      wisdom: '“If there is no path yet, that just means we get to name the stars.”',
+      wisdomAuthor: 'Momo • Age 7'
+    }
+  ];
+
   return (
     <div className="space-y-24 sm:space-y-32">
       {/* ═══════════════════════════════════════════════════════════════
@@ -1457,62 +1533,154 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 5: MORE THAN ENTERTAINMENT */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FAF7F0] rounded-3xl border border-[#C7A451]/25 p-8 sm:p-14 shadow-sm">
-          <div className="max-w-2xl mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
-              Philosophical Foundation
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#17233A]">
+      {/* SECTION 5: PHILOSOPHICAL FOUNDATION — VISUAL STORYTELLING EXPERIENCE */}
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-5">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+              <span className="text-[#C7A451] text-xs leading-none">✨</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+                Philosophical Foundation
+              </span>
+            </div>
+
+            <h2
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A] tracking-tight leading-[1.18]"
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+            >
               Stories children love. Ideas that stay with them.
             </h2>
-            <p className="text-sm text-[#17233A]/70 mt-2 leading-relaxed">
-              We never position Zanarra as a dry textbook or didactic school lecture. Deep, meaningful inquiry and social-emotional growth emerge naturally from high-stakes storytelling.
+
+            <p className="text-base sm:text-lg text-[#17233A]/80 mt-3 font-sans leading-relaxed">
+              We never position Zanarra as a dry textbook or didactic school lecture. Deep inquiry, emotional resilience, and enduring values emerge naturally through character-driven wonder.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 space-y-2">
-              <span className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs">
-                01
-              </span>
-              <h3 className="font-bold text-[#17233A] text-lg">Curiosity</h3>
-              <p className="text-xs text-[#17233A]/80 leading-relaxed">
-                Stories begin with questions and encourage children to look at the world differently rather than accepting easy conclusions.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 space-y-2">
-              <span className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
-                02
-              </span>
-              <h3 className="font-bold text-[#17233A] text-lg">Creativity</h3>
-              <p className="text-xs text-[#17233A]/80 leading-relaxed">
-                Characters make mistakes, experiment with wild inventions, and discover unforeseen answers through spirited trial and error.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 space-y-2">
-              <span className="w-8 h-8 rounded-lg bg-rose-100 text-rose-800 flex items-center justify-center font-bold text-xs">
-                03
-              </span>
-              <h3 className="font-bold text-[#17233A] text-lg">Connection</h3>
-              <p className="text-xs text-[#17233A]/80 leading-relaxed">
-                Friendship, family, emotional vulnerability and genuine teamwork sit at the bedrock of every journey into the realms.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 space-y-2">
-              <span className="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center font-bold text-xs">
-                04
-              </span>
-              <h3 className="font-bold text-[#17233A] text-lg">Discovery</h3>
-              <p className="text-xs text-[#17233A]/80 leading-relaxed">
-                Each realm creates natural pathways to explore ecology, mechanics, musicality, ancient lore, and astrophysics.
-              </p>
-            </div>
+          <div className="shrink-0 flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAF7F0] border border-[#E8DEC9] text-xs font-semibold text-[#17233A]/75 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#C7A451] animate-pulse" />
+              <span>Social-Emotional Narrative Architecture</span>
+            </span>
           </div>
+        </div>
+
+        {/* Narrative Flow Ribbon (Connecting the 4 Pillars) */}
+        <div className="hidden lg:flex items-center justify-between px-6 py-3.5 mb-10 rounded-2xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-2xs text-xs font-medium text-[#17233A]/70">
+          <div className="flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-sky-100 text-sky-800 flex items-center justify-center font-bold text-[10px] border border-sky-300">01</span>
+            <span className="font-bold text-[#17233A]">Curiosity</span>
+            <span className="text-[#17233A]/50">sparks the Question</span>
+          </div>
+          <div className="h-px w-10 bg-[#C7A451]/30" />
+          <div className="flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-[10px] border border-amber-300">02</span>
+            <span className="font-bold text-[#17233A]">Creativity</span>
+            <span className="text-[#17233A]/50">dares to Experiment</span>
+          </div>
+          <div className="h-px w-10 bg-[#C7A451]/30" />
+          <div className="flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-rose-100 text-rose-900 flex items-center justify-center font-bold text-[10px] border border-rose-300">03</span>
+            <span className="font-bold text-[#17233A]">Connection</span>
+            <span className="text-[#17233A]/50">builds Empathy & Trust</span>
+          </div>
+          <div className="h-px w-10 bg-[#C7A451]/30" />
+          <div className="flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-[10px] border border-emerald-300">04</span>
+            <span className="font-bold text-[#17233A]">Discovery</span>
+            <span className="text-[#17233A]/50">unlocks the Universe</span>
+          </div>
+        </div>
+
+        {/* 4 Pillars Grid with High-Fidelity Cinematic Character Art */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-7">
+          {philosophicalPillars.map((pillar) => (
+            <div
+              key={pillar.num}
+              className="group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_20px_rgba(23,36,59,0.04)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.13)] hover:border-[#C7A451]/80 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+            >
+              <div>
+                {/* 4:3 Cinematic Story Illustration Banner */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#17233A]/5">
+                  <img
+                    src={pillar.image}
+                    alt={pillar.alt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    style={{ objectPosition: pillar.objectPosition }}
+                    loading="eager"
+                    decoding="async"
+                  />
+
+                  {/* Gentle gradient overlay for depth and label contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#17233A]/45 via-transparent to-black/15 pointer-events-none" />
+
+                  {/* Top-Left: Number & Pillar Pill */}
+                  <div className="absolute top-3.5 left-3.5 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/80 text-[11px] font-bold text-[#17233A] shadow-xs">
+                      <span className="text-[#C7A451]">{pillar.num}</span>
+                      <span className="text-gray-300">|</span>
+                      <span className="uppercase tracking-wider">{pillar.title}</span>
+                    </span>
+                  </div>
+
+                  {/* Top-Right: Character Tag */}
+                  <div className="absolute top-3.5 right-3.5 z-10">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white/95 shadow-xs">
+                      <span>{pillar.character}</span>
+                    </span>
+                  </div>
+
+                  {/* Bottom Image Tag: Subtitle */}
+                  <div className="absolute bottom-3 left-3.5 right-3.5 z-10">
+                    <span className="text-[11px] font-medium text-white/95 drop-shadow-sm line-clamp-1">
+                      {pillar.subtitle}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Editorial Content — Uncrowded, airy, and easily digestible */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  {/* Title & Tagline */}
+                  <div>
+                    <h3 className="font-serif text-2xl font-bold text-[#17233A] tracking-tight group-hover:text-[#C7A451] transition-colors">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#C7A451] mt-0.5">
+                      {pillar.characterRole}
+                    </p>
+                  </div>
+
+                  {/* Core Narrative — Crisp 2 lines */}
+                  <p className="text-sm text-[#17233A]/80 leading-relaxed font-sans">
+                    {pillar.desc}
+                  </p>
+
+                  {/* Character Lore Quote — Clean, elegant insight box */}
+                  <div className="p-3.5 rounded-2xl bg-white/70 border border-[#E8DEC9]/70 shadow-2xs space-y-1">
+                    <p className="text-xs italic text-[#17233A]/90 leading-snug">
+                      {pillar.wisdom}
+                    </p>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#C7A451] block text-right">
+                      — {pillar.wisdomAuthor}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Footer */}
+              <div className="px-6 sm:px-7 pb-6 pt-3.5 border-t border-[#E8DEC9]/60 flex items-center justify-between text-xs mt-2">
+                <span className="text-xs font-medium text-[#17233A]/60 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C7A451]" />
+                  <span>{pillar.realmTag}</span>
+                </span>
+                <span className="text-xs font-semibold text-[#17233A] group-hover:text-[#C7A451] transition-colors flex items-center gap-1">
+                  <span>Core Pillar</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C7A451] group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
