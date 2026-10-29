@@ -151,7 +151,7 @@ export const UniversePage: React.FC = () => {
               id={realm.id}
               className="bg-white rounded-3xl border border-[#C7A451]/20 p-6 sm:p-8 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
             >
-              <div className="lg:col-span-4 h-48 sm:h-56 w-full">
+              <div className="lg:col-span-4 h-48 sm:h-56 w-full rounded-2xl overflow-hidden shadow-xs">
                 <RealmVisual id={realm.id} className="w-full h-full" />
               </div>
 

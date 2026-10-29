@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { TrioHeroVisual } from '../components/visuals/TrioHeroVisual';
 import { CharacterVisual } from '../components/visuals/CharacterVisual';
-import { RealmVisual } from '../components/visuals/RealmVisual';
+import { RealmVisual, REALM_ARTWORK } from '../components/visuals/RealmVisual';
 import { CHARACTERS, REALMS, BRAND_INFO, Character, Realm } from '../data/brandData';
 import { InvestorEnquiryModal } from '../components/forms/InvestorEnquiryModal';
 import { CharacterModal } from '../components/modals/CharacterModal';
@@ -1309,73 +1309,161 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* SECTION 4: FIVE MAGICAL REALMS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
-            The Living Multiverse
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A]">
-            Five realms. Countless adventures.
-          </h2>
-          <p className="text-sm sm:text-base text-[#17233A]/80 mt-3 leading-relaxed">
-            One universe. Five dimensions of human experience. Each world offers a new way to discover, question, build, imagine and explore. Click any realm to enter its lore.
-          </p>
+      {/* SECTION 4: FIVE MAGICAL REALMS — IMMERSIVE FANTASY-WORLD DISCOVERY EXPERIENCE */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+              <span className="text-[#C7A451] text-xs leading-none">✨</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+                The Living Multiverse
+              </span>
+            </div>
+            <h2
+              className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.12]"
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)' }}
+            >
+              Five realms. Countless adventures.
+            </h2>
+            <p className="text-base sm:text-lg text-[#17233A]/80 mt-3 font-sans leading-relaxed">
+              One universe. Five distinct dimensions of human experience and curiosity. From living botanical canopies to clockwork cities and outer-space nebulae, every world is built to inspire wonder. Click any realm to enter its lore codex.
+            </p>
+          </div>
+
+          <div className="shrink-0 flex items-center gap-3">
+            <Link
+              to="/universe"
+              className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5"
+            >
+              <span>Explore Universe Bible</span>
+              <ArrowRight className="w-4 h-4 text-[#C7A451] transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
         </div>
 
-        {/* 5 Cohesive Illustrated Realm Tiles */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {REALMS.map((realm, index) => (
-            <div
-              key={realm.id}
-              onClick={() => setSelectedRealmForModal(realm)}
-              className={`bg-white rounded-3xl border border-[#C7A451]/25 p-5 sm:p-6 flex flex-col justify-between hover:shadow-xl transition-all duration-300 group cursor-pointer ${
-                index === 4 ? 'md:col-span-2 lg:col-span-1' : ''
-              }`}
-            >
-              <div>
-                {/* Realm Illustration Tile with hover zoom */}
-                <div className="h-44 w-full mb-4 rounded-2xl overflow-hidden group-hover:scale-[1.02] transition-transform shadow-xs">
-                  <RealmVisual id={realm.id} className="w-full h-full" />
+        {/* 5 Distinct Realm Discovery Cards (3 on top row, 2 balanced on bottom row) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8 items-stretch">
+          {REALMS.map((realm, index) => {
+            const art = REALM_ARTWORK[realm.id] || REALM_ARTWORK['terra-viva'];
+            const isWideRow = index >= 3; // Sonika (3) and Cosmara (4) in Row 2
+            const colSpanClass = isWideRow 
+              ? 'lg:col-span-3' 
+              : 'lg:col-span-2';
+
+            const actionVerb = {
+              'terra-viva': 'Explore Terra Viva',
+              'mechanika': 'Enter Mechanika',
+              'mythara': 'Discover Mythara',
+              'sonika': 'Listen to Sonika',
+              'cosmara': 'Journey to Cosmara',
+            }[realm.id] || `Explore ${realm.name}`;
+
+            const hoverBorderClass = {
+              'terra-viva': 'hover:border-[#16A34A]/60',
+              'mechanika': 'hover:border-[#D97706]/60',
+              'mythara': 'hover:border-[#7C3AED]/60',
+              'sonika': 'hover:border-[#E11D48]/60',
+              'cosmara': 'hover:border-[#0284C7]/60',
+            }[realm.id] || 'hover:border-[#C7A451]/60';
+
+            return (
+              <div
+                key={realm.id}
+                id={`realm-${realm.id}`}
+                onClick={() => setSelectedRealmForModal(realm)}
+                className={`group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_24px_rgba(23,36,59,0.05)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.14)] ${hoverBorderClass} hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full ${colSpanClass} ${
+                  index === 4 ? 'md:col-span-2 lg:col-span-3' : ''
+                }`}
+              >
+                <div className="flex flex-col">
+                  {/* Artwork Showcase Area */}
+                  <div className={`relative ${isWideRow ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[16/10]'} w-full overflow-hidden bg-[#17233A]/5`}>
+                    <picture>
+                      <source srcSet={art.webp} type="image/webp" />
+                      <img
+                        src={art.image}
+                        alt={art.alt}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        style={{ objectPosition: art.objectPosition }}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
+
+                    {/* Gradient Vignette for Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#17233A]/60 via-transparent to-black/20 pointer-events-none" />
+
+                    {/* Top-Left: Realm Number Badge */}
+                    <div className="absolute top-3.5 left-3.5 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/80 text-[11px] font-bold text-[#17233A] shadow-xs">
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: art.accentColor }} />
+                        <span className="uppercase tracking-wider">Realm 0{realm.number}</span>
+                      </span>
+                    </div>
+
+                    {/* Top-Right: Realm Theme Tag */}
+                    <div className="absolute top-3.5 right-3.5 z-10">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white/95 shadow-xs">
+                        <span>{realm.theme}</span>
+                      </span>
+                    </div>
+
+                    {/* Bottom of Image: Core Promise Quote */}
+                    <div className="absolute bottom-3 left-3.5 right-3.5 z-10">
+                      <p className="text-xs font-serif italic text-white/95 drop-shadow-sm line-clamp-1">
+                        "{realm.storyPromise}"
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card Content Area */}
+                  <div className="p-6 sm:p-7 space-y-2.5 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Name & Theme Subtitle */}
+                      <div className="flex items-baseline justify-between">
+                        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#17233A] tracking-tight group-hover:text-[#C7A451] transition-colors">
+                          {realm.name}
+                        </h3>
+                        <span className="text-xs font-bold uppercase tracking-wider" style={{ color: art.accentColor }}>
+                          {realm.theme}
+                        </span>
+                      </div>
+
+                      {/* Landscape & Lore Description */}
+                      <p className="text-sm text-[#17233A]/80 leading-relaxed font-sans mt-2.5 line-clamp-2">
+                        {realm.landscape}
+                      </p>
+                    </div>
+
+                    {/* Core Adventure Quest Preview */}
+                    <div className="pt-2">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E8DEC9] text-xs font-medium text-[#17233A]/70">
+                        <span className="text-xs" style={{ color: art.accentColor }}>✨</span>
+                        <span className="line-clamp-1">{realm.adventureTypes[0]}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#C7A451]">
-                    Realm 0{realm.number}
-                  </span>
-                  <span
-                    className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full"
-                    style={{ backgroundColor: realm.bgLight, color: realm.textColor }}
+                {/* Card Bottom CTA */}
+                <div className="px-6 sm:px-7 pb-6 pt-2 border-t border-[#E8DEC9]/50 bg-[#FAF7F0]">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedRealmForModal(realm);
+                    }}
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-white text-xs sm:text-sm font-bold shadow-xs hover:shadow-md transition-all group/btn cursor-pointer"
                   >
-                    {realm.theme}
-                  </span>
+                    <span>{actionVerb}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#C7A451] group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
                 </div>
-
-                <h3 className="font-serif text-2xl font-bold text-[#17233A] group-hover:text-[#C7A451] transition-colors">
-                  {realm.name}
-                </h3>
-
-                <p className="text-xs italic font-serif text-amber-900/80 mt-1">
-                  "{realm.storyPromise}"
-                </p>
-
-                <p className="text-xs text-[#17233A]/75 mt-3 leading-relaxed line-clamp-2">
-                  {realm.landscape}
-                </p>
               </div>
-
-              <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
-                <span className="text-xs text-gray-500 font-medium">
-                  {realm.adventureTypes[0]}
-                </span>
-                <span
-                  className="px-3.5 py-1.5 rounded-full bg-[#FAF7F0] group-hover:bg-[#17233A] group-hover:text-white text-[#17233A] text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs"
-                >
-                  <span>Explore Realm</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C7A451]" />
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
