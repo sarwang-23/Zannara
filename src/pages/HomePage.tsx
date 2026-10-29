@@ -1095,371 +1095,222 @@ export const HomePage: React.FC = () => {
 
 
 
-      {/* SECTION 3: MEET THE TRIO — EDITORIAL STORYBOOK ROWS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* SECTION 3: MEET MOMO, TOBO, AND DODI — HORIZONTAL CHARACTER SHOWCASE */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-        {/* Compact header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-5">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8]/80 mb-3">
-              <span className="text-[#C7A451] text-sm">✨</span>
-              <span className="text-[11px] font-bold text-[#17243B] uppercase tracking-[0.18em]">The Original Trio</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+              <span className="text-[#C7A451] text-xs leading-none">✨</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+                Original IP Character Showcase
+              </span>
             </div>
-            <h2 className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.1]"
-              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2rem, 3.8vw, 3.25rem)' }}>
+            <h2
+              className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.12]"
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)' }}
+            >
               Meet Momo, Tobo, and Dodi
             </h2>
-            <p className="text-[15px] text-[#2C3E5A] mt-3 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-[#17233A]/80 mt-3 font-sans leading-relaxed">
               Three friends. Three completely different ways of seeing the world. When courage, invention, and curiosity combine — anything is possible.
             </p>
           </div>
-          <div className="shrink-0">
-            <Link to="/characters"
-              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#17233A] hover:bg-[#25395E] text-[13px] font-bold text-white transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
-              <span>Discover All Three</span>
+
+          <div className="shrink-0 flex items-center gap-3">
+            <Link
+              to="/characters"
+              className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5"
+            >
+              <span>Explore Character Directory</span>
               <ArrowRight className="w-4 h-4 text-[#C7A451] transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
 
         {/* ══════════════════════════════════════════════════════════
-            STORYBOOK ROWS — alternating editorial layout
-            NOT three equal cards. Each character gets a full-width
-            scene. Image and info sit side by side, never overlapping.
+            ONE SINGLE HORIZONTAL ROW: Momo | Tobo | Dodi
+            All three cards side-by-side on desktop with equal width,
+            consistent height, ~60% artwork dominance, and simplified UI.
             ══════════════════════════════════════════════════════════ */}
         {(() => {
           const momo = CHARACTERS.find(c => c.id === 'momo') || CHARACTERS[0];
           const tobo = CHARACTERS.find(c => c.id === 'tobo') || CHARACTERS[1];
           const dodi = CHARACTERS.find(c => c.id === 'dodi') || CHARACTERS[2];
 
+          const showcaseCharacters = [
+            {
+              char: momo,
+              id: 'momo',
+              name: 'Momo',
+              roleTitle: 'The Fearless Leader',
+              age: 'Age 7',
+              badgeIcon: '🏔️',
+              badgeText: 'The Adventurer',
+              image: '/showcase-momo-adventurer.jpg',
+              alt: 'Momo the Adventurer standing tall on the carved stone terrace in Terra Viva with his glowing compass and map',
+              objectPosition: 'center 12%',
+              tagline: 'Warm. Brave. Gloriously Overconfident.',
+              desc: 'Always the first to leap into the unknown, turning every stumble into an adventure. He never gives up and ensures no friend is left behind.',
+              realmTag: 'Terra Viva'
+            },
+            {
+              char: tobo,
+              id: 'tobo',
+              name: 'Tobo',
+              roleTitle: 'The Clumsy Genius',
+              age: 'Age 6',
+              badgeIcon: '⚙️',
+              badgeText: 'The Inventor',
+              image: '/showcase-tobo-inventor.jpg',
+              alt: 'Tobo the Inventor smiling in his Mechanika workshop holding a fluttering brass clockwork songbird surrounded by glowing gears',
+              objectPosition: 'center 15%',
+              tagline: 'Brilliant. Fast-Talking. Magnificently Clumsy.',
+              desc: 'Brilliant inventor with round glasses and pockets full of gears. His whimsical contraptions turn trial, error, and mishaps into mechanical miracles.',
+              realmTag: 'Mechanika'
+            },
+            {
+              char: dodi,
+              id: 'dodi',
+              name: 'Dodi',
+              roleTitle: 'The Tiny Spark',
+              age: 'Age 4',
+              badgeIcon: '🔍',
+              badgeText: 'The Curious Explorer',
+              image: '/showcase-dodi-explorer.jpg',
+              alt: 'Dodi the Curious Explorer in her yellow coat and curly buns gently discovering a glowing starlight flower in an enchanted moss grove',
+              objectPosition: 'center 18%',
+              tagline: 'Curious. Fearless. Always Asking Why.',
+              desc: 'The tiny spark with wide wonder and curly buns, always asking "par kyun?". Her quiet observations unlock the universe\'s deepest realm secrets.',
+              realmTag: 'Mythara'
+            }
+          ];
+
           return (
-            <div className="space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+              {showcaseCharacters.map((item) => (
+                <div
+                  key={item.id}
+                  id={item.id}
+                  className="group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_24px_rgba(23,36,59,0.05)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.13)] hover:border-[#C7A451]/70 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full"
+                >
+                  <div className="flex flex-col">
+                    {/* Character Artwork (~60% of visual height) */}
+                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#17233A]/5">
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        style={{ objectPosition: item.objectPosition }}
+                        loading="eager"
+                        decoding="async"
+                      />
 
-              {/* ══════════════════════════════════════════
-                  ROW 1 — MOMO THE ADVENTURER
-                  Image LEFT (landscape 680×640 — object-right
-                  to show character), info RIGHT
-                  bg: warm coral → peach
-                  ══════════════════════════════════════════ */}
-              <div
-                className="group relative overflow-hidden rounded-[1.75rem] flex flex-col md:flex-row"
-                style={{
-                  background: 'linear-gradient(125deg, #FFF0EA 0%, #FDDECE 60%, #FCCCB0 100%)',
-                  boxShadow: '0 16px 48px rgba(226,109,92,0.18), 0 2px 8px rgba(226,109,92,0.10)',
-                  border: '1px solid rgba(226,109,92,0.20)',
-                  minHeight: '340px',
-                }}
-              >
-                {/* Momo artwork — LEFT, 58% desktop width */}
-                {/* 680×640 px image: character is on the right side of the frame */}
-                <div className="relative w-full md:w-[58%] overflow-hidden flex-shrink-0"
-                  style={{ minHeight: '300px' }}>
-                  {/* Warm ambient sky glow behind image */}
-                  <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 80% 70% at 70% 30%, rgba(255,200,150,0.35) 0%, transparent 70%)' }} />
-                  <img
-                    src="/momo-solo-hd.png"
-                    alt="Momo the Adventurer — pointing towards the floating sky islands of Terra Viva"
-                    className="w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'right center', /* Momo is on the RIGHT of this 680×640 image */
-                      display: 'block',
-                    }}
-                    loading="eager"
-                    width="680"
-                    height="640"
-                    decoding="async"
-                  />
-                  {/* No white wash. Only a very subtle right-edge vignette to blend into info panel */}
-                  <div className="absolute inset-y-0 right-0 w-16 pointer-events-none hidden md:block"
-                    style={{ background: 'linear-gradient(to right, transparent, rgba(253,222,206,0.55))' }} />
-                </div>
+                      {/* Vignette Gradient for Depth & Readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#17233A]/60 via-transparent to-black/15 pointer-events-none" />
 
-                {/* Momo info — RIGHT, fills remaining width */}
-                <div className="relative flex flex-col justify-center p-8 md:p-10 md:pl-6 flex-1">
-                  {/* Personality badge */}
-                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide mb-4"
-                    style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(226,109,92,0.35)', color: '#9C3A24', backdropFilter: 'blur(8px)' }}>
-                    🏔️ The Adventurer
-                  </span>
-
-                  {/* Name */}
-                  <h3 className="font-serif font-bold text-[#17233A] leading-none mb-2"
-                    style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.4rem, 4vw, 3.2rem)' }}>
-                    Momo
-                  </h3>
-
-                  {/* Short hook */}
-                  <p className="text-[15px] font-semibold text-[#9C3A24] mb-2 leading-snug">
-                    Warm. Brave. Gloriously overconfident.
-                  </p>
-                  <p className="text-[14px] text-[#3D2218] leading-relaxed mb-6 max-w-xs opacity-85">
-                    Every path leads to a new adventure. Momo is already on the way — come along!
-                  </p>
-
-                  {/* Primary action */}
-                  <div className="space-y-2.5">
-                    <button
-                      onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'momo' ? null : 'momo')}
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
-                      style={{ background: 'linear-gradient(135deg, #D4533E 0%, #F2855E 100%)' }}
-                      aria-expanded={activeCharacterSecret === 'momo'}
-                    >
-                      🗺️ Join the adventure
-                      <span className="text-xs opacity-75 transition-transform duration-200 inline-block"
-                        style={{ transform: activeCharacterSecret === 'momo' ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
-                    </button>
-
-                    {activeCharacterSecret === 'momo' && (
-                      <div className="p-4 rounded-2xl text-[13px] text-[#3D2218] leading-relaxed max-w-xs"
-                        style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(226,109,92,0.25)', backdropFilter: 'blur(8px)' }}>
-                        🌟 <strong>Adventure Clue:</strong> Behind the Whispering Falls of Terra Viva lies a hidden cedar raft. Momo carved the map on his coral scarf — so friends are never left behind!
+                      {/* Top-Left: Subtle Badge & Age */}
+                      <div className="absolute top-3.5 left-3.5 z-10">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/80 text-[11px] font-bold text-[#17233A] shadow-xs">
+                          <span>{item.badgeIcon}</span>
+                          <span className="uppercase tracking-wider">{item.badgeText}</span>
+                          <span className="text-gray-300">|</span>
+                          <span className="text-[#C7A451]">{item.age}</span>
+                        </span>
                       </div>
-                    )}
 
-                    <div>
-                      <Link to="/characters#momo"
-                        className="text-[12px] font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                        style={{ color: '#9C3A24' }}>
-                        Read Momo's full story →
-                      </Link>
+                      {/* Top-Right: Home Realm Tag */}
+                      <div className="absolute top-3.5 right-3.5 z-10">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white/95 shadow-xs">
+                          <span>{item.realmTag}</span>
+                        </span>
+                      </div>
+
+                      {/* Bottom Image Tag: Tagline */}
+                      <div className="absolute bottom-3 left-3.5 right-3.5 z-10">
+                        <span className="text-xs font-semibold text-white/95 drop-shadow-sm line-clamp-1">
+                          {item.tagline}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Card Content Area (Simplified & Focused) */}
+                    <div className="p-6 sm:p-7 space-y-3 flex-1 flex flex-col justify-between">
+                      <div>
+                        {/* Name & Role */}
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-serif text-3xl font-bold text-[#17233A] tracking-tight group-hover:text-[#C7A451] transition-colors">
+                            {item.name}
+                          </h3>
+                          <span className="text-xs font-semibold text-[#17233A]/60">
+                            {item.age}
+                          </span>
+                        </div>
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-[#C7A451] mt-1">
+                          {item.roleTitle}
+                        </p>
+
+                        {/* Concise 2-line Description */}
+                        <p className="text-sm text-[#17233A]/80 leading-relaxed font-sans mt-3">
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Large background character initial — decorative depth */}
-                  <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden"
-                    aria-hidden="true"
-                    style={{ fontSize: '14rem', lineHeight: 1, color: 'rgba(226,109,92,0.06)', fontFamily: "'DM Serif Display', serif", fontWeight: 700, letterSpacing: '-0.05em' }}>
-                    M
-                  </div>
-                </div>
-              </div>
-
-
-              {/* ══════════════════════════════════════════
-                  ROW 2 — TOBO THE INVENTOR
-                  Info LEFT, image RIGHT (portrait 520×530
-                  — object-center to show face + magnifier)
-                  bg: amber → warm honey
-                  ══════════════════════════════════════════ */}
-              <div
-                className="group relative overflow-hidden rounded-[1.75rem] flex flex-col md:flex-row-reverse"
-                style={{
-                  background: 'linear-gradient(125deg, #FFF8E8 0%, #F9EABD 60%, #F5DDA0 100%)',
-                  boxShadow: '0 16px 48px rgba(199,164,81,0.18), 0 2px 8px rgba(199,164,81,0.10)',
-                  border: '1px solid rgba(199,164,81,0.22)',
-                  minHeight: '340px',
-                }}
-              >
-                {/* Tobo artwork — RIGHT (reversed row), 54% desktop */}
-                {/* 520×530 portrait — character is center, magnifying glass bottom-right */}
-                <div className="relative w-full md:w-[54%] overflow-hidden flex-shrink-0"
-                  style={{ minHeight: '300px' }}>
-                  <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 80% 70% at 40% 25%, rgba(255,210,100,0.30) 0%, transparent 70%)' }} />
-                  {/* Slow-spin gear decoration — behind image */}
-                  <div className="absolute top-6 left-6 pointer-events-none z-0" aria-hidden="true">
-                    <svg viewBox="0 0 80 80" style={{ width: '80px', height: '80px', opacity: 0.10, animation: 'spin 25s linear infinite' }}>
-                      <circle cx="40" cy="40" r="14" fill="none" stroke="#C7A451" strokeWidth="3.5"/>
-                      <circle cx="40" cy="40" r="28" fill="none" stroke="#C7A451" strokeWidth="1.5" strokeDasharray="5 4"/>
-                      {[0,45,90,135,180,225,270,315].map((a: number) => {
-                        const rad = (a * Math.PI) / 180;
-                        return <line key={a} x1={40+28*Math.cos(rad)} y1={40+28*Math.sin(rad)} x2={40+37*Math.cos(rad)} y2={40+37*Math.sin(rad)} stroke="#C7A451" strokeWidth="4" strokeLinecap="round"/>;
-                      })}
-                    </svg>
-                  </div>
-                  <img
-                    src="/tobo-solo-hd.png"
-                    alt="Tobo the Inventor — holding his magnifying glass, ready to explain everything"
-                    className="w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center 15%', /* Tobo's face is center-top of the 520×530 frame */
-                      display: 'block',
-                      position: 'relative',
-                      zIndex: 1,
-                    }}
-                    loading="eager"
-                    width="520"
-                    height="530"
-                    decoding="async"
-                  />
-                  {/* Left-edge vignette to blend into info */}
-                  <div className="absolute inset-y-0 left-0 w-16 pointer-events-none hidden md:block"
-                    style={{ background: 'linear-gradient(to left, transparent, rgba(249,234,189,0.55))' }} />
-                </div>
-
-                {/* Tobo info — LEFT */}
-                <div className="relative flex flex-col justify-center p-8 md:p-10 md:pr-6 flex-1">
-                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide mb-4"
-                    style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(199,164,81,0.38)', color: '#6B4A06', backdropFilter: 'blur(8px)' }}>
-                    ⚙️ The Inventor
-                  </span>
-
-                  <h3 className="font-serif font-bold text-[#17233A] leading-none mb-2"
-                    style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.4rem, 4vw, 3.2rem)' }}>
-                    Tobo
-                  </h3>
-
-                  <p className="text-[15px] font-semibold text-[#6B4A06] mb-2 leading-snug">
-                    Brilliant. Fast-talking. Magnificently clumsy.
-                  </p>
-                  <p className="text-[14px] text-[#3A2E08] leading-relaxed mb-6 max-w-xs opacity-85">
-                    What can we invent when imagination takes the lead? Tobo always has a theory — and a gadget.
-                  </p>
-
-                  <div className="space-y-2.5">
+                  {/* Card Bottom Primary CTA — Clean, prominent & strictly aligned */}
+                  <div className="px-6 sm:px-7 pb-6 pt-3.5 border-t border-[#E8DEC9]/60 bg-[#FAF7F0]">
                     <button
-                      onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'tobo' ? null : 'tobo')}
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
-                      style={{ background: 'linear-gradient(135deg, #92590A 0%, #D4900F 100%)' }}
-                      aria-expanded={activeCharacterSecret === 'tobo'}
+                      type="button"
+                      onClick={() => setSelectedCharacterForModal(item.char)}
+                      className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-white text-xs sm:text-sm font-bold shadow-xs hover:shadow-md transition-all group/btn cursor-pointer"
                     >
-                      🔧 Explore the invention
-                      <span className="text-xs opacity-75 inline-block transition-transform duration-200"
-                        style={{ transform: activeCharacterSecret === 'tobo' ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
+                      <span>Meet {item.name}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#C7A451] group-hover/btn:translate-x-1 transition-transform" />
                     </button>
-
-                    {activeCharacterSecret === 'tobo' && (
-                      <div className="p-4 rounded-2xl text-[13px] text-[#3A2E08] leading-relaxed max-w-xs"
-                        style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(199,164,81,0.28)', backdropFilter: 'blur(8px)' }}>
-                        💡 <strong>The Cloud-Catcher:</strong> Tobo built a pneumatic gadget to scoop wandering morning mist into lemonade bottles. It accidentally floats whenever you whistle!
-                      </div>
-                    )}
-
-                    <div>
-                      <Link to="/characters#tobo"
-                        className="text-[12px] font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                        style={{ color: '#6B4A06' }}>
-                        Read Tobo's full story →
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden"
-                    aria-hidden="true"
-                    style={{ fontSize: '14rem', lineHeight: 1, color: 'rgba(199,164,81,0.07)', fontFamily: "'DM Serif Display', serif", fontWeight: 700, letterSpacing: '-0.05em' }}>
-                    T
                   </div>
                 </div>
-              </div>
-
-
-              {/* ══════════════════════════════════════════
-                  ROW 3 — DODI THE CURIOUS EXPLORER
-                  Image LEFT (portrait 590×580 — object-left
-                  to keep Dodi's face visible), info RIGHT
-                  bg: sky blue → lavender
-                  ══════════════════════════════════════════ */}
-              <div
-                className="group relative overflow-hidden rounded-[1.75rem] flex flex-col md:flex-row"
-                style={{
-                  background: 'linear-gradient(125deg, #EEF7FF 0%, #D5EAFF 60%, #C2DDFF 100%)',
-                  boxShadow: '0 16px 48px rgba(56,155,220,0.16), 0 2px 8px rgba(56,155,220,0.10)',
-                  border: '1px solid rgba(56,189,248,0.22)',
-                  minHeight: '340px',
-                }}
-              >
-                {/* Dodi artwork — LEFT, 56% desktop */}
-                {/* 590×580 portrait — Dodi's face is left-center, compass stone wall right */}
-                <div className="relative w-full md:w-[56%] overflow-hidden flex-shrink-0"
-                  style={{ minHeight: '300px' }}>
-                  <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 80% 70% at 30% 30%, rgba(130,190,255,0.30) 0%, transparent 70%)' }} />
-                  {/* Subtle star constellation */}
-                  <svg className="absolute top-5 right-10 pointer-events-none z-0" viewBox="0 0 90 80"
-                    style={{ width: '90px', height: '80px', opacity: 0.18 }} aria-hidden="true">
-                    <circle cx="12" cy="12" r="3" fill="#5D9CEC"/>
-                    <circle cx="45" cy="6" r="2" fill="#B9D9F3"/>
-                    <circle cx="72" cy="18" r="2.5" fill="#5D9CEC"/>
-                    <circle cx="25" cy="45" r="2" fill="#B9D9F3"/>
-                    <circle cx="60" cy="50" r="2.5" fill="#5D9CEC"/>
-                    <circle cx="80" cy="68" r="2" fill="#B9D9F3"/>
-                    <circle cx="5" cy="65" r="2.5" fill="#5D9CEC"/>
-                    <line x1="12" y1="12" x2="45" y2="6" stroke="#B9D9F3" strokeWidth="0.8" opacity="0.6"/>
-                    <line x1="45" y1="6" x2="72" y2="18" stroke="#B9D9F3" strokeWidth="0.8" opacity="0.6"/>
-                    <line x1="25" y1="45" x2="60" y2="50" stroke="#B9D9F3" strokeWidth="0.8" opacity="0.6"/>
-                  </svg>
-                  <img
-                    src="/dodi-solo-hd.png"
-                    alt="Dodi the Curious Explorer — wide eyes full of wonder, standing before a stone compass"
-                    className="w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: '30% center', /* Dodi's face is left of center in the 590×580 frame */
-                      display: 'block',
-                      position: 'relative',
-                      zIndex: 1,
-                    }}
-                    loading="eager"
-                    width="590"
-                    height="580"
-                    decoding="async"
-                  />
-                  {/* Right-edge vignette to blend into info */}
-                  <div className="absolute inset-y-0 right-0 w-16 pointer-events-none hidden md:block"
-                    style={{ background: 'linear-gradient(to right, transparent, rgba(197,220,255,0.55))' }} />
-                </div>
-
-                {/* Dodi info — RIGHT */}
-                <div className="relative flex flex-col justify-center p-8 md:p-10 md:pl-6 flex-1">
-                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide mb-4"
-                    style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(56,189,248,0.38)', color: '#04537F', backdropFilter: 'blur(8px)' }}>
-                    🔍 The Curious Explorer
-                  </span>
-
-                  <h3 className="font-serif font-bold text-[#17233A] leading-none mb-2"
-                    style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.4rem, 4vw, 3.2rem)' }}>
-                    Dodi
-                  </h3>
-
-                  <p className="text-[15px] font-semibold text-[#04537F] mb-2 leading-snug">
-                    Curious. Fearless. Always asking why.
-                  </p>
-                  <p className="text-[14px] text-[#0B2D46] leading-relaxed mb-6 max-w-xs opacity-85">
-                    Every little question can lead to a big discovery! Dodi notices what everyone else misses.
-                  </p>
-
-                  <div className="space-y-2.5">
-                    <button
-                      onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'dodi' ? null : 'dodi')}
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
-                      style={{ background: 'linear-gradient(135deg, #035E8F 0%, #0EA5E9 100%)' }}
-                      aria-expanded={activeCharacterSecret === 'dodi'}
-                    >
-                      🔍 Solve the mystery
-                      <span className="text-xs opacity-75 inline-block transition-transform duration-200"
-                        style={{ transform: activeCharacterSecret === 'dodi' ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
-                    </button>
-
-                    {activeCharacterSecret === 'dodi' && (
-                      <div className="p-4 rounded-2xl text-[13px] text-[#0B2D46] leading-relaxed max-w-xs"
-                        style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(56,189,248,0.28)', backdropFilter: 'blur(8px)' }}>
-                        ❓ <strong>Dodi's Wonder:</strong> "If the stars hum lullabies at night, do the sleeping mountains dream of flying?" When she whispered this near the singing stones of Sonika, they glowed soft cyan!
-                      </div>
-                    )}
-
-                    <div>
-                      <Link to="/characters#dodi"
-                        className="text-[12px] font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                        style={{ color: '#04537F' }}>
-                        Read Dodi's full story →
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden"
-                    aria-hidden="true"
-                    style={{ fontSize: '14rem', lineHeight: 1, color: 'rgba(56,189,248,0.06)', fontFamily: "'DM Serif Display', serif", fontWeight: 700, letterSpacing: '-0.05em' }}>
-                    D
-                  </div>
-                </div>
-              </div>
-
+              ))}
             </div>
           );
         })()}
+
+        {/* The Trio Ensemble Lore Bridge — Visually Connecting the 3 Characters */}
+        <div className="mt-10 sm:mt-12 p-5 sm:p-6 rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] max-w-4xl mx-auto shadow-2xs">
+          <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left">
+            {/* Visual Hint of Shared Adventure (Momo, Tobo, Dodi & Chiku under twilight lanterns) */}
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 border border-[#E8DEC9] shadow-xs bg-[#17233A]/5">
+              <img
+                src="/philosophy-03-connection.jpg"
+                alt="Momo, Tobo, Dodi and Chiku together on a twilight hillside under glowing lanterns"
+                className="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 space-y-1.5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white border border-[#E8DEC9] text-[10px] font-bold text-[#17233A]/70 uppercase tracking-widest">
+                <Sparkles className="w-3 h-3 text-[#C7A451]" />
+                <span>The Trio in Every Realm</span>
+              </div>
+              <p className="font-serif text-base sm:text-lg font-bold text-[#17233A] leading-snug">
+                “When Momo leads the trail, Tobo invents the gear, and Dodi asks the quiet question — no realm remains unexplored.”
+              </p>
+              <div>
+                <Link
+                  to="/characters"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C7A451] hover:text-[#B45309] transition-colors"
+                >
+                  <span>Explore the complete Zanarra Character Directory & Companions</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* SECTION 4: FIVE MAGICAL REALMS */}
