@@ -36,6 +36,17 @@
   }
 }
 
+/* Keyframes used by inline animation styles */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.08); opacity: 0.88; }
+}
+
 /* Custom animations & subtle interactions */
 @keyframes floatGentle {
   0%, 100% {
@@ -109,4 +120,80 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(23, 35, 58, 0.08);
+}
+
+/* Storybook Finale Ambient Effects (Subtle & Tranquil) */
+@keyframes starBreathe {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fireflyDriftA {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.25;
+  }
+  35% {
+    transform: translate(14px, -18px);
+    opacity: 0.85;
+  }
+  70% {
+    transform: translate(22px, 6px);
+    opacity: 0.35;
+  }
+}
+
+@keyframes fireflyDriftB {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.2;
+  }
+  45% {
+    transform: translate(-18px, -14px);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(-8px, 12px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pathwayGlowPulse {
+  0%, 100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+.animate-star-breathe {
+  animation: starBreathe 5s ease-in-out infinite;
+}
+
+.animate-firefly-a {
+  animation: fireflyDriftA 8s ease-in-out infinite;
+}
+
+.animate-firefly-b {
+  animation: fireflyDriftB 10s ease-in-out infinite;
+}
+
+.animate-pathway-pulse {
+  animation: pathwayGlowPulse 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-star-breathe,
+  .animate-firefly-a,
+  .animate-firefly-b,
+  .animate-pathway-pulse {
+    animation: none !important;
+  }
 }

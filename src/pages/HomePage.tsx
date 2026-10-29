@@ -19,11 +19,19 @@ import {
   ShieldCheck,
   Award
 } from 'lucide-react';
+import {
+  WORLD_CONTINENTS_SVG_PATH,
+  INDIA_ORIGIN_SVG_PATH,
+  GLOBAL_HUBS,
+  INDIA_COORDS,
+  GlobalHub,
+} from '../data/worldMapData';
 
 export const HomePage: React.FC = () => {
   const [isInvestorModalOpen, setIsInvestorModalOpen] = useState(false);
   const [selectedCharacterForModal, setSelectedCharacterForModal] = useState<Character | null>(null);
   const [selectedRealmForModal, setSelectedRealmForModal] = useState<Realm | null>(null);
+  const [selectedGlobalHubId, setSelectedGlobalHubId] = useState<string | null>(null);
 
   // ── Section 2: World of Zanarra interactive state ──
   const [activeZone, setActiveZone] = useState<'characters' | 'realms' | 'franchise' | null>(null);
@@ -44,16 +52,96 @@ export const HomePage: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  // 8 Experiences for Section 6
+  // 8 Experiences for Section 6 — Commercial & Creative Extension
   const experiences = [
-    { num: '01', title: 'Short-Form Digital Stories', desc: 'Bite-sized episodic narratives introducing characters and wondrous realms.' },
-    { num: '02', title: 'Original Music & Songs', desc: 'Memorable, culturally rich songs fostering emotion, rhythm, and joy.' },
-    { num: '03', title: 'Longer Episodic Entertainment', desc: 'Richly plotted narrative series exploring deeper lore and team problem-solving.' },
-    { num: '04', title: 'Books & Merchandise', desc: 'High-quality picture books, plush companions, and creative activity sets.' },
-    { num: '05', title: 'Interactive Digital Experiences', desc: 'Immersive exploration apps and safe game environments.' },
-    { num: '06', title: 'Educational Products', desc: 'Inquiry-led learning modules sparking natural scientific and artistic curiosity.' },
-    { num: '07', title: 'Live Events & Experiences', desc: 'Theatrical shows, sensory exhibitions, and touring universe installations.' },
-    { num: '08', title: 'Licensing & Distribution', desc: 'Global co-productions, localized territorial broadcast, and retail distribution.' }
+    {
+      num: '01',
+      title: 'Short-Form Digital Stories',
+      desc: 'Bite-sized episodic narratives introducing characters and wondrous realms.',
+      category: 'Core Narrative IP',
+      format: 'Bite-Sized Streaming',
+      image: '/phase-01-digital-stories.webp',
+      imageJpg: '/phase-01-digital-stories.jpg',
+      alt: 'Momo and Tobo discovering floating celestial islands — the first chapter of a wondrous digital story',
+      objectPosition: 'center 20%'
+    },
+    {
+      num: '02',
+      title: 'Original Music & Songs',
+      desc: 'Memorable, culturally rich songs fostering emotion, rhythm, and joy.',
+      category: 'Sonic Lore & Audio',
+      format: 'Soundtracks & Chimes',
+      image: '/phase-02-music-songs.webp',
+      imageJpg: '/phase-02-music-songs.jpg',
+      alt: 'Enchanting golden harp and flute resting in a wildflower meadow with melody stardust',
+      objectPosition: 'center center'
+    },
+    {
+      num: '03',
+      title: 'Longer Episodic Entertainment',
+      desc: 'Richly plotted narrative series exploring deeper lore and team problem-solving.',
+      category: 'Flagship Screen Franchise',
+      format: 'Multi-Season Series',
+      image: '/phase-03-episodic-entertainment.webp',
+      imageJpg: '/phase-03-episodic-entertainment.jpg',
+      alt: 'Momo, Tobo, Dodi and Chiku — the full ensemble cast of Zanarra\'s multi-season episodic series',
+      objectPosition: 'center 15%'
+    },
+    {
+      num: '04',
+      title: 'Books & Merchandise',
+      desc: 'High-quality picture books, plush companions, and creative activity sets.',
+      category: 'Publishing & Consumer Products',
+      format: 'Picture Books & Plush',
+      image: '/phase-04-books-merchandise.webp',
+      imageJpg: '/phase-04-books-merchandise.jpg',
+      alt: 'Collector picture book, plush companion, and artist desk overlooking castle',
+      objectPosition: 'center top'
+    },
+    {
+      num: '05',
+      title: 'Interactive Digital Experiences',
+      desc: 'Immersive exploration apps and safe game environments.',
+      category: 'Interactive Media & Games',
+      format: 'Safe Exploration Apps',
+      image: '/world-zanarra-panorama.jpg',
+      imageJpg: '/world-zanarra-panorama.jpg',
+      alt: 'Magical Zanarra village with glowing pathways, gears, crystals and floating islands — interactive world exploration',
+      objectPosition: 'center 40%'
+    },
+    {
+      num: '06',
+      title: 'Educational Products',
+      desc: 'Inquiry-led learning modules sparking natural scientific and artistic curiosity.',
+      category: 'Pedagogy & Curriculum',
+      format: 'Inquiry Learning Modules',
+      image: '/collab-partners-storybook.webp',
+      imageJpg: '/collab-partners-storybook.jpg',
+      alt: 'Giant enchanted book-library castle with children walking up a glowing path surrounded by floating books',
+      objectPosition: 'center 30%'
+    },
+    {
+      num: '07',
+      title: 'Live Events & Experiences',
+      desc: 'Theatrical shows, sensory exhibitions, and touring universe installations.',
+      category: 'Location-Based Entertainment',
+      format: 'Theatrical Stage & Touring',
+      image: '/phase-07-live-events.webp',
+      imageJpg: '/phase-07-live-events.jpg',
+      alt: 'Spectacular family stage production with illuminated glowing realm canopy',
+      objectPosition: 'center center'
+    },
+    {
+      num: '08',
+      title: 'Licensing & Distribution',
+      desc: 'Global co-productions, localized territorial broadcast, and retail distribution.',
+      category: 'Global Commercial Syndication',
+      format: 'Territorial Broadcast & Retail',
+      image: '/phase-08-licensing-distribution.webp',
+      imageJpg: '/phase-08-licensing-distribution.jpg',
+      alt: 'Celestial astrolabe globe with broadcast streams linking international markets',
+      objectPosition: 'center center'
+    }
   ];
 
   return (
@@ -931,480 +1019,368 @@ export const HomePage: React.FC = () => {
 
 
 
-      {/* SECTION 3: THE ORIGINAL TRIO — DELIGHTFUL CHARACTER SHOWCASE */}
+      {/* SECTION 3: MEET THE TRIO — EDITORIAL STORYBOOK ROWS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
+
+        {/* Compact header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-5">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8]/80 shadow-xs mb-3">
-              <span className="text-[#C7A451] text-xs">✨</span>
-              <span className="text-[11px] font-bold text-[#17243B] uppercase tracking-[0.16em]">
-                The Original Trio
-              </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8]/80 mb-3">
+              <span className="text-[#C7A451] text-sm">✨</span>
+              <span className="text-[11px] font-bold text-[#17243B] uppercase tracking-[0.18em]">The Original Trio</span>
             </div>
-            <h2
-              className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.1]"
-              style={{
-                fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
-              }}
-            >
+            <h2 className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.1]"
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2rem, 3.8vw, 3.25rem)' }}>
               Meet Momo, Tobo, and Dodi
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#2C3E5A] mt-2.5 leading-relaxed">
-              Three friends. Three completely different ways of seeing the world. When courage, invention, and questions combine, anything is possible.
+            <p className="text-[15px] text-[#2C3E5A] mt-3 leading-relaxed max-w-xl">
+              Three friends. Three completely different ways of seeing the world. When courage, invention, and curiosity combine — anything is possible.
             </p>
           </div>
-
-          <div className="flex items-center gap-3 shrink-0">
-            <Link
-              to="/characters"
-              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#17233A] hover:bg-[#25395E] text-[13px] font-bold text-white transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
-            >
+          <div className="shrink-0">
+            <Link to="/characters"
+              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#17233A] hover:bg-[#25395E] text-[13px] font-bold text-white transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
               <span>Discover All Three</span>
               <ArrowRight className="w-4 h-4 text-[#C7A451] transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
 
-        {/* ── THREE LARGE CHARACTER FEATURE PANELS: MOMO, TOBO, DODI ── */}
+        {/* ══════════════════════════════════════════════════════════
+            STORYBOOK ROWS — alternating editorial layout
+            NOT three equal cards. Each character gets a full-width
+            scene. Image and info sit side by side, never overlapping.
+            ══════════════════════════════════════════════════════════ */}
         {(() => {
           const momo = CHARACTERS.find(c => c.id === 'momo') || CHARACTERS[0];
           const tobo = CHARACTERS.find(c => c.id === 'tobo') || CHARACTERS[1];
           const dodi = CHARACTERS.find(c => c.id === 'dodi') || CHARACTERS[2];
 
           return (
-            <div className="space-y-10">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-10">
-                
-                {/* ═════════════════════════════════════════════════
-                    PANEL 1: MOMO — THE LEADER (Age 7)
-                    ═════════════════════════════════════════════════ */}
-                <div
-                  className="group relative rounded-3xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between"
-                  style={{
-                    background: 'linear-gradient(180deg, #FFF8F4 0%, #FFF2EB 50%, #FFEBE0 100%)',
-                    borderColor: 'rgba(226, 109, 92, 0.4)',
-                    boxShadow: '0 12px 36px rgba(226, 109, 92, 0.12)',
-                  }}
-                >
-                  {/* TOP: FULL-BLEED ULTRA-HD CINEMATIC ARTWORK STAGE */}
-                  <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#FFEFE8]">
-                    <img
-                      src="/momo-solo-hd.png"
-                      alt="Momo — The Leader"
-                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                      loading="eager"
-                    />
+            <div className="space-y-5">
 
-                    {/* Seamless Gradient Fade to Card Background */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 30%, rgba(255,248,244,0.7) 80%, #FFF8F4 100%)',
-                      }}
-                    />
-
-                    {/* Floating Age & Title Badge */}
-                    <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#E26D5C]/35 shadow-md text-[11px] font-bold text-[#9C3A24]">
-                      <span>Age 7</span>
-                      <span>·</span>
-                      <span>The Leader</span>
-                    </div>
-
-                    {/* Floating Compass Rose */}
-                    <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-[#C7A451]/40 shadow-md flex items-center justify-center text-sm text-[#C7A451] transition-transform duration-700 group-hover:rotate-45">
-                      🧭
-                    </div>
-
-                    {/* Subtle Trail Tag */}
-                    <div className="absolute bottom-4 left-4 z-10 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#17233A]/85 backdrop-blur-md text-[10.5px] font-bold text-white shadow-sm">
-                      <span>🚩</span>
-                      <span>Trail Blazer</span>
-                    </div>
-                  </div>
-
-                  {/* BOTTOM: STORYTELLING, DESCRIPTION & CORE APPEAL */}
-                  <div className="relative z-10 p-6 sm:p-7 flex flex-col justify-between flex-1 bg-[#FFF8F4]">
-                    <div className="space-y-3">
-                      {/* Name & Tagline */}
-                      <div>
-                        <div className="flex items-baseline justify-between gap-2">
-                          <h3
-                            className="font-serif font-bold text-[#17233A] tracking-tight leading-none"
-                            style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: '2.2rem' }}
-                          >
-                            Momo
-                          </h3>
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#E26D5C]">
-                            The Leader
-                          </span>
-                        </div>
-                        {/* Personality */}
-                        <p className="text-[12px] font-semibold text-[#9C3A24] mt-1.5 leading-snug">
-                          Warm, brave, enthusiastic and gloriously overconfident.
-                        </p>
-                      </div>
-
-                      {/* Character Description */}
-                      <p className="text-[13px] text-[#2C3E5A] leading-relaxed">
-                        Momo is always the first to jump into an adventure and usually the first to discover that the plan was not quite as brilliant as it sounded. He never gives up, never stops trying and brings his friends along for every unexpected turn.
-                      </p>
-
-                      {/* Core Appeal */}
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#9C3A24] block mb-1">
-                          Core Appeal
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {['Confidence', 'Friendship', 'Courage', 'Resilience'].map(item => (
-                            <span
-                              key={item}
-                              className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white text-[#17233A] border border-[#E26D5C]/30 shadow-2xs"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Interactive Adventure Secret */}
-                      <div className="pt-2">
-                        <button
-                          onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'momo' ? null : 'momo')}
-                          className="w-full text-left px-3.5 py-2.5 rounded-xl bg-white/95 hover:bg-white border border-[#E26D5C]/35 text-[12px] font-bold text-[#9C3A24] transition-all flex items-center justify-between shadow-2xs group-hover:border-[#E26D5C]"
-                          aria-expanded={activeCharacterSecret === 'momo'}
-                        >
-                          <span className="flex items-center gap-1.5">
-                            <span>🧭</span>
-                            <span>{activeCharacterSecret === 'momo' ? 'Hide Adventure Clue' : 'Discover Adventure Clue'}</span>
-                          </span>
-                          <span className="text-xs">{activeCharacterSecret === 'momo' ? '▲' : '▼'}</span>
-                        </button>
-
-                        {activeCharacterSecret === 'momo' && (
-                          <div className="mt-2.5 p-3 rounded-xl bg-white border border-[#E26D5C]/40 text-[12px] text-[#2C3E5A] leading-relaxed shadow-xs animate-fadeIn">
-                            🌟 <strong>Secret Trail:</strong> Behind the Whispering Falls of Terra Viva lies a hidden cedar raft. Momo carved the map on the back of his coral scarf so friends never get left behind!
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Individual Character Detail Action */}
-                    <div className="mt-5 pt-4 border-t border-[#E26D5C]/25 flex items-center justify-between gap-3">
-                      <Link
-                        to="/characters#momo"
-                        className="text-[12px] font-bold text-[#9C3A24] hover:text-[#E26D5C] transition-colors"
-                      >
-                        Character Page →
-                      </Link>
-                      <button
-                        onClick={() => setSelectedCharacterForModal(momo)}
-                        className="px-6 py-2.5 rounded-full text-xs font-bold text-white transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-[#E26D5C]/40"
-                        style={{ background: 'linear-gradient(135deg, #E26D5C 0%, #F2A18B 100%)' }}
-                      >
-                        <span>Meet Momo</span>
-                        <span>→</span>
-                      </button>
-                    </div>
-                  </div>
+              {/* ══════════════════════════════════════════
+                  ROW 1 — MOMO THE ADVENTURER
+                  Image LEFT (landscape 680×640 — object-right
+                  to show character), info RIGHT
+                  bg: warm coral → peach
+                  ══════════════════════════════════════════ */}
+              <div
+                className="group relative overflow-hidden rounded-[1.75rem] flex flex-col md:flex-row"
+                style={{
+                  background: 'linear-gradient(125deg, #FFF0EA 0%, #FDDECE 60%, #FCCCB0 100%)',
+                  boxShadow: '0 16px 48px rgba(226,109,92,0.18), 0 2px 8px rgba(226,109,92,0.10)',
+                  border: '1px solid rgba(226,109,92,0.20)',
+                  minHeight: '340px',
+                }}
+              >
+                {/* Momo artwork — LEFT, 58% desktop width */}
+                {/* 680×640 px image: character is on the right side of the frame */}
+                <div className="relative w-full md:w-[58%] overflow-hidden flex-shrink-0"
+                  style={{ minHeight: '300px' }}>
+                  {/* Warm ambient sky glow behind image */}
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'radial-gradient(ellipse 80% 70% at 70% 30%, rgba(255,200,150,0.35) 0%, transparent 70%)' }} />
+                  <img
+                    src="/momo-solo-hd.png"
+                    alt="Momo the Adventurer — pointing towards the floating sky islands of Terra Viva"
+                    className="w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'right center', /* Momo is on the RIGHT of this 680×640 image */
+                      display: 'block',
+                    }}
+                    loading="eager"
+                    width="680"
+                    height="640"
+                    decoding="async"
+                  />
+                  {/* No white wash. Only a very subtle right-edge vignette to blend into info panel */}
+                  <div className="absolute inset-y-0 right-0 w-16 pointer-events-none hidden md:block"
+                    style={{ background: 'linear-gradient(to right, transparent, rgba(253,222,206,0.55))' }} />
                 </div>
 
+                {/* Momo info — RIGHT, fills remaining width */}
+                <div className="relative flex flex-col justify-center p-8 md:p-10 md:pl-6 flex-1">
+                  {/* Personality badge */}
+                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide mb-4"
+                    style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(226,109,92,0.35)', color: '#9C3A24', backdropFilter: 'blur(8px)' }}>
+                    🏔️ The Adventurer
+                  </span>
 
-                {/* ═════════════════════════════════════════════════
-                    PANEL 2: TOBO — THE CLUMSY GENIUS (Age 6)
-                    ═════════════════════════════════════════════════ */}
-                <div
-                  className="group relative rounded-3xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between"
-                  style={{
-                    background: 'linear-gradient(180deg, #FFFDF8 0%, #FAF5E8 50%, #F6ECDA 100%)',
-                    borderColor: 'rgba(199, 164, 81, 0.4)',
-                    boxShadow: '0 12px 36px rgba(199, 164, 81, 0.12)',
-                  }}
-                >
-                  {/* TOP: FULL-BLEED ULTRA-HD CINEMATIC ARTWORK STAGE */}
-                  <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#FFF9EE]">
-                    <img
-                      src="/tobo-solo-hd.png"
-                      alt="Tobo — The Clumsy Genius"
-                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                      loading="eager"
-                    />
+                  {/* Name */}
+                  <h3 className="font-serif font-bold text-[#17233A] leading-none mb-2"
+                    style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.4rem, 4vw, 3.2rem)' }}>
+                    Momo
+                  </h3>
 
-                    {/* Seamless Gradient Fade to Card Background */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 30%, rgba(255,253,248,0.7) 80%, #FFFDF8 100%)',
-                      }}
-                    />
+                  {/* Short hook */}
+                  <p className="text-[15px] font-semibold text-[#9C3A24] mb-2 leading-snug">
+                    Warm. Brave. Gloriously overconfident.
+                  </p>
+                  <p className="text-[14px] text-[#3D2218] leading-relaxed mb-6 max-w-xs opacity-85">
+                    Every path leads to a new adventure. Momo is already on the way — come along!
+                  </p>
 
-                    {/* Floating Age & Title Badge */}
-                    <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#C7A451]/35 shadow-md text-[11px] font-bold text-[#855D08]">
-                      <span>Age 6</span>
-                      <span>·</span>
-                      <span>The Clumsy Genius</span>
-                    </div>
+                  {/* Primary action */}
+                  <div className="space-y-2.5">
+                    <button
+                      onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'momo' ? null : 'momo')}
+                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
+                      style={{ background: 'linear-gradient(135deg, #D4533E 0%, #F2855E 100%)' }}
+                      aria-expanded={activeCharacterSecret === 'momo'}
+                    >
+                      🗺️ Join the adventure
+                      <span className="text-xs opacity-75 transition-transform duration-200 inline-block"
+                        style={{ transform: activeCharacterSecret === 'momo' ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
+                    </button>
 
-                    {/* Floating Lightbulb */}
-                    <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-[#C7A451]/40 shadow-md flex items-center justify-center text-sm text-[#C7A451] transition-transform duration-700 group-hover:rotate-90">
-                      💡
-                    </div>
+                    {activeCharacterSecret === 'momo' && (
+                      <div className="p-4 rounded-2xl text-[13px] text-[#3D2218] leading-relaxed max-w-xs"
+                        style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(226,109,92,0.25)', backdropFilter: 'blur(8px)' }}>
+                        🌟 <strong>Adventure Clue:</strong> Behind the Whispering Falls of Terra Viva lies a hidden cedar raft. Momo carved the map on his coral scarf — so friends are never left behind!
+                      </div>
+                    )}
 
-                    {/* Subtle Tinkerer Tag */}
-                    <div className="absolute bottom-4 left-4 z-10 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#17233A]/85 backdrop-blur-md text-[10.5px] font-bold text-white shadow-sm">
-                      <span>⚙️</span>
-                      <span>Master Tinkerer</span>
+                    <div>
+                      <Link to="/characters#momo"
+                        className="text-[12px] font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
+                        style={{ color: '#9C3A24' }}>
+                        Read Momo's full story →
+                      </Link>
                     </div>
                   </div>
 
-                  {/* BOTTOM: STORYTELLING, DESCRIPTION & CORE APPEAL */}
-                  <div className="relative z-10 p-6 sm:p-7 flex flex-col justify-between flex-1 bg-[#FFFDF8]">
-                    <div className="space-y-3">
-                      {/* Name & Tagline */}
-                      <div>
-                        <div className="flex items-baseline justify-between gap-2">
-                          <h3
-                            className="font-serif font-bold text-[#17233A] tracking-tight leading-none"
-                            style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: '2.2rem' }}
-                          >
-                            Tobo
-                          </h3>
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#B45309]">
-                            The Clumsy Genius
-                          </span>
-                        </div>
-                        {/* Personality */}
-                        <p className="text-[12px] font-semibold text-[#855D08] mt-1.5 leading-snug">
-                          Brilliant, fast-talking, inventive and magnificently clumsy.
-                        </p>
-                      </div>
-
-                      {/* Character Description */}
-                      <p className="text-[13px] text-[#2C3E5A] leading-relaxed">
-                        With round glasses sliding down his nose and an oversized backpack full of inventions, Tobo believes he can explain almost anything. His inventions don't always cooperate, but his curiosity rarely lets him down.
-                      </p>
-
-                      {/* Core Appeal */}
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#855D08] block mb-1">
-                          Core Appeal
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {['Creativity', 'Experimentation', 'Problem-solving', 'Humour'].map(item => (
-                            <span
-                              key={item}
-                              className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white text-[#17233A] border border-[#C7A451]/30 shadow-2xs"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Interactive Invention Secret */}
-                      <div className="pt-2">
-                        <button
-                          onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'tobo' ? null : 'tobo')}
-                          className="w-full text-left px-3.5 py-2.5 rounded-xl bg-white/95 hover:bg-white border border-[#C7A451]/35 text-[12px] font-bold text-[#855D08] transition-all flex items-center justify-between shadow-2xs group-hover:border-[#C7A451]"
-                          aria-expanded={activeCharacterSecret === 'tobo'}
-                        >
-                          <span className="flex items-center gap-1.5">
-                            <span>⚙️</span>
-                            <span>{activeCharacterSecret === 'tobo' ? 'Hide Tiny Invention' : 'Explore Tiny Invention'}</span>
-                          </span>
-                          <span className="text-xs">{activeCharacterSecret === 'tobo' ? '▲' : '▼'}</span>
-                        </button>
-
-                        {activeCharacterSecret === 'tobo' && (
-                          <div className="mt-2.5 p-3 rounded-xl bg-white border border-[#C7A451]/40 text-[12px] text-[#2C3E5A] leading-relaxed shadow-xs animate-fadeIn">
-                            💡 <strong>The Cloud-Catcher Net:</strong> Tobo built a pneumatic gadget to scoop wandering morning mist into lemonade bottles. It accidentally floats in the air whenever you whistle!
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Individual Character Detail Action */}
-                    <div className="mt-5 pt-4 border-t border-[#C7A451]/25 flex items-center justify-between gap-3">
-                      <Link
-                        to="/characters#tobo"
-                        className="text-[12px] font-bold text-[#855D08] hover:text-[#C7A451] transition-colors"
-                      >
-                        Character Page →
-                      </Link>
-                      <button
-                        onClick={() => setSelectedCharacterForModal(tobo)}
-                        className="px-6 py-2.5 rounded-full text-xs font-bold text-white transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-[#C7A451]/40"
-                        style={{ background: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)' }}
-                      >
-                        <span>Meet Tobo</span>
-                        <span>→</span>
-                      </button>
-                    </div>
+                  {/* Large background character initial — decorative depth */}
+                  <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden"
+                    aria-hidden="true"
+                    style={{ fontSize: '14rem', lineHeight: 1, color: 'rgba(226,109,92,0.06)', fontFamily: "'DM Serif Display', serif", fontWeight: 700, letterSpacing: '-0.05em' }}>
+                    M
                   </div>
                 </div>
-
-
-                {/* ═════════════════════════════════════════════════
-                    PANEL 3: DODI — THE TINY SPARK (Age 4)
-                    ═════════════════════════════════════════════════ */}
-                <div
-                  className="group relative rounded-3xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between"
-                  style={{
-                    background: 'linear-gradient(180deg, #F0F8FF 0%, #E8F3FE 50%, #DDEEFE 100%)',
-                    borderColor: 'rgba(56, 189, 248, 0.4)',
-                    boxShadow: '0 12px 36px rgba(56, 189, 248, 0.12)',
-                  }}
-                >
-                  {/* TOP: FULL-BLEED ULTRA-HD CINEMATIC ARTWORK STAGE */}
-                  <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#EBF5FE]">
-                    <img
-                      src="/dodi-solo-hd.png"
-                      alt="Dodi — The Tiny Spark"
-                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                      loading="eager"
-                    />
-
-                    {/* Seamless Gradient Fade to Card Background */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 30%, rgba(240,248,255,0.7) 80%, #F0F8FF 100%)',
-                      }}
-                    />
-
-                    {/* Floating Age & Title Badge */}
-                    <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#38BDF8]/35 shadow-md text-[11px] font-bold text-[#0369A1]">
-                      <span>Age 4</span>
-                      <span>·</span>
-                      <span>The Tiny Spark</span>
-                    </div>
-
-                    {/* Floating Companion Paw */}
-                    <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-[#38BDF8]/40 shadow-md flex items-center justify-center text-sm text-[#0284C7] transition-transform duration-700 group-hover:scale-110">
-                      🐾
-                    </div>
-
-                    {/* Subtle Wonder Tag */}
-                    <div className="absolute bottom-4 left-4 z-10 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#17233A]/85 backdrop-blur-md text-[10.5px] font-bold text-white shadow-sm">
-                      <span>🔍</span>
-                      <span>Wonder Seeker</span>
-                    </div>
-                  </div>
-
-                  {/* BOTTOM: STORYTELLING, DESCRIPTION & CORE APPEAL */}
-                  <div className="relative z-10 p-6 sm:p-7 flex flex-col justify-between flex-1 bg-[#F0F8FF]">
-                    <div className="space-y-3">
-                      {/* Name & Tagline */}
-                      <div>
-                        <div className="flex items-baseline justify-between gap-2">
-                          <h3
-                            className="font-serif font-bold text-[#17233A] tracking-tight leading-none"
-                            style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: '2.2rem' }}
-                          >
-                            Dodi
-                          </h3>
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
-                            The Tiny Spark
-                          </span>
-                        </div>
-                        {/* Personality */}
-                        <p className="text-[12px] font-semibold text-[#0369A1] mt-1.5 leading-snug">
-                          Curious, fearless and always asking "par kyun?"
-                        </p>
-                      </div>
-
-                      {/* Character Description */}
-                      <p className="text-[13px] text-[#2C3E5A] leading-relaxed">
-                        Dodi sees what everyone else misses and asks the questions nobody thought to ask. Not the biggest or the bravest, Dodi often discovers the answer that changes everything.
-                      </p>
-
-                      {/* Core Appeal */}
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#0369A1] block mb-1">
-                          Core Appeal
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {['Curiosity', 'Observation', 'Empathy', 'Power of Asking Why'].map(item => (
-                            <span
-                              key={item}
-                              className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white text-[#17233A] border border-[#38BDF8]/30 shadow-2xs"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Interactive Curious Question */}
-                      <div className="pt-2">
-                        <button
-                          onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'dodi' ? null : 'dodi')}
-                          className="w-full text-left px-3.5 py-2.5 rounded-xl bg-white/95 hover:bg-white border border-[#38BDF8]/35 text-[12px] font-bold text-[#0369A1] transition-all flex items-center justify-between shadow-2xs group-hover:border-[#38BDF8]"
-                          aria-expanded={activeCharacterSecret === 'dodi'}
-                        >
-                          <span className="flex items-center gap-1.5">
-                            <span>🔍</span>
-                            <span>{activeCharacterSecret === 'dodi' ? 'Hide Curious Question' : 'Reveal Curious Question'}</span>
-                          </span>
-                          <span className="text-xs">{activeCharacterSecret === 'dodi' ? '▲' : '▼'}</span>
-                        </button>
-
-                        {activeCharacterSecret === 'dodi' && (
-                          <div className="mt-2.5 p-3 rounded-xl bg-white border border-[#38BDF8]/40 text-[12px] text-[#2C3E5A] leading-relaxed shadow-xs animate-fadeIn">
-                            ❓ <strong>Dodi's Wonder:</strong> “If the stars hum lullabies at night, do the sleeping mountains dream of flying?” (And when she whispered this near the singing stones of Sonika, they glowed soft cyan in agreement!)
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Individual Character Detail Action */}
-                    <div className="mt-5 pt-4 border-t border-[#38BDF8]/25 flex items-center justify-between gap-3">
-                      <Link
-                        to="/characters#dodi"
-                        className="text-[12px] font-bold text-[#0369A1] hover:text-[#0284C7] transition-colors"
-                      >
-                        Character Page →
-                      </Link>
-                      <button
-                        onClick={() => setSelectedCharacterForModal(dodi)}
-                        className="px-6 py-2.5 rounded-full text-xs font-bold text-white transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-[#38BDF8]/40"
-                        style={{ background: 'linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)' }}
-                      >
-                        <span>Meet Dodi</span>
-                        <span>→</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
               </div>
 
-              {/* Bottom CTA Banner matching "CTA: Discover All Three" */}
-              <div className="rounded-2xl p-6 sm:p-7 border border-[#C7A451]/30 bg-gradient-to-r from-[#FFFDF8] via-[#FAF4E6] to-[#FFFDF8] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#17233A] text-white flex items-center justify-center font-serif text-lg font-bold shrink-0">
-                    ✦
+
+              {/* ══════════════════════════════════════════
+                  ROW 2 — TOBO THE INVENTOR
+                  Info LEFT, image RIGHT (portrait 520×530
+                  — object-center to show face + magnifier)
+                  bg: amber → warm honey
+                  ══════════════════════════════════════════ */}
+              <div
+                className="group relative overflow-hidden rounded-[1.75rem] flex flex-col md:flex-row-reverse"
+                style={{
+                  background: 'linear-gradient(125deg, #FFF8E8 0%, #F9EABD 60%, #F5DDA0 100%)',
+                  boxShadow: '0 16px 48px rgba(199,164,81,0.18), 0 2px 8px rgba(199,164,81,0.10)',
+                  border: '1px solid rgba(199,164,81,0.22)',
+                  minHeight: '340px',
+                }}
+              >
+                {/* Tobo artwork — RIGHT (reversed row), 54% desktop */}
+                {/* 520×530 portrait — character is center, magnifying glass bottom-right */}
+                <div className="relative w-full md:w-[54%] overflow-hidden flex-shrink-0"
+                  style={{ minHeight: '300px' }}>
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'radial-gradient(ellipse 80% 70% at 40% 25%, rgba(255,210,100,0.30) 0%, transparent 70%)' }} />
+                  {/* Slow-spin gear decoration — behind image */}
+                  <div className="absolute top-6 left-6 pointer-events-none z-0" aria-hidden="true">
+                    <svg viewBox="0 0 80 80" style={{ width: '80px', height: '80px', opacity: 0.10, animation: 'spin 25s linear infinite' }}>
+                      <circle cx="40" cy="40" r="14" fill="none" stroke="#C7A451" strokeWidth="3.5"/>
+                      <circle cx="40" cy="40" r="28" fill="none" stroke="#C7A451" strokeWidth="1.5" strokeDasharray="5 4"/>
+                      {[0,45,90,135,180,225,270,315].map((a: number) => {
+                        const rad = (a * Math.PI) / 180;
+                        return <line key={a} x1={40+28*Math.cos(rad)} y1={40+28*Math.sin(rad)} x2={40+37*Math.cos(rad)} y2={40+37*Math.sin(rad)} stroke="#C7A451" strokeWidth="4" strokeLinecap="round"/>;
+                      })}
+                    </svg>
                   </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-[#17233A] text-lg">
-                      Ready to journey with the Trio?
-                    </h4>
-                    <p className="text-xs text-[#2C3E5A] mt-0.5">
-                      Explore their full stories, voice dialogues, signature gadgets, and interconnected realm quests.
-                    </p>
-                  </div>
+                  <img
+                    src="/tobo-solo-hd.png"
+                    alt="Tobo the Inventor — holding his magnifying glass, ready to explain everything"
+                    className="w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center 15%', /* Tobo's face is center-top of the 520×530 frame */
+                      display: 'block',
+                      position: 'relative',
+                      zIndex: 1,
+                    }}
+                    loading="eager"
+                    width="520"
+                    height="530"
+                    decoding="async"
+                  />
+                  {/* Left-edge vignette to blend into info */}
+                  <div className="absolute inset-y-0 left-0 w-16 pointer-events-none hidden md:block"
+                    style={{ background: 'linear-gradient(to left, transparent, rgba(249,234,189,0.55))' }} />
                 </div>
 
-                <Link
-                  to="/characters"
-                  className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#17233A] hover:bg-[#25395E] text-white font-bold text-xs tracking-wide transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <span>Discover All Three</span>
-                  <ArrowRight className="w-4 h-4 text-[#C7A451]" />
-                </Link>
+                {/* Tobo info — LEFT */}
+                <div className="relative flex flex-col justify-center p-8 md:p-10 md:pr-6 flex-1">
+                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide mb-4"
+                    style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(199,164,81,0.38)', color: '#6B4A06', backdropFilter: 'blur(8px)' }}>
+                    ⚙️ The Inventor
+                  </span>
+
+                  <h3 className="font-serif font-bold text-[#17233A] leading-none mb-2"
+                    style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.4rem, 4vw, 3.2rem)' }}>
+                    Tobo
+                  </h3>
+
+                  <p className="text-[15px] font-semibold text-[#6B4A06] mb-2 leading-snug">
+                    Brilliant. Fast-talking. Magnificently clumsy.
+                  </p>
+                  <p className="text-[14px] text-[#3A2E08] leading-relaxed mb-6 max-w-xs opacity-85">
+                    What can we invent when imagination takes the lead? Tobo always has a theory — and a gadget.
+                  </p>
+
+                  <div className="space-y-2.5">
+                    <button
+                      onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'tobo' ? null : 'tobo')}
+                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
+                      style={{ background: 'linear-gradient(135deg, #92590A 0%, #D4900F 100%)' }}
+                      aria-expanded={activeCharacterSecret === 'tobo'}
+                    >
+                      🔧 Explore the invention
+                      <span className="text-xs opacity-75 inline-block transition-transform duration-200"
+                        style={{ transform: activeCharacterSecret === 'tobo' ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
+                    </button>
+
+                    {activeCharacterSecret === 'tobo' && (
+                      <div className="p-4 rounded-2xl text-[13px] text-[#3A2E08] leading-relaxed max-w-xs"
+                        style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(199,164,81,0.28)', backdropFilter: 'blur(8px)' }}>
+                        💡 <strong>The Cloud-Catcher:</strong> Tobo built a pneumatic gadget to scoop wandering morning mist into lemonade bottles. It accidentally floats whenever you whistle!
+                      </div>
+                    )}
+
+                    <div>
+                      <Link to="/characters#tobo"
+                        className="text-[12px] font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
+                        style={{ color: '#6B4A06' }}>
+                        Read Tobo's full story →
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden"
+                    aria-hidden="true"
+                    style={{ fontSize: '14rem', lineHeight: 1, color: 'rgba(199,164,81,0.07)', fontFamily: "'DM Serif Display', serif", fontWeight: 700, letterSpacing: '-0.05em' }}>
+                    T
+                  </div>
+                </div>
               </div>
+
+
+              {/* ══════════════════════════════════════════
+                  ROW 3 — DODI THE CURIOUS EXPLORER
+                  Image LEFT (portrait 590×580 — object-left
+                  to keep Dodi's face visible), info RIGHT
+                  bg: sky blue → lavender
+                  ══════════════════════════════════════════ */}
+              <div
+                className="group relative overflow-hidden rounded-[1.75rem] flex flex-col md:flex-row"
+                style={{
+                  background: 'linear-gradient(125deg, #EEF7FF 0%, #D5EAFF 60%, #C2DDFF 100%)',
+                  boxShadow: '0 16px 48px rgba(56,155,220,0.16), 0 2px 8px rgba(56,155,220,0.10)',
+                  border: '1px solid rgba(56,189,248,0.22)',
+                  minHeight: '340px',
+                }}
+              >
+                {/* Dodi artwork — LEFT, 56% desktop */}
+                {/* 590×580 portrait — Dodi's face is left-center, compass stone wall right */}
+                <div className="relative w-full md:w-[56%] overflow-hidden flex-shrink-0"
+                  style={{ minHeight: '300px' }}>
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'radial-gradient(ellipse 80% 70% at 30% 30%, rgba(130,190,255,0.30) 0%, transparent 70%)' }} />
+                  {/* Subtle star constellation */}
+                  <svg className="absolute top-5 right-10 pointer-events-none z-0" viewBox="0 0 90 80"
+                    style={{ width: '90px', height: '80px', opacity: 0.18 }} aria-hidden="true">
+                    <circle cx="12" cy="12" r="3" fill="#5D9CEC"/>
+                    <circle cx="45" cy="6" r="2" fill="#B9D9F3"/>
+                    <circle cx="72" cy="18" r="2.5" fill="#5D9CEC"/>
+                    <circle cx="25" cy="45" r="2" fill="#B9D9F3"/>
+                    <circle cx="60" cy="50" r="2.5" fill="#5D9CEC"/>
+                    <circle cx="80" cy="68" r="2" fill="#B9D9F3"/>
+                    <circle cx="5" cy="65" r="2.5" fill="#5D9CEC"/>
+                    <line x1="12" y1="12" x2="45" y2="6" stroke="#B9D9F3" strokeWidth="0.8" opacity="0.6"/>
+                    <line x1="45" y1="6" x2="72" y2="18" stroke="#B9D9F3" strokeWidth="0.8" opacity="0.6"/>
+                    <line x1="25" y1="45" x2="60" y2="50" stroke="#B9D9F3" strokeWidth="0.8" opacity="0.6"/>
+                  </svg>
+                  <img
+                    src="/dodi-solo-hd.png"
+                    alt="Dodi the Curious Explorer — wide eyes full of wonder, standing before a stone compass"
+                    className="w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: '30% center', /* Dodi's face is left of center in the 590×580 frame */
+                      display: 'block',
+                      position: 'relative',
+                      zIndex: 1,
+                    }}
+                    loading="eager"
+                    width="590"
+                    height="580"
+                    decoding="async"
+                  />
+                  {/* Right-edge vignette to blend into info */}
+                  <div className="absolute inset-y-0 right-0 w-16 pointer-events-none hidden md:block"
+                    style={{ background: 'linear-gradient(to right, transparent, rgba(197,220,255,0.55))' }} />
+                </div>
+
+                {/* Dodi info — RIGHT */}
+                <div className="relative flex flex-col justify-center p-8 md:p-10 md:pl-6 flex-1">
+                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide mb-4"
+                    style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(56,189,248,0.38)', color: '#04537F', backdropFilter: 'blur(8px)' }}>
+                    🔍 The Curious Explorer
+                  </span>
+
+                  <h3 className="font-serif font-bold text-[#17233A] leading-none mb-2"
+                    style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.4rem, 4vw, 3.2rem)' }}>
+                    Dodi
+                  </h3>
+
+                  <p className="text-[15px] font-semibold text-[#04537F] mb-2 leading-snug">
+                    Curious. Fearless. Always asking why.
+                  </p>
+                  <p className="text-[14px] text-[#0B2D46] leading-relaxed mb-6 max-w-xs opacity-85">
+                    Every little question can lead to a big discovery! Dodi notices what everyone else misses.
+                  </p>
+
+                  <div className="space-y-2.5">
+                    <button
+                      onClick={() => setActiveCharacterSecret(activeCharacterSecret === 'dodi' ? null : 'dodi')}
+                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
+                      style={{ background: 'linear-gradient(135deg, #035E8F 0%, #0EA5E9 100%)' }}
+                      aria-expanded={activeCharacterSecret === 'dodi'}
+                    >
+                      🔍 Solve the mystery
+                      <span className="text-xs opacity-75 inline-block transition-transform duration-200"
+                        style={{ transform: activeCharacterSecret === 'dodi' ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
+                    </button>
+
+                    {activeCharacterSecret === 'dodi' && (
+                      <div className="p-4 rounded-2xl text-[13px] text-[#0B2D46] leading-relaxed max-w-xs"
+                        style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(56,189,248,0.28)', backdropFilter: 'blur(8px)' }}>
+                        ❓ <strong>Dodi's Wonder:</strong> "If the stars hum lullabies at night, do the sleeping mountains dream of flying?" When she whispered this near the singing stones of Sonika, they glowed soft cyan!
+                      </div>
+                    )}
+
+                    <div>
+                      <Link to="/characters#dodi"
+                        className="text-[12px] font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
+                        style={{ color: '#04537F' }}>
+                        Read Dodi's full story →
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden"
+                    aria-hidden="true"
+                    style={{ fontSize: '14rem', lineHeight: 1, color: 'rgba(56,189,248,0.06)', fontFamily: "'DM Serif Display', serif", fontWeight: 700, letterSpacing: '-0.05em' }}>
+                    D
+                  </div>
+                </div>
+              </div>
+
             </div>
           );
         })()}
@@ -1540,228 +1516,789 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 6: ONE UNIVERSE, MANY EXPERIENCES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
-              Commercial & Creative Extension
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#17233A]">
+      {/* SECTION 6: ONE UNIVERSE, MANY EXPERIENCES — COMMERCIAL & CREATIVE EXTENSION */}
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-14 gap-5">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+              <span className="text-[#C7A451] text-xs leading-none">✨</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+                Commercial & Creative Extension
+              </span>
+            </div>
+
+            <h2
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A] tracking-tight leading-[1.18]"
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+            >
               A story is only the beginning.
             </h2>
-            <p className="text-sm text-[#17233A]/70 mt-1 max-w-xl">
-              How Zanarra transforms a single narrative spark into eight complementary consumer and digital experiences.
+
+            <p className="text-base sm:text-lg text-[#17233A]/80 mt-3 font-sans leading-relaxed">
+              How Zanarra transforms a single narrative spark into eight complementary consumer, entertainment, and digital formats.
             </p>
           </div>
 
-          <div className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-200">
-            *Development & commercial expansion opportunities
+          <div className="shrink-0">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAF7F0] border border-[#E8DEC9] text-xs font-semibold text-[#17233A]/70 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#C7A451]" />
+              <span>Multi-Platform IP Expansion Roadmap</span>
+            </span>
           </div>
         </div>
 
-        {/* 8-Stage Horizontal Progression */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {experiences.map((exp) => (
+        {/* 8-Phase Cohesive Transmedia Progression */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+          {experiences.map((exp, idx) => (
             <div
               key={exp.num}
-              className="p-5 rounded-2xl bg-white border border-[#C7A451]/20 hover:border-[#C7A451] transition-all hover:shadow-md"
+              className="group rounded-2xl sm:rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_20px_rgba(23,36,59,0.04)] hover:shadow-[0_20px_48px_rgba(23,36,59,0.13)] hover:border-[#C7A451]/80 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden motion-reduce:hover:translate-y-0 motion-reduce:transition-none cursor-pointer"
             >
-              <span className="text-xs font-bold text-[#C7A451] block mb-1">
-                Phase {exp.num}
-              </span>
-              <h3 className="font-bold text-[#17233A] text-base mb-2">
-                {exp.title}
-              </h3>
-              <p className="text-xs text-[#17233A]/75 leading-relaxed">
-                {exp.desc}
-              </p>
+              <div>
+                {/* 16:10 Cinematic Concept Art Banner */}
+                <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#FAF3E7] border-b border-[#E8DEC9]/50">
+                  <picture>
+                    <source srcSet={exp.image} type="image/webp" />
+                    <img
+                      src={exp.imageJpg}
+                      alt={exp.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05] motion-reduce:group-hover:scale-100"
+                      style={{ objectPosition: exp.objectPosition || 'center center' }}
+                      loading={idx < 4 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  </picture>
+
+                  {/* Soft bottom edge transition for card body contact */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(to bottom, transparent 60%, rgba(250, 247, 240, 0.25) 85%, #FAF7F0 100%)'
+                    }}
+                  />
+
+                  {/* Gold border glow on hover */}
+                  <div className="absolute inset-0 rounded-t-2xl sm:rounded-t-3xl ring-0 group-hover:ring-2 group-hover:ring-[#C7A451]/50 transition-all duration-300 pointer-events-none" />
+
+                  {/* Refined Phase Pill */}
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-[#C7A451]/40 group-hover:border-[#C7A451]/80 group-hover:bg-[#17233A]/95 text-[#FAF7F0] text-[10.5px] font-bold tracking-wider uppercase shadow-xs flex items-center gap-1.5 transition-all duration-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158]" />
+                    <span>Phase {exp.num}</span>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-5 sm:p-6 pb-2">
+                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#C7A451] block mb-1.5">
+                    {exp.category}
+                  </span>
+
+                  <h3
+                    className="font-serif text-lg sm:text-xl font-bold text-[#17233A] mb-2 leading-snug group-hover:text-[#C7A451] transition-colors duration-300"
+                    style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+                  >
+                    {exp.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-[13px] text-[#17233A]/75 leading-relaxed font-sans mb-3 min-h-[44px]">
+                    {exp.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* Card Footer: Format Pillar Tag */}
+              <div className="p-5 sm:p-6 pt-0 mt-auto">
+                <div className="pt-3 border-t border-[#E8DEC9]/75 flex items-center justify-between gap-2">
+                  <span className="px-3 py-1 rounded-full bg-[#FAF3E7] border border-[#E8DEC9] group-hover:border-[#C7A451]/40 group-hover:bg-[#FBF5E8] text-[10.5px] sm:text-[11px] text-[#17233A]/85 font-semibold shadow-2xs truncate transition-all duration-300">
+                    {exp.format}
+                  </span>
+                  <span className="text-sm font-bold text-[#C7A451] opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0">
+                    →
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* SECTION 7: BUILT FOR A GLOBAL AUDIENCE */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-[#C7A451]/25 p-8 sm:p-14 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block">
-                Global Footprint
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A] leading-tight">
-                Born in India. Imagined for the world.
-              </h2>
-              <p className="text-base text-[#17233A]/80 leading-relaxed">
-                Zanarra is building original intellectual property with the potential to travel across languages, cultures and generations. Our ambition is to create characters that resonate locally, travel internationally and grow into enduring global franchises.
-              </p>
+      {/* SECTION 7: BUILT FOR A GLOBAL AUDIENCE — GLOBAL FOOTPRINT */}
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div className="rounded-3xl sm:rounded-[2.5rem] bg-gradient-to-b from-[#FAF7F0] via-[#FCF9F2] to-[#FAF5EB] border border-[#E8DEC9] p-6 sm:p-10 lg:p-12 shadow-[0_12px_45px_rgba(23,36,59,0.06)]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+            
+            {/* Left Column: Strategic Narrative & Balanced Editorial Pillars */}
+            <div className="lg:col-span-5 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+                  <span className="text-[#C7A451] text-xs leading-none">✨</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+                    Global Footprint & Vision
+                  </span>
+                </div>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#FAF7F0] text-[#C7A451] border border-[#C7A451]/30 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
-                    ✓
+                <h2
+                  className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-[#17233A] leading-[1.18] tracking-tight mb-4"
+                  style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+                >
+                  Born in India. <br className="hidden sm:inline" />
+                  Imagined for the world.
+                </h2>
+
+                <p className="text-base sm:text-lg text-[#17233A]/85 leading-relaxed font-sans">
+                  Zanarra originates from India’s rich narrative heritage, engineered from day one as a universal children's entertainment intellectual property with a multi-territory expansion roadmap across languages, cultures, and platforms.
+                </p>
+              </div>
+
+              {/* 3 Strategic Value Pillars: Airy, elegant, readable editorial cards */}
+              <div className="space-y-3.5 pt-1">
+                <div className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#E6DBCA] shadow-xs hover:shadow-md hover:border-[#C7A451]/60 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-xl bg-[#FAF3E7] text-[#C7A451] border border-[#C7A451]/40 flex items-center justify-center shrink-0 font-bold font-mono text-xs sm:text-sm mt-0.5">
+                    01
                   </div>
-                  <div>
-                    <strong className="text-sm text-[#17233A] block">Original Indian creativity with universal emotional themes:</strong>
-                    <span className="text-xs text-[#17233A]/70">Rooted in rich oral storytelling tradition and timeless wonder without geographic boundaries.</span>
+                  <div className="space-y-1">
+                    <strong className="text-base sm:text-[17px] font-bold text-[#17233A] block tracking-tight">
+                      Universal Narrative Architecture
+                    </strong>
+                    <span className="text-sm sm:text-base text-[#17233A]/80 leading-relaxed font-sans block">
+                      Rooted in timeless themes of curiosity, friendship, and wonder that resonate effortlessly across international borders without cultural friction.
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#FAF7F0] text-[#C7A451] border border-[#C7A451]/30 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
-                    ✓
+                <div className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#E6DBCA] shadow-xs hover:shadow-md hover:border-[#C7A451]/60 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-xl bg-[#FAF3E7] text-[#C7A451] border border-[#C7A451]/40 flex items-center justify-center shrink-0 font-bold font-mono text-xs sm:text-sm mt-0.5">
+                    02
                   </div>
-                  <div>
-                    <strong className="text-sm text-[#17233A] block">Multilingual storytelling and cultural localisation:</strong>
-                    <span className="text-xs text-[#17233A]/70">Engineered from day one for seamless adaptation across Hindi, English, Spanish, Japanese, and more.</span>
+                  <div className="space-y-1">
+                    <strong className="text-base sm:text-[17px] font-bold text-[#17233A] block tracking-tight">
+                      Multilingual Localization Framework
+                    </strong>
+                    <span className="text-sm sm:text-base text-[#17233A]/80 leading-relaxed font-sans block">
+                      Engineered for seamless territorial adaptation across English, Hindi, Spanish, Japanese, Mandarin, and high-growth emerging digital markets.
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#FAF7F0] text-[#C7A451] border border-[#C7A451]/30 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
-                    ✓
+                <div className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#E6DBCA] shadow-xs hover:shadow-md hover:border-[#C7A451]/60 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-xl bg-[#FAF3E7] text-[#C7A451] border border-[#C7A451]/40 flex items-center justify-center shrink-0 font-bold font-mono text-xs sm:text-sm mt-0.5">
+                    03
                   </div>
-                  <div>
-                    <strong className="text-sm text-[#17233A] block">Scalable IP across content, products, partnerships and experiences:</strong>
-                    <span className="text-xs text-[#17233A]/70">Built for perpetual transmedia expansion rather than single-season entertainment.</span>
+                  <div className="space-y-1">
+                    <strong className="text-base sm:text-[17px] font-bold text-[#17233A] block tracking-tight">
+                      Transmedia Franchise Scalability
+                    </strong>
+                    <span className="text-sm sm:text-base text-[#17233A]/80 leading-relaxed font-sans block">
+                      Conceived for perpetual commercial growth across screen entertainment, publishing, audio lore, and physical consumer products.
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Light, Elegant World Map Graphic */}
-            <div className="lg:col-span-6 bg-[#FAF7F0] rounded-2xl p-6 sm:p-8 border border-gray-200/80 text-center relative overflow-hidden">
-              <svg viewBox="0 0 600 320" className="w-full h-auto drop-shadow-xs" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* World Map Outlines in soft ivory & sage */}
-                <ellipse cx="300" cy="160" rx="280" ry="140" fill="#FAF7F0" stroke="#C7A451" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" />
-                {/* Americas */}
-                <path d="M120 70 Q140 100 130 160 Q150 200 160 250 Q130 260 110 210 Q90 140 100 80 Z" fill="#E2EFE2" stroke="#B8D4B4" strokeWidth="1.5" />
-                {/* Europe & Africa */}
-                <path d="M260 60 Q300 70 290 110 Q320 160 300 240 Q260 230 250 170 Q240 110 260 60 Z" fill="#E2EFE2" stroke="#B8D4B4" strokeWidth="1.5" />
-                {/* Asia & India */}
-                <path d="M330 60 Q440 70 470 120 Q440 180 390 200 Q360 220 340 170 Q320 120 330 60 Z" fill="#E2EFE2" stroke="#B8D4B4" strokeWidth="1.5" />
-                {/* India Beacon Highlight */}
-                <g transform="translate(370, 150)">
-                  <circle cx="0" cy="0" r="14" fill="#C7A451" fillOpacity="0.2" className="animate-ping" />
-                  <circle cx="0" cy="0" r="7" fill="#C7A451" />
-                  <circle cx="0" cy="0" r="3" fill="#FAF7F0" />
-                  <text x="0" y="-12" textAnchor="middle" fill="#17233A" fontSize="10" fontWeight="bold">Born in India</text>
-                </g>
-                {/* Global Resonance Radii */}
-                <path d="M370 150 Q260 90 140 110" stroke="#C7A451" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.7" />
-                <path d="M370 150 Q310 100 280 80" stroke="#C7A451" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.7" />
-                <path d="M370 150 Q430 130 460 120" stroke="#C7A451" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.7" />
-              </svg>
-              <p className="text-[11px] text-gray-500 mt-3 italic">
-                *Target international distribution and co-publishing roadmap.
-              </p>
+            {/* Right Column: World-Class Clean Geographic Cartography */}
+            <div className="lg:col-span-7">
+              <div className="rounded-2xl sm:rounded-3xl bg-[#0B1325] border border-[#C7A451]/45 p-5 sm:p-7 shadow-[0_20px_60px_rgba(11,19,37,0.35)] relative overflow-hidden text-[#FAF7F0]">
+                
+                {/* Subtle celestial compass background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[#E5C158]/10 blur-3xl pointer-events-none" />
+
+                {/* Header inside the Map */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/15 gap-2 relative z-10">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-3 h-3 rounded-full bg-[#E5C158] animate-pulse" />
+                    <span className="text-sm sm:text-base font-bold uppercase tracking-[0.16em] text-[#E5C158]">
+                      Global Distribution & Licensing Network
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm text-white/90 font-mono bg-white/10 px-3.5 py-1 rounded-full border border-white/15 w-fit">
+                    Origin Studio: India (20.59° N, 78.96° E)
+                  </span>
+                </div>
+
+                {/* Quick Interactive Territory Navigator Pills — Enriched font size & contrast */}
+                <div className="flex flex-wrap items-center gap-2 pt-3.5 pb-2 relative z-10">
+                  <span className="text-xs sm:text-sm text-white/80 font-semibold mr-1 hidden sm:inline">
+                    Planned Corridors:
+                  </span>
+                  <button
+                    onClick={() => setSelectedGlobalHubId(null)}
+                    className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all border ${
+                      selectedGlobalHubId === null
+                        ? 'bg-[#E5C158] text-[#0B1325] border-white shadow-md font-extrabold'
+                        : 'bg-white/10 text-white/90 border-white/20 hover:bg-white/20 hover:text-white'
+                    }`}
+                  >
+                    All Corridors
+                  </button>
+                  {GLOBAL_HUBS.map(hub => {
+                    const isSelected = selectedGlobalHubId === hub.id;
+                    return (
+                      <button
+                        key={hub.id}
+                        onClick={() => setSelectedGlobalHubId(isSelected ? null : hub.id)}
+                        className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all border ${
+                          isSelected
+                            ? 'bg-[#E5C158] text-[#0B1325] border-white shadow-md font-extrabold'
+                            : 'bg-white/10 text-white/90 border-white/20 hover:bg-white/20 hover:text-white'
+                        }`}
+                      >
+                        {hub.name}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* SVG Vector World Map (Clean Natural Earth Landmasses with Zero Internal Border Clutter) */}
+                <div className="relative w-full py-2 sm:py-4">
+                  <svg
+                    viewBox="0 0 1000 500"
+                    className="w-full h-auto drop-shadow-xl select-none min-h-[300px] sm:min-h-[380px]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      {/* Rich Gold Gradient for Visible Continents */}
+                      <linearGradient id="continentGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#EAD292" stopOpacity="0.90" />
+                        <stop offset="50%" stopColor="#C7A451" stopOpacity="0.82" />
+                        <stop offset="100%" stopColor="#A88334" stopOpacity="0.92" />
+                      </linearGradient>
+
+                      {/* Luminous Route Glow */}
+                      <linearGradient id="routeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#FFF2B2" stopOpacity="1" />
+                        <stop offset="50%" stopColor="#E5C158" stopOpacity="0.95" />
+                        <stop offset="100%" stopColor="#C7A451" stopOpacity="0.85" />
+                      </linearGradient>
+
+                      {/* India Radiant Beacon Gradient */}
+                      <radialGradient id="beaconRadial" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#FFFFFF" />
+                        <stop offset="40%" stopColor="#FFE082" />
+                        <stop offset="100%" stopColor="#E5C158" />
+                      </radialGradient>
+                    </defs>
+
+                    {/* Graticule Grid Lines (Equator, Tropics, Meridians) */}
+                    <ellipse cx="500" cy="250" rx="480" ry="230" stroke="#C7A451" strokeWidth="0.8" strokeDasharray="5 7" opacity="0.20" />
+                    <line x1="20" y1="250" x2="980" y2="250" stroke="#C7A451" strokeWidth="0.8" strokeDasharray="4 6" opacity="0.16" />
+                    <line x1="500" y1="20" x2="500" y2="480" stroke="#C7A451" strokeWidth="0.8" strokeDasharray="4 6" opacity="0.16" />
+                    <line x1="40" y1="150" x2="960" y2="150" stroke="#C7A451" strokeWidth="0.6" strokeDasharray="3 6" opacity="0.12" />
+                    <line x1="40" y1="350" x2="960" y2="350" stroke="#C7A451" strokeWidth="0.6" strokeDasharray="3 6" opacity="0.12" />
+
+                    {/* ══════════════════════════════════════════════════════════
+                        WORLD CONTINENTS: CLEAN NATURAL EARTH LANDMASSES (NO COUNTRY LINES)
+                        ══════════════════════════════════════════════════════════ */}
+                    <path
+                      d={WORLD_CONTINENTS_SVG_PATH}
+                      fill="url(#continentGold)"
+                      stroke="#E5C158"
+                      strokeWidth="1.2"
+                      strokeOpacity="0.80"
+                      className="transition-opacity duration-300"
+                    />
+
+                    {/* ══════════════════════════════════════════════════════════
+                        INDIA: THE RADIANT CREATIVE ORIGIN (Accurate Geography)
+                        ══════════════════════════════════════════════════════════ */}
+                    <path
+                      d={INDIA_ORIGIN_SVG_PATH}
+                      fill="#FFFDF5"
+                      stroke="#E5C158"
+                      strokeWidth="2.4"
+                      className="filter drop-shadow-[0_0_12px_rgba(229,193,88,0.7)]"
+                    />
+
+                    {/* ══════════════════════════════════════════════════════════
+                        STRATEGIC EXPANSION CORRIDORS: PROMINENT, CLEAN GOLD ARCS
+                        ══════════════════════════════════════════════════════════ */}
+                    {GLOBAL_HUBS.map((hub, idx) => {
+                      const isFocused = selectedGlobalHubId === null || selectedGlobalHubId === hub.id;
+                      return (
+                        <g key={hub.id} className="transition-opacity duration-300" opacity={isFocused ? 1 : 0.22}>
+                          <path
+                            d={`M ${INDIA_COORDS.x} ${INDIA_COORDS.y} Q ${hub.routeControlX} ${hub.routeControlY} ${hub.x} ${hub.y}`}
+                            stroke="url(#routeGlow)"
+                            strokeWidth={isFocused ? (selectedGlobalHubId === hub.id ? '3.6' : '2.4') : '1.5'}
+                            strokeLinecap="round"
+                            strokeDasharray="7 5"
+                            className="animate-pathway-pulse"
+                            style={{ animationDelay: `${idx * 0.3}s` }}
+                          />
+                        </g>
+                      );
+                    })}
+
+                    {/* ══════════════════════════════════════════════════════════
+                        TARGET REGION BADGES: CLEAN, NON-OVERLAPPING & 100% READABLE
+                        ══════════════════════════════════════════════════════════ */}
+                    {GLOBAL_HUBS.map(hub => {
+                      const isSelected = selectedGlobalHubId === hub.id;
+                      const badgeWidth = 126;
+                      const badgeHeight = 26;
+                      return (
+                        <g
+                          key={hub.id}
+                          transform={`translate(${hub.x}, ${hub.y})`}
+                          className="cursor-pointer transition-transform duration-200 hover:scale-105"
+                          onClick={() => setSelectedGlobalHubId(isSelected ? null : hub.id)}
+                        >
+                          {/* Anchor Marker Dot */}
+                          <circle
+                            cx="0"
+                            cy="0"
+                            r={isSelected ? 6.5 : 5}
+                            fill="#E5C158"
+                            stroke="#FFFFFF"
+                            strokeWidth="2"
+                            className="filter drop-shadow-md"
+                          />
+
+                          {/* Pill Badge with offset */}
+                          <g transform={`translate(0, ${hub.labelOffsetY})`}>
+                            <rect
+                              x={-badgeWidth / 2}
+                              y={-badgeHeight / 2}
+                              width={badgeWidth}
+                              height={badgeHeight}
+                              rx={badgeHeight / 2}
+                              fill={isSelected ? '#E5C158' : '#0F182A'}
+                              stroke={isSelected ? '#FFFFFF' : '#E5C158'}
+                              strokeWidth={isSelected ? 2 : 1.5}
+                              className="filter drop-shadow-lg"
+                            />
+                            <text
+                              x="0"
+                              y="4"
+                              textAnchor="middle"
+                              fill={isSelected ? '#17233A' : '#FAF7F0'}
+                              fontSize="12"
+                              fontWeight="700"
+                              letterSpacing="0.02em"
+                            >
+                              {hub.name}
+                            </text>
+                          </g>
+                        </g>
+                      );
+                    })}
+
+                    {/* ══════════════════════════════════════════════════════════
+                        INDIA ORIGIN BEACON: SPECTACULAR, RADIANT CENTERPIECE
+                        ══════════════════════════════════════════════════════════ */}
+                    <g transform={`translate(${INDIA_COORDS.x}, ${INDIA_COORDS.y})`}>
+                      {/* Concentric radar waves */}
+                      <circle cx="0" cy="0" r="32" fill="#E5C158" fillOpacity="0.14" className="animate-ping" />
+                      <circle cx="0" cy="0" r="20" fill="#E5C158" fillOpacity="0.28" />
+                      <circle cx="0" cy="0" r="10" fill="url(#beaconRadial)" stroke="#FFFFFF" strokeWidth="2.2" />
+                      
+                      {/* Flagship ORIGIN: INDIA Badge */}
+                      <g transform="translate(0, -36)">
+                        <rect
+                          x="-72"
+                          y="-15"
+                          width="144"
+                          height="30"
+                          rx="15"
+                          fill="#E5C158"
+                          stroke="#FFFFFF"
+                          strokeWidth="2"
+                          className="filter drop-shadow-xl"
+                        />
+                        <text
+                          x="0"
+                          y="5"
+                          textAnchor="middle"
+                          fill="#17233A"
+                          fontSize="12.5"
+                          fontWeight="900"
+                          letterSpacing="0.08em"
+                        >
+                          ✨ ORIGIN: INDIA
+                        </text>
+                      </g>
+                    </g>
+
+                  </svg>
+                </div>
+
+                {/* Interactive Territory Inspector Panel — Enriched text size & high contrast */}
+                <div className="mt-3 p-4 sm:p-5 rounded-2xl bg-[#0F1B33]/90 border border-[#C7A451]/30 backdrop-blur-sm transition-all duration-300 shadow-md">
+                  {selectedGlobalHubId ? (
+                    (() => {
+                      const activeHub = GLOBAL_HUBS.find(h => h.id === selectedGlobalHubId);
+                      if (!activeHub) return null;
+                      return (
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                          <div className="space-y-1.5">
+                            <div className="flex flex-wrap items-center gap-2.5">
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#E5C158]" />
+                              <strong className="text-base sm:text-lg font-bold text-[#E5C158]">
+                                {activeHub.name} ({activeHub.region})
+                              </strong>
+                              <span className="text-xs sm:text-sm font-semibold px-2.5 py-0.5 rounded-full bg-[#E5C158]/20 text-[#E5C158] border border-[#E5C158]/40">
+                                {activeHub.expansionPhase} · {activeHub.status}
+                              </span>
+                            </div>
+                            <p className="text-sm sm:text-base text-white/95 font-sans leading-relaxed">
+                              {activeHub.focus}
+                            </p>
+                            <p className="text-xs sm:text-sm text-white/80 font-medium">
+                              Target Territories: <span className="text-[#E5C158]">{activeHub.territories}</span>
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => setSelectedGlobalHubId(null)}
+                            className="text-xs sm:text-sm text-white/80 hover:text-white underline shrink-0 self-start sm:self-center font-medium"
+                          >
+                            Reset view
+                          </button>
+                        </div>
+                      );
+                    })()
+                  ) : (
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm sm:text-base text-white/90">
+                      <div>
+                        <strong className="text-[#E5C158] font-bold">Planned Multi-Territory Synchronization: </strong>
+                        India serves as the master creative and IP studio, deploying localized broadcast, streaming, and licensing across 5 planned global target corridors.
+                      </div>
+                      <span className="text-xs sm:text-sm font-mono text-[#E5C158]/90 bg-white/10 px-3 py-1 rounded-full shrink-0 border border-white/15">
+                        Tap any corridor above
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Map Footer: High-Contrast Legend & Institutional Clarification */}
+                <div className="pt-5 mt-4 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm sm:text-base text-white">
+                  <div className="flex flex-wrap items-center gap-5 sm:gap-6">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-4 h-4 rounded-full bg-[#E5C158] border-2 border-white shadow-xs" />
+                      <span className="font-bold text-white">Creative Studio Origin</span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-4 h-4 rounded-full bg-[#0F182A] border-2 border-[#E5C158]" />
+                      <span className="font-bold text-white">Planned Expansion Hubs</span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-6 h-0.5 bg-[#E5C158] border-b-2 border-dashed border-[#E5C158]" />
+                      <span className="font-bold text-white">Expansion Corridors</span>
+                    </div>
+                  </div>
+                  <span className="text-xs sm:text-sm text-white/80 italic sm:text-right font-medium">
+                    *Planned multi-territory co-production, broadcast, and licensing expansion roadmap.
+                  </span>
+                </div>
+
+              </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* SECTION 8: FOR PARTNERS AND INVESTORS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
-            Institutional Collaboration
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#17233A]">
-            Help build the next generation of global children's IP.
+      {/* SECTION 8: INSTITUTIONAL COLLABORATION — STRATEGIC PARTNERS & INVESTORS */}
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-4">
+            <span className="text-[#C7A451] text-xs leading-none">✨</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+              Institutional Collaboration
+            </span>
+          </div>
+
+          <h2
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A] tracking-tight leading-[1.18] mb-4 sm:mb-5"
+            style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+          >
+            Help build the next generation <br className="hidden sm:inline" />
+            of global children's IP.
           </h2>
-          <p className="text-sm text-[#17233A]/70 mt-2">
-            We are creating an original entertainment universe with opportunities across content, technology, licensing, merchandise, education and live experiences.
+
+          <p className="text-base sm:text-lg text-[#17233A]/80 leading-relaxed max-w-2xl mx-auto font-sans">
+            We are building an original entertainment universe with opportunities across content, technology, licensing, merchandise, education, and live experiences.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Panel 1: For Strategic Partners */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#C7A451]/30 shadow-md flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center justify-center mb-6">
-                <Globe2 className="w-6 h-6" />
+        {/* Two Distinct Institutional Opportunity Showcases */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          
+          {/* Card 1: For Strategic Partners */}
+          <div className="group rounded-2xl sm:rounded-[2rem] bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_12px_40px_rgba(23,36,59,0.06)] hover:shadow-[0_20px_50px_rgba(23,36,59,0.12)] hover:border-[#C7A451]/60 hover:-translate-y-1 transition-all duration-300 motion-reduce:hover:translate-y-0 motion-reduce:transition-none flex flex-col justify-between overflow-hidden">
+            <div className="flex flex-col flex-1">
+              {/* Cinematic Storybook Creative Universe Concept Art */}
+              <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#FAF3E7] border-b border-[#E8DEC9]/50">
+                <picture>
+                  <source srcSet="/collab-partners-storybook.webp" type="image/webp" />
+                  <img
+                    src="/collab-partners-storybook.jpg"
+                    alt="Zanarra grand storybook library castle, cascading waterfalls, and celestial astrolabe representing creative co-creation"
+                    className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out motion-reduce:group-hover:scale-100"
+                    loading="lazy"
+                  />
+                </picture>
+                
+                {/* Ultra-gentle bottom edge feather for seamless card body contact (90%+ artwork totally clear) */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(to bottom, transparent 0%, transparent 88%, rgba(250, 247, 240, 0.35) 96%, #FAF7F0 100%)'
+                  }}
+                />
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#C7A451] block mb-1">
-                Alliances & Co-Creation
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-[#17233A]">
-                For Strategic Partners
-              </h3>
-              <p className="text-sm text-[#17233A]/80 mt-3 leading-relaxed">
-                Explore licensing, distribution, retail merchandise, brand collaborations and curriculum-aligned education partnerships.
-              </p>
+
+              {/* Card Body */}
+              <div className="p-6 sm:p-8 lg:p-9 pt-5 sm:pt-6 flex flex-col flex-1">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451] block mb-2">
+                  Licensing & Commercial Alliances
+                </span>
+
+                <h3
+                  className="font-serif text-2xl sm:text-3xl font-bold text-[#17233A] mb-3 leading-snug"
+                  style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+                >
+                  For Strategic Partners
+                </h3>
+
+                <p className="text-sm sm:text-base text-[#17233A]/80 leading-relaxed mb-6 font-sans min-h-[3rem] sm:min-h-[3.25rem]">
+                  Collaborate across global publishing, SVOD streaming, consumer merchandise, interactive media, and curriculum-aligned educational distribution.
+                </p>
+
+                {/* Refined Institutional Focus Areas: Consistent feature pills */}
+                <div className="border-t border-[#E8DEC9]/80 pt-5 mt-auto">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#C7A451] block mb-3.5">
+                    Key Scope & Channels
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-[13px] text-[#17233A] font-medium">
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-[#FAF3E7] border border-[#E8DEC9] shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C7A451] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Global Publishing & Books</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-[#FAF3E7] border border-[#E8DEC9] shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C7A451] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Consumer Products & Toys</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-[#FAF3E7] border border-[#E8DEC9] shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C7A451] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Broadcast & SVOD Distribution</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-[#FAF3E7] border border-[#E8DEC9] shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C7A451] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Educational & School Programs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-gray-100">
-              <Link
-                to="/partnerships"
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#17233A] text-white font-bold text-xs hover:bg-[#2A3F66] transition-all inline-flex items-center justify-center gap-2"
-              >
-                <span>Explore Partnerships</span>
-                <ArrowRight className="w-4 h-4 text-[#C7A451]" />
-              </Link>
+            {/* Card Footer / CTA */}
+            <div className="p-6 sm:p-8 lg:p-9 pt-0 mt-auto">
+              <div className="pt-6 border-t border-[#E8DEC9] flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4">
+                <Link
+                  to="/partnerships"
+                  className="w-full sm:w-auto h-12 px-7 rounded-full bg-[#17233A] text-[#FAF7F0] font-bold text-xs sm:text-sm tracking-wide hover:bg-[#233555] hover:shadow-md active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#C7A451] focus:ring-offset-2 transition-all duration-200 inline-flex items-center justify-center gap-2 shadow-sm motion-reduce:transition-none"
+                >
+                  <span>Explore Partnerships</span>
+                  <ArrowRight className="w-4 h-4 text-[#C7A451] group-hover:translate-x-1 transition-transform duration-200 motion-reduce:group-hover:translate-x-0" />
+                </Link>
+                <span className="text-xs text-[#17233A]/60 italic text-center sm:text-right">
+                  Licensing & distribution agreements
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Panel 2: For Investors */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-[#FAF7F0] border border-[#C7A451]/30 shadow-md flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 text-sky-800 flex items-center justify-center mb-6">
-                <TrendingUp className="w-6 h-6" />
+          {/* Card 2: For Investors */}
+          <div className="group rounded-2xl sm:rounded-[2rem] bg-gradient-to-b from-[#141E33] via-[#111A2D] to-[#0D1526] border border-[#C7A451]/30 shadow-[0_16px_50px_rgba(15,23,42,0.2)] hover:shadow-[0_24px_60px_rgba(15,23,42,0.3)] hover:border-[#C7A451]/60 hover:-translate-y-1 transition-all duration-300 motion-reduce:hover:translate-y-0 motion-reduce:transition-none flex flex-col justify-between overflow-hidden text-[#FAF7F0]">
+            <div className="flex flex-col flex-1">
+              {/* Cinematic Celestial Citadel Scale Concept Art */}
+              <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#0A101D] border-b border-white/10">
+                <picture>
+                  <source srcSet="/collab-investors-universe.webp" type="image/webp" />
+                  <img
+                    src="/collab-investors-universe.jpg"
+                    alt="Zanarra celestial floating citadel with luminous rainbow halo, waterfalls, and sky islands representing enterprise scale"
+                    className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out motion-reduce:group-hover:scale-100"
+                    loading="lazy"
+                  />
+                </picture>
+
+                {/* Ultra-gentle bottom edge feather for seamless card body contact (dark overlay restricted strictly to text area below) */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(to bottom, transparent 0%, transparent 88%, rgba(20, 30, 51, 0.45) 96%, #141E33 100%)'
+                  }}
+                />
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#C7A451] block mb-1">
-                Capital & Scaling
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-[#17233A]">
-                For Investors
-              </h3>
-              <p className="text-sm text-[#17233A]/80 mt-3 leading-relaxed">
-                Learn about our business model, 5-year growth strategy, revenue trajectory, unit economics and long-term vision.
-              </p>
+
+              {/* Card Body: Dark institutional theme lives strictly here */}
+              <div className="p-6 sm:p-8 lg:p-9 pt-5 sm:pt-6 flex flex-col flex-1">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#E5C158] block mb-2">
+                  Franchise Equity & Scale
+                </span>
+
+                <h3
+                  className="font-serif text-2xl sm:text-3xl font-bold text-[#FAF7F0] mb-3 leading-snug"
+                  style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+                >
+                  For Investors
+                </h3>
+
+                <p className="text-sm sm:text-base text-[#FAF7F0]/85 leading-relaxed mb-6 font-sans min-h-[3rem] sm:min-h-[3.25rem]">
+                  Access our 5-year franchise roadmap, multi-tier monetization architecture, production efficiency model, and long-term IP valuation thesis.
+                </p>
+
+                {/* Refined Institutional Growth Pillars: Consistent feature pills */}
+                <div className="border-t border-white/10 pt-5 mt-auto">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#E5C158] block mb-3.5">
+                    Investment Thesis & Scale
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-[13px] text-[#FAF7F0] font-medium">
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-white/[0.06] border border-white/10 shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Compounding IP Asset Value</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-white/[0.06] border border-white/10 shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Multi-Tier Revenue Architecture</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-white/[0.06] border border-white/10 shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Global Franchise Scalability</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl sm:rounded-full bg-white/[0.06] border border-white/10 shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158] shrink-0" />
+                      <span className="truncate sm:whitespace-normal">Confidential Data Room Access</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-gray-200">
-              <button
-                onClick={() => setIsInvestorModalOpen(true)}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#C7A451] text-[#17233A] font-bold text-xs hover:bg-[#b89543] transition-all inline-flex items-center justify-center gap-2"
-              >
-                <span>Investor Enquiries</span>
-                <ArrowRight className="w-4 h-4 text-[#17233A]" />
-              </button>
+            {/* Card Footer / CTA */}
+            <div className="p-6 sm:p-8 lg:p-9 pt-0 mt-auto">
+              <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4">
+                <button
+                  onClick={() => setIsInvestorModalOpen(true)}
+                  className="w-full sm:w-auto h-12 px-7 rounded-full bg-gradient-to-r from-[#FAF7F0] via-[#FFF8EC] to-[#E5C158] text-[#17233A] font-bold text-xs sm:text-sm tracking-wide hover:shadow-[0_8px_25px_rgba(229,193,88,0.35)] hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#E5C158] focus:ring-offset-2 focus:ring-offset-[#141E33] transition-all duration-200 inline-flex items-center justify-center gap-2 shadow-sm motion-reduce:transition-none motion-reduce:hover:scale-100"
+                >
+                  <span>Investor Enquiries</span>
+                  <ArrowRight className="w-4 h-4 text-[#17233A] group-hover:translate-x-1 transition-transform duration-200 motion-reduce:group-hover:translate-x-0" />
+                </button>
+                <span className="text-xs text-[#FAF7F0]/60 italic text-center sm:text-right">
+                  Confidential overview upon request
+                </span>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* SECTION 9: FINAL CTA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-[#17233A] text-[#FAF7F0] rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl border border-[#C7A451]/30">
-          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#C7A451]/10 blur-3xl pointer-events-none" />
+      {/* SECTION 9: FINAL CTA — MAGICAL STORYBOOK FINALE */}
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-8 sm:pb-12">
+        <div className="relative rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#C7A451]/30 bg-[#0B1224] min-h-[560px] sm:min-h-[620px] lg:min-h-[660px] xl:min-h-[700px] flex items-center">
+          
+          {/* Background Scene: Desktop & Mobile Responsive High-Res Master Artwork */}
+          <div className="absolute inset-0 z-0">
+            <picture>
+              <source media="(max-width: 767px)" srcSet="/storybook-finale-mobile.webp" type="image/webp" />
+              <source media="(max-width: 767px)" srcSet="/storybook-finale-mobile.jpg" type="image/jpeg" />
+              <source srcSet="/storybook-finale-desktop.webp" type="image/webp" />
+              <img
+                src="/storybook-finale-desktop.jpg"
+                alt="Zanarra magical storybook finale — Momo, Tobo, Dodi, and Chiku looking towards the glowing crystal gateway"
+                className="w-full h-full object-cover object-center select-none pointer-events-none"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
 
-          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451]">
-              The Horizon Awaits
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              Every universe starts with a little wonder.
-            </h2>
-            <p className="text-sm sm:text-base text-[#FAF7F0]/80 leading-relaxed max-w-lg mx-auto">
-              Come explore what we're creating at Zanarra — where characters inspire courage, invention, and curiosity.
-            </p>
+            {/* Atmospheric lighting overlays */}
+            {/* Desktop: Compact midnight-indigo gradient on the far left ensures clear heading contrast while keeping the magical crystal doorway and sunset completely unobstructed */}
+            <div
+              className="hidden md:block absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to right, rgba(9, 14, 28, 0.88) 0%, rgba(9, 14, 28, 0.65) 24%, rgba(9, 14, 28, 0.15) 36%, transparent 48%)'
+              }}
+            />
 
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                to="/universe"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#FAF7F0] text-[#17233A] font-bold text-xs hover:bg-[#F2EBDD] transition-colors shadow-sm"
+            {/* Mobile: Top-down twilight gradient keeps headline & buttons readable against the starry sky */}
+            <div
+              className="md:hidden absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(9, 14, 28, 0.92) 0%, rgba(9, 14, 28, 0.70) 30%, rgba(9, 14, 28, 0.15) 50%, transparent 70%)'
+              }}
+            />
+
+            {/* Subtle warm horizon ambient glow behind the portal */}
+            <div className="absolute top-1/2 left-[28%] -translate-y-1/2 w-96 h-96 rounded-full bg-[#E5B558]/15 blur-3xl pointer-events-none" />
+
+            {/* Slow, gentle luminous shimmer on the winding golden stardust road */}
+            <div className="absolute bottom-6 left-[18%] sm:left-[24%] w-[38%] h-28 rounded-full bg-[#E5B558]/12 blur-2xl animate-pathway-pulse pointer-events-none" />
+
+            {/* Subtle twinkling celestial stars (tranquil, slow breathing) */}
+            <div className="absolute top-8 left-[14%] w-2 h-2 rounded-full bg-[#FAF7F0] shadow-[0_0_10px_#FFF] animate-star-breathe pointer-events-none" style={{ animationDelay: '0s' }} />
+            <div className="absolute top-20 left-[36%] w-1.5 h-1.5 rounded-full bg-[#E5C158] shadow-[0_0_8px_#E5C158] animate-star-breathe pointer-events-none" style={{ animationDelay: '2.5s' }} />
+            <div className="absolute top-10 right-[32%] w-2 h-2 rounded-full bg-[#FAF7F0] shadow-[0_0_10px_#FFF] animate-star-breathe pointer-events-none" style={{ animationDelay: '1.2s' }} />
+            <div className="absolute top-16 right-[18%] w-1.5 h-1.5 rounded-full bg-[#E5C158] shadow-[0_0_8px_#E5C158] animate-star-breathe pointer-events-none" style={{ animationDelay: '3.8s' }} />
+
+            {/* Gentle fireflies floating softly near the meadow & pathway */}
+            <div className="absolute top-[48%] left-[22%] w-1.5 h-1.5 rounded-full bg-[#FFE082] shadow-[0_0_8px_#FFD54F] animate-firefly-a pointer-events-none" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute top-[56%] left-[34%] w-2 h-2 rounded-full bg-[#FFD54F] shadow-[0_0_10px_#FFCA28] animate-firefly-b pointer-events-none" style={{ animationDelay: '3s' }} />
+            <div className="absolute top-[68%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#FFE082] shadow-[0_0_8px_#FFD54F] animate-firefly-a pointer-events-none" style={{ animationDelay: '5s' }} />
+            <div className="absolute top-[62%] right-[40%] w-1.5 h-1.5 rounded-full bg-[#FFD54F] shadow-[0_0_9px_#FFCA28] animate-firefly-b pointer-events-none" style={{ animationDelay: '1.8s' }} />
+          </div>
+
+          {/* Foreground Storybook Content: Compact left placement gives maximum visibility to the crystal doorway & sunset */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-12 sm:py-16 flex flex-col justify-center">
+            <div className="w-full md:w-[48%] lg:w-[42%] xl:w-[38%] max-w-[460px] flex flex-col items-start text-left">
+              
+              {/* Eyebrow badge with compact, refined spacing */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E172E]/70 border border-[#E5C158]/40 backdrop-blur-md shadow-sm mb-4 sm:mb-5">
+                <span className="text-[#E5C158] text-xs leading-none">✨</span>
+                <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#E5C158]">
+                  The Horizon Awaits
+                </span>
+              </div>
+
+              {/* Main Headline strictly broken into TWO balanced lines */}
+              <h2
+                className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[3.15rem] font-bold text-[#FAF7F0] leading-[1.18] tracking-tight mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]"
+                style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
               >
-                Explore the Universe
-              </Link>
-              <Link
-                to="/contact"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF7F0] border border-white/20 font-bold text-xs transition-colors"
-              >
-                Get in Touch
-              </Link>
+                <span className="block">Every universe starts</span>
+                <span className="block text-[#FAF7F0]">with a little wonder.</span>
+              </h2>
+
+              {/* Supporting Line: Concise, compact and easy to read */}
+              <p className="text-xs sm:text-[15px] lg:text-base text-[#FAF7F0]/90 leading-[1.65] font-sans max-w-sm sm:max-w-md mb-6 sm:mb-7 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+                Your next adventure is waiting. Discover the friends, stories, and magical worlds of Zanarra.
+              </p>
+
+              {/* Two Clear Calls to Action */}
+              <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5">
+                <Link
+                  to="/universe"
+                  className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FAF7F0] via-[#FFF9ED] to-[#F3E5C8] text-[#17233A] font-bold text-xs sm:text-sm tracking-wide shadow-[0_8px_24px_rgba(235,210,160,0.35)] hover:shadow-[0_12px_32px_rgba(235,210,160,0.55)] hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#C7A451] focus:ring-offset-2 focus:ring-offset-[#17233A] transition-all duration-200"
+                >
+                  <span>Explore the Universe</span>
+                  <ArrowRight className="w-4 h-4 text-[#17233A] group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF7F0] border border-white/25 hover:border-white/40 font-bold text-xs sm:text-sm tracking-wide backdrop-blur-md shadow-sm active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#FAF7F0] focus:ring-offset-2 focus:ring-offset-[#17233A] transition-all duration-200"
+                >
+                  Get in Touch
+                </Link>
+              </div>
             </div>
           </div>
         </div>
