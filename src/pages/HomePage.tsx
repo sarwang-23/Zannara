@@ -1144,46 +1144,40 @@ export const HomePage: React.FC = () => {
               char: momo,
               id: 'momo',
               name: 'Momo',
-              roleTitle: 'The Fearless Leader',
               age: 'Age 7',
-              badgeIcon: '🏔️',
-              badgeText: 'The Adventurer',
+              accentColor: '#E07A5F',
+              accentHoverBorder: 'hover:border-[#E07A5F]/60',
               image: '/showcase-momo-adventurer.jpg',
               alt: 'Momo the Adventurer standing tall on the carved stone terrace in Terra Viva with his glowing compass and map',
               objectPosition: 'center 12%',
-              tagline: 'Warm. Brave. Gloriously Overconfident.',
-              desc: 'Always the first to leap into the unknown, turning every stumble into an adventure. He never gives up and ensures no friend is left behind.',
-              realmTag: 'Terra Viva'
+              oneLinePersonality: 'Warm. Brave. Gloriously Overconfident.',
+              desc: 'Always the first to leap into the unknown, turning every stumble into an adventure. He never gives up and ensures no friend is left behind.'
             },
             {
               char: tobo,
               id: 'tobo',
               name: 'Tobo',
-              roleTitle: 'The Clumsy Genius',
               age: 'Age 6',
-              badgeIcon: '⚙️',
-              badgeText: 'The Inventor',
+              accentColor: '#0284C7',
+              accentHoverBorder: 'hover:border-[#0284C7]/60',
               image: '/showcase-tobo-inventor.jpg',
               alt: 'Tobo the Inventor smiling in his Mechanika workshop holding a fluttering brass clockwork songbird surrounded by glowing gears',
-              objectPosition: 'center 15%',
-              tagline: 'Brilliant. Fast-Talking. Magnificently Clumsy.',
-              desc: 'Brilliant inventor with round glasses and pockets full of gears. His whimsical contraptions turn trial, error, and mishaps into mechanical miracles.',
-              realmTag: 'Mechanika'
+              objectPosition: 'center 12%',
+              oneLinePersonality: 'Brilliant. Fast-Talking. Magnificently Clumsy.',
+              desc: 'Round glasses, pockets full of gears, and an endlessly inventive mind. His whimsical contraptions turn trial, error, and mishaps into mechanical miracles.'
             },
             {
               char: dodi,
               id: 'dodi',
               name: 'Dodi',
-              roleTitle: 'The Tiny Spark',
               age: 'Age 4',
-              badgeIcon: '🔍',
-              badgeText: 'The Curious Explorer',
+              accentColor: '#D97706',
+              accentHoverBorder: 'hover:border-[#D97706]/60',
               image: '/showcase-dodi-explorer.jpg',
               alt: 'Dodi the Curious Explorer in her yellow coat and curly buns gently discovering a glowing starlight flower in an enchanted moss grove',
-              objectPosition: 'center 18%',
-              tagline: 'Curious. Fearless. Always Asking Why.',
-              desc: 'The tiny spark with wide wonder and curly buns, always asking "par kyun?". Her quiet observations unlock the universe\'s deepest realm secrets.',
-              realmTag: 'Mythara'
+              objectPosition: 'center 12%',
+              oneLinePersonality: 'Curious. Fearless. Always Asking Why.',
+              desc: 'The tiny spark with wide wonder and curly buns, always asking "par kyun?". Her quiet questions cut straight to the heart of the universe\'s deepest secrets.'
             }
           ];
 
@@ -1193,10 +1187,11 @@ export const HomePage: React.FC = () => {
                 <div
                   key={item.id}
                   id={item.id}
-                  className="group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_24px_rgba(23,36,59,0.05)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.13)] hover:border-[#C7A451]/70 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full"
+                  onClick={() => setSelectedCharacterForModal(item.char)}
+                  className={`group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_24px_rgba(23,36,59,0.05)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.13)] ${item.accentHoverBorder} hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full`}
                 >
                   <div className="flex flex-col">
-                    {/* Character Artwork (~60% of visual height) */}
+                    {/* Character Artwork — Clean, sharp, unobstructed showcase (~60% height) */}
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#17233A]/5">
                       <img
                         src={item.image}
@@ -1207,51 +1202,32 @@ export const HomePage: React.FC = () => {
                         decoding="async"
                       />
 
-                      {/* Vignette Gradient for Depth & Readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#17233A]/60 via-transparent to-black/15 pointer-events-none" />
-
-                      {/* Top-Left: Subtle Badge & Age */}
-                      <div className="absolute top-3.5 left-3.5 z-10">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/80 text-[11px] font-bold text-[#17233A] shadow-xs">
-                          <span>{item.badgeIcon}</span>
-                          <span className="uppercase tracking-wider">{item.badgeText}</span>
-                          <span className="text-gray-300">|</span>
-                          <span className="text-[#C7A451]">{item.age}</span>
-                        </span>
-                      </div>
-
-                      {/* Top-Right: Home Realm Tag */}
-                      <div className="absolute top-3.5 right-3.5 z-10">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white/95 shadow-xs">
-                          <span>{item.realmTag}</span>
-                        </span>
-                      </div>
-
-                      {/* Bottom Image Tag: Tagline */}
-                      <div className="absolute bottom-3 left-3.5 right-3.5 z-10">
-                        <span className="text-xs font-semibold text-white/95 drop-shadow-sm line-clamp-1">
-                          {item.tagline}
-                        </span>
-                      </div>
+                      {/* Subtle Vignette Gradient for Depth */}
+                      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#17233A]/30 to-transparent pointer-events-none" />
                     </div>
 
-                    {/* Card Content Area (Simplified & Focused) */}
-                    <div className="p-6 sm:p-7 space-y-3 flex-1 flex flex-col justify-between">
+                    {/* Card Content Area (Simplified & Focused: Name, Personality, Short Desc) */}
+                    <div className="p-6 sm:p-7 space-y-2.5 flex-1 flex flex-col justify-between">
                       <div>
-                        {/* Name & Role */}
-                        <div className="flex items-center justify-between">
+                        {/* Name & Subtle Age */}
+                        <div className="flex items-baseline justify-between">
                           <h3 className="font-serif text-3xl font-bold text-[#17233A] tracking-tight group-hover:text-[#C7A451] transition-colors">
                             {item.name}
                           </h3>
-                          <span className="text-xs font-semibold text-[#17233A]/60">
+                          <span className="text-xs font-semibold text-[#17233A]/50">
                             {item.age}
                           </span>
                         </div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-[#C7A451] mt-1">
-                          {item.roleTitle}
+
+                        {/* One-Line Personality with subtle character accent color */}
+                        <p
+                          className="text-xs font-bold tracking-wide mt-1"
+                          style={{ color: item.accentColor }}
+                        >
+                          {item.oneLinePersonality}
                         </p>
 
-                        {/* Concise 2-line Description */}
+                        {/* Concise 2-line Story Description */}
                         <p className="text-sm text-[#17233A]/80 leading-relaxed font-sans mt-3">
                           {item.desc}
                         </p>
@@ -1260,10 +1236,13 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   {/* Card Bottom Primary CTA — Clean, prominent & strictly aligned */}
-                  <div className="px-6 sm:px-7 pb-6 pt-3.5 border-t border-[#E8DEC9]/60 bg-[#FAF7F0]">
+                  <div className="px-6 sm:px-7 pb-6 pt-2">
                     <button
                       type="button"
-                      onClick={() => setSelectedCharacterForModal(item.char)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedCharacterForModal(item.char);
+                      }}
                       className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-white text-xs sm:text-sm font-bold shadow-xs hover:shadow-md transition-all group/btn cursor-pointer"
                     >
                       <span>Meet {item.name}</span>
@@ -1276,36 +1255,52 @@ export const HomePage: React.FC = () => {
           );
         })()}
 
-        {/* The Trio Ensemble Lore Bridge — Visually Connecting the 3 Characters */}
-        <div className="mt-10 sm:mt-12 p-5 sm:p-6 rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] max-w-4xl mx-auto shadow-2xs">
-          <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left">
+        {/* Visual Connector Element from 3 Cards to the Friendship Bridge */}
+        <div className="flex flex-col items-center mt-8 mb-2">
+          <div className="w-px h-6 bg-gradient-to-b from-[#C7A451]/30 via-[#C7A451]/60 to-[#C7A451]/30" />
+          <div className="w-2 h-2 rounded-full bg-[#C7A451]/80 ring-4 ring-[#C7A451]/15" />
+        </div>
+
+        {/* Compact Friendship Bridge — Connecting the 3 Characters' Shared Adventure */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F0] border border-[#E8DEC9] max-w-3xl mx-auto shadow-xs">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left">
             {/* Visual Hint of Shared Adventure (Momo, Tobo, Dodi & Chiku under twilight lanterns) */}
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 border border-[#E8DEC9] shadow-xs bg-[#17233A]/5">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-[#C7A451]/40 shadow-xs bg-[#17233A]/5">
               <img
                 src="/philosophy-03-connection.jpg"
                 alt="Momo, Tobo, Dodi and Chiku together on a twilight hillside under glowing lanterns"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-xl" />
             </div>
 
             {/* Content */}
-            <div className="flex-1 space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white border border-[#E8DEC9] text-[10px] font-bold text-[#17233A]/70 uppercase tracking-widest">
-                <Sparkles className="w-3 h-3 text-[#C7A451]" />
-                <span>The Trio in Every Realm</span>
+            <div className="flex-1 min-w-0 space-y-1">
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white border border-[#E8DEC9] text-[10px] font-bold text-[#17233A]/70 uppercase tracking-widest">
+                  <Sparkles className="w-2.5 h-2.5 text-[#C7A451]" />
+                  <span>The Shared Adventure</span>
+                </div>
+                {/* Subtle Character Synergy Dots */}
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#E07A5F]" title="Momo" />
+                  <span className="w-2 h-2 rounded-full bg-[#0284C7]" title="Tobo" />
+                  <span className="w-2 h-2 rounded-full bg-[#D97706]" title="Dodi" />
+                </div>
               </div>
-              <p className="font-serif text-base sm:text-lg font-bold text-[#17233A] leading-snug">
+
+              <p className="font-serif text-sm sm:text-base font-bold text-[#17233A] leading-snug">
                 “When Momo leads the trail, Tobo invents the gear, and Dodi asks the quiet question — no realm remains unexplored.”
               </p>
+
               <div>
                 <Link
                   to="/characters"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C7A451] hover:text-[#B45309] transition-colors"
                 >
                   <span>Explore the complete Zanarra Character Directory & Companions</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
