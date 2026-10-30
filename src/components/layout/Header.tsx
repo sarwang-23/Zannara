@@ -52,14 +52,14 @@ export const Header: React.FC = () => {
           <ZanarraLogo size="md" />
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/85 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-[#17233A]/10 shadow-sm">
+          <nav className="hidden lg:flex items-center gap-1 bg-white/85 backdrop-blur-md px-2 py-1.5 rounded-full border border-[#17233A]/10 shadow-xs">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
                   isActive(link.path)
-                    ? 'bg-[#17233A] text-white shadow-xs'
+                    ? 'bg-[#17233A] text-white shadow-xs font-bold'
                     : 'text-[#17233A]/80 hover:text-[#17233A] hover:bg-[#FAF7F0]'
                 }`}
               >
@@ -69,10 +69,10 @@ export const Header: React.FC = () => {
           </nav>
 
           {/* Actions & CTAs */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2.5">
             <button
               onClick={() => setIsInvestorModalOpen(true)}
-              className="px-3.5 py-2 rounded-full text-xs font-bold text-[#17233A] hover:bg-white/90 border border-transparent hover:border-gray-200 transition-all flex items-center gap-1.5"
+              className="h-10 px-4 rounded-full text-xs font-bold text-[#17233A] hover:bg-white/90 border border-transparent hover:border-[#EBDCC8] transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <TrendingUp className="w-3.5 h-3.5 text-[#C7A451]" />
               <span>Investor Enquiries</span>
@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
 
             <Link
               to="/partnerships"
-              className="px-5 py-2.5 rounded-full text-xs font-bold bg-[#17233A] text-white hover:bg-[#25395E] transition-all shadow-xs hover:shadow-md flex items-center gap-1.5 hover:scale-105 active:scale-95"
+              className="h-10 px-5 rounded-full text-xs font-bold bg-[#17233A] text-white hover:bg-[#25395E] transition-all duration-200 shadow-xs hover:shadow-md flex items-center gap-1.5 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Partner with Zanarra</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-[#C7A451]" />
