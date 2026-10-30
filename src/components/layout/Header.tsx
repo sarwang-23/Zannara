@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#FAF7F0] pt-24 px-6 pb-8 overflow-y-auto lg:hidden animate-fadeIn flex flex-col justify-between">
+        <div className="fixed inset-0 z-40 bg-[#FAF7F0] pt-24 px-6 pb-8 overflow-y-auto lg:hidden animate-fadeIn flex flex-col justify-between">
           <div className="space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
               Explore Zanarra

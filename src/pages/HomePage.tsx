@@ -221,7 +221,7 @@ export const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-24 sm:space-y-32">
+    <div className="w-full overflow-x-hidden flex flex-col">
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 1: UNIFIED CINEMATIC HERO (EXACTLY MATCHING IMAGE 2)
           Single seamless panoramic background with warm ivory dream wash
@@ -232,7 +232,7 @@ export const HomePage: React.FC = () => {
           Left: 45–48% width, 3-line balanced headline, clean ivory background
           Right: Vivid, cinematic, full-colour character illustration
           ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative w-full h-[calc(100vh-68px)] min-h-[560px] max-h-[880px] flex items-center bg-[#FAF7F0] overflow-hidden">
+      <section className="relative w-full min-h-[calc(100vh-68px)] md:h-[calc(100vh-68px)] md:max-h-[880px] flex items-center bg-[#FAF7F0] overflow-hidden">
         
         {/* ── FULL PANORAMIC BACKGROUND (3K ULTRA-HD CRYSTAL CLEAR) ── */}
         <div className="hidden md:block absolute inset-0 z-0">
@@ -393,7 +393,7 @@ export const HomePage: React.FC = () => {
         ref={worldSectionRef as React.RefObject<HTMLElement>}
         id="world-of-zanarra"
         aria-labelledby="zanarra-world-heading"
-        className="relative overflow-hidden scroll-mt-24 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16"
+        className="relative overflow-hidden scroll-mt-24 py-12 sm:py-16 lg:py-20"
         style={{ background: 'linear-gradient(180deg, #FAF6EE 0%, #F4EAD6 50%, #EDE5CC 100%)' }}
       >
         {/* ── Section-scoped keyframe animations ── */}
@@ -446,7 +446,7 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* ── MAIN ILLUSTRATED WORLD ── */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="relative rounded-3xl overflow-hidden border border-[#C7A451]/30 shadow-2xl bg-[#F6EEDF]"
             style={{ boxShadow: '0 16px 64px rgba(23,36,59,0.16)' }}
@@ -1040,7 +1040,7 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* ── CHIKU CLUE DISCOVERY STRIP ── */}
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div
             className={`flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border p-4 sm:p-5 transition-all duration-500 shadow-sm ${
               clueRevealed
@@ -1096,7 +1096,7 @@ export const HomePage: React.FC = () => {
 
 
       {/* SECTION 3: MEET MOMO, TOBO, AND DODI — HORIZONTAL CHARACTER SHOWCASE */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
 
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
@@ -1308,34 +1308,33 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4: FIVE MAGICAL REALMS */}
       {/* SECTION 4: FIVE MAGICAL REALMS — IMMERSIVE FANTASY-WORLD DISCOVERY EXPERIENCE */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
-              <span className="text-[#C7A451] text-xs leading-none">✨</span>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
-                The Living Multiverse
-              </span>
-            </div>
-            <h2
-              className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.12]"
-              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)' }}
-            >
-              Five realms. Countless adventures.
-            </h2>
-            <p className="text-base sm:text-lg text-[#17233A]/80 mt-3 font-sans leading-relaxed">
-              One universe. Five distinct dimensions of human experience and curiosity. From living botanical canopies to clockwork cities and outer-space nebulae, every world is built to inspire wonder. Click any realm to enter its lore codex.
-            </p>
+        {/* Section Header (Centered) */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+            <span className="text-[#C7A451] text-xs leading-none">✨</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+              The Living Multiverse
+            </span>
           </div>
 
-          <div className="shrink-0 flex items-center gap-3">
+          <h2
+            className="font-serif font-bold text-[#17233A] tracking-tight leading-[1.12] mb-3.5"
+            style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)' }}
+          >
+            Five realms. Countless adventures.
+          </h2>
+
+          <p className="text-base sm:text-lg text-[#17233A]/80 font-sans leading-relaxed max-w-2xl mx-auto mb-6">
+            One universe. Five distinct dimensions of human experience and curiosity. From living botanical canopies to clockwork cities and outer-space nebulae, every world is built to inspire wonder. Click any realm to enter its lore codex.
+          </p>
+
+          <div className="inline-flex items-center justify-center">
             <Link
               to="/universe"
-              className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#17233A] hover:bg-[#25395E] text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5"
             >
               <span>Explore Universe Bible</span>
               <ArrowRight className="w-4 h-4 text-[#C7A451] transition-transform group-hover:translate-x-1" />
@@ -1343,14 +1342,14 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
 
-        {/* 5 Distinct Realm Discovery Cards (3 on top row, 2 balanced on bottom row) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8 items-stretch">
-          {REALMS.map((realm, index) => {
+        {/* ══════════════════════════════════════════════════════════
+            ALL FIVE REALMS IN ONE SINGLE HORIZONTAL ROW:
+            Terra Viva | Mechanika | Mythara | Sonika | Cosmara
+            Equal width, consistent aspect-[4/3] artwork, unified height.
+            ══════════════════════════════════════════════════════════ */}
+        <div className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-4 xl:gap-5 items-stretch snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+          {REALMS.map((realm) => {
             const art = REALM_ARTWORK[realm.id] || REALM_ARTWORK['terra-viva'];
-            const isWideRow = index >= 3; // Sonika (3) and Cosmara (4) in Row 2
-            const colSpanClass = isWideRow 
-              ? 'lg:col-span-3' 
-              : 'lg:col-span-2';
 
             const actionVerb = {
               'terra-viva': 'Explore Terra Viva',
@@ -1373,13 +1372,11 @@ export const HomePage: React.FC = () => {
                 key={realm.id}
                 id={`realm-${realm.id}`}
                 onClick={() => setSelectedRealmForModal(realm)}
-                className={`group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_24px_rgba(23,36,59,0.05)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.14)] ${hoverBorderClass} hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full ${colSpanClass} ${
-                  index === 4 ? 'md:col-span-2 lg:col-span-3' : ''
-                }`}
+                className={`group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_24px_rgba(23,36,59,0.05)] hover:shadow-[0_24px_50px_rgba(23,36,59,0.14)] ${hoverBorderClass} hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full min-w-[260px] sm:min-w-[280px] lg:min-w-0 flex-1 snap-center shrink-0 lg:shrink`}
               >
                 <div className="flex flex-col">
-                  {/* Artwork Showcase Area */}
-                  <div className={`relative ${isWideRow ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[16/10]'} w-full overflow-hidden bg-[#17233A]/5`}>
+                  {/* Artwork Showcase Area — Consistent 4:3 Aspect Ratio for all 5 Realms */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#17233A]/5">
                     <picture>
                       <source srcSet={art.webp} type="image/webp" />
                       <img
@@ -1393,82 +1390,87 @@ export const HomePage: React.FC = () => {
                     </picture>
 
                     {/* Gradient Vignette for Readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#17233A]/60 via-transparent to-black/20 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#17233A]/65 via-transparent to-black/20 pointer-events-none" />
 
                     {/* Top-Left: Realm Number Badge */}
-                    <div className="absolute top-3.5 left-3.5 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/80 text-[11px] font-bold text-[#17233A] shadow-xs">
-                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: art.accentColor }} />
-                        <span className="uppercase tracking-wider">Realm 0{realm.number}</span>
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-white/80 text-[10px] font-bold text-[#17233A] shadow-xs">
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: art.accentColor }} />
+                        <span className="uppercase tracking-wider">0{realm.number}</span>
                       </span>
                     </div>
 
                     {/* Top-Right: Realm Theme Tag */}
-                    <div className="absolute top-3.5 right-3.5 z-10">
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white/95 shadow-xs">
-                        <span>{realm.theme}</span>
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-white/20 text-[9.5px] font-semibold text-white/95 shadow-xs">
+                        <span className="truncate max-w-[110px]">{realm.theme}</span>
                       </span>
                     </div>
 
                     {/* Bottom of Image: Core Promise Quote */}
-                    <div className="absolute bottom-3 left-3.5 right-3.5 z-10">
-                      <p className="text-xs font-serif italic text-white/95 drop-shadow-sm line-clamp-1">
+                    <div className="absolute bottom-2.5 left-3 right-3 z-10">
+                      <p className="text-[11px] font-serif italic text-white/95 drop-shadow-sm line-clamp-1">
                         "{realm.storyPromise}"
                       </p>
                     </div>
                   </div>
 
                   {/* Card Content Area */}
-                  <div className="p-6 sm:p-7 space-y-2.5 flex-1 flex flex-col justify-between">
+                  <div className="p-4 sm:p-5 space-y-2 flex-1 flex flex-col justify-between">
                     <div>
                       {/* Name & Theme Subtitle */}
-                      <div className="flex items-baseline justify-between">
-                        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#17233A] tracking-tight group-hover:text-[#C7A451] transition-colors">
+                      <div>
+                        <h3 className="font-serif text-xl xl:text-2xl font-bold text-[#17233A] tracking-tight group-hover:text-[#C7A451] transition-colors truncate">
                           {realm.name}
                         </h3>
-                        <span className="text-xs font-bold uppercase tracking-wider" style={{ color: art.accentColor }}>
+                        <span className="text-[10.5px] font-bold uppercase tracking-wider block mt-0.5" style={{ color: art.accentColor }}>
                           {realm.theme}
                         </span>
                       </div>
 
                       {/* Landscape & Lore Description */}
-                      <p className="text-sm text-[#17233A]/80 leading-relaxed font-sans mt-2.5 line-clamp-2">
+                      <p className="text-xs text-[#17233A]/80 leading-relaxed font-sans mt-2 line-clamp-2 min-h-[32px]">
                         {realm.landscape}
                       </p>
                     </div>
 
                     {/* Core Adventure Quest Preview */}
                     <div className="pt-2">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E8DEC9] text-xs font-medium text-[#17233A]/70">
-                        <span className="text-xs" style={{ color: art.accentColor }}>✨</span>
-                        <span className="line-clamp-1">{realm.adventureTypes[0]}</span>
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-[#E8DEC9] text-[11px] font-medium text-[#17233A]/75 w-full">
+                        <span className="text-xs shrink-0" style={{ color: art.accentColor }}>✨</span>
+                        <span className="truncate">{realm.adventureTypes[0]}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Card Bottom CTA */}
-                <div className="px-6 sm:px-7 pb-6 pt-2 border-t border-[#E8DEC9]/50 bg-[#FAF7F0]">
+                <div className="px-4 sm:px-5 pb-5 pt-2 border-t border-[#E8DEC9]/50 bg-[#FAF7F0]">
                   <button
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedRealmForModal(realm);
                     }}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#17233A] hover:bg-[#25395E] text-white text-xs sm:text-sm font-bold shadow-xs hover:shadow-md transition-all group/btn cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-[#17233A] hover:bg-[#25395E] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all group/btn cursor-pointer whitespace-nowrap"
                   >
-                    <span>{actionVerb}</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#C7A451] group-hover/btn:translate-x-1 transition-transform" />
+                    <span className="truncate">{actionVerb}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#C7A451] group-hover/btn:translate-x-1 transition-transform shrink-0" />
                   </button>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      </section>
+          );
+        })}
+      </div>
+
+      {/* Mobile Swipe Hint */}
+      <div className="flex lg:hidden items-center justify-center gap-2 mt-4 text-xs font-medium text-[#17233A]/60">
+        <span>← Swipe horizontally to explore all 5 realms →</span>
+      </div>
+    </section>
 
       {/* SECTION 5: PHILOSOPHICAL FOUNDATION — VISUAL STORYTELLING EXPERIENCE */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-5">
@@ -1619,31 +1621,29 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* SECTION 6: ONE UNIVERSE, MANY EXPERIENCES — COMMERCIAL & CREATIVE EXTENSION */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-14 gap-5">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
-              <span className="text-[#C7A451] text-xs leading-none">✨</span>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
-                Commercial & Creative Extension
-              </span>
-            </div>
-
-            <h2
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A] tracking-tight leading-[1.18]"
-              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
-            >
-              A story is only the beginning.
-            </h2>
-
-            <p className="text-base sm:text-lg text-[#17233A]/80 mt-3 font-sans leading-relaxed">
-              How Zanarra transforms a single narrative spark into eight complementary consumer, entertainment, and digital formats.
-            </p>
+        {/* Section Header (Centered) */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E7] border border-[#EBDCC8] shadow-xs mb-3.5">
+            <span className="text-[#C7A451] text-xs leading-none">✨</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C7A451]">
+              Commercial & Creative Extension
+            </span>
           </div>
 
-          <div className="shrink-0">
+          <h2
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17233A] tracking-tight leading-[1.18] mb-3.5"
+            style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+          >
+            A story is only the beginning.
+          </h2>
+
+          <p className="text-base sm:text-lg text-[#17233A]/80 font-sans leading-relaxed max-w-2xl mx-auto mb-5">
+            How Zanarra transforms a single narrative spark into eight complementary consumer, entertainment, and digital formats.
+          </p>
+
+          <div className="inline-flex items-center justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAF7F0] border border-[#E8DEC9] text-xs font-semibold text-[#17233A]/70 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#C7A451]" />
               <span>Multi-Platform IP Expansion Roadmap</span>
@@ -1652,21 +1652,21 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* 8-Phase Cohesive Transmedia Progression */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-stretch">
           {experiences.map((exp, idx) => (
             <div
               key={exp.num}
-              className="group rounded-2xl sm:rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_20px_rgba(23,36,59,0.04)] hover:shadow-[0_20px_48px_rgba(23,36,59,0.13)] hover:border-[#C7A451]/80 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden motion-reduce:hover:translate-y-0 motion-reduce:transition-none cursor-pointer"
+              className="group rounded-3xl bg-[#FAF7F0] border border-[#E8DEC9] shadow-[0_4px_20px_rgba(23,36,59,0.04)] hover:shadow-[0_20px_48px_rgba(23,36,59,0.13)] hover:border-[#C7A451]/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer h-full"
             >
               <div>
-                {/* 16:10 Cinematic Concept Art Banner */}
-                <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#FAF3E7] border-b border-[#E8DEC9]/50">
+                {/* Cinematic Concept Art Banner (Balanced 3:2 Proportion) */}
+                <div className="relative w-full aspect-[3/2] overflow-hidden bg-[#FAF3E7] border-b border-[#E8DEC9]/50">
                   <picture>
                     <source srcSet={exp.image} type="image/webp" />
                     <img
                       src={exp.imageJpg}
                       alt={exp.alt}
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05] motion-reduce:group-hover:scale-100"
+                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
                       style={{ objectPosition: exp.objectPosition || 'center center' }}
                       loading={idx < 4 ? 'eager' : 'lazy'}
                       decoding="async"
@@ -1681,44 +1681,44 @@ export const HomePage: React.FC = () => {
                     }}
                   />
 
-                  {/* Gold border glow on hover */}
-                  <div className="absolute inset-0 rounded-t-2xl sm:rounded-t-3xl ring-0 group-hover:ring-2 group-hover:ring-[#C7A451]/50 transition-all duration-300 pointer-events-none" />
-
                   {/* Refined Phase Pill */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-[#C7A451]/40 group-hover:border-[#C7A451]/80 group-hover:bg-[#17233A]/95 text-[#FAF7F0] text-[10.5px] font-bold tracking-wider uppercase shadow-xs flex items-center gap-1.5 transition-all duration-300">
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#17233A]/85 backdrop-blur-md border border-[#C7A451]/40 text-[#FAF7F0] text-[10.5px] font-bold tracking-wider uppercase shadow-xs flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158]" />
                     <span>Phase {exp.num}</span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 sm:p-6 pb-2">
-                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#C7A451] block mb-1.5">
+                {/* Card Body — Tight, balanced spacing with zero empty gaps */}
+                <div className="p-5 space-y-2">
+                  <span className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#C7A451] block">
                     {exp.category}
                   </span>
 
                   <h3
-                    className="font-serif text-lg sm:text-xl font-bold text-[#17233A] mb-2 leading-snug group-hover:text-[#C7A451] transition-colors duration-300"
+                    className="font-serif text-lg sm:text-[19px] font-bold text-[#17233A] leading-snug group-hover:text-[#C7A451] transition-colors duration-300"
                     style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
                   >
                     {exp.title}
                   </h3>
 
-                  <p className="text-xs sm:text-[13px] text-[#17233A]/75 leading-relaxed font-sans mb-3 min-h-[44px]">
+                  <p className="text-xs sm:text-[13px] text-[#17233A]/75 leading-relaxed font-sans line-clamp-2">
                     {exp.desc}
                   </p>
+
+                  {/* Format Pill */}
+                  <div className="pt-1.5">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#FAF3E7] border border-[#E8DEC9] text-[10.5px] font-semibold text-[#17233A]/85 shadow-2xs">
+                      {exp.format}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Card Footer: Format Pillar Tag */}
-              <div className="p-5 sm:p-6 pt-0 mt-auto">
-                <div className="pt-3 border-t border-[#E8DEC9]/75 flex items-center justify-between gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#FAF3E7] border border-[#E8DEC9] group-hover:border-[#C7A451]/40 group-hover:bg-[#FBF5E8] text-[10.5px] sm:text-[11px] text-[#17233A]/85 font-semibold shadow-2xs truncate transition-all duration-300">
-                    {exp.format}
-                  </span>
-                  <span className="text-sm font-bold text-[#C7A451] opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0">
-                    →
-                  </span>
+              {/* Card Footer: Clean Aligned Action */}
+              <div className="px-5 pb-5 pt-2">
+                <div className="pt-3 border-t border-[#E8DEC9]/60 flex items-center justify-between text-xs font-bold text-[#17233A] group-hover:text-[#C7A451] transition-colors">
+                  <span>Explore Phase {exp.num}</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C7A451] group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>
@@ -1727,7 +1727,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* SECTION 7: BUILT FOR A GLOBAL AUDIENCE — GLOBAL FOOTPRINT */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="rounded-3xl sm:rounded-[2.5rem] bg-gradient-to-b from-[#FAF7F0] via-[#FCF9F2] to-[#FAF5EB] border border-[#E8DEC9] p-6 sm:p-10 lg:p-12 shadow-[0_12px_45px_rgba(23,36,59,0.06)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             
@@ -2103,7 +2103,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* SECTION 8: INSTITUTIONAL COLLABORATION — STRATEGIC PARTNERS & INVESTORS */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -2303,104 +2303,102 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 9: FINAL CTA — MAGICAL STORYBOOK FINALE */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-8 sm:pb-12">
-        <div className="relative rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#C7A451]/30 bg-[#0B1224] min-h-[560px] sm:min-h-[620px] lg:min-h-[660px] xl:min-h-[700px] flex items-center">
-          
-          {/* Background Scene: Desktop & Mobile Responsive High-Res Master Artwork */}
-          <div className="absolute inset-0 z-0">
-            <picture>
-              <source media="(max-width: 767px)" srcSet="/storybook-finale-mobile.webp" type="image/webp" />
-              <source media="(max-width: 767px)" srcSet="/storybook-finale-mobile.jpg" type="image/jpeg" />
-              <source srcSet="/storybook-finale-desktop.webp" type="image/webp" />
-              <img
-                src="/storybook-finale-desktop.jpg"
-                alt="Zanarra magical storybook finale — Momo, Tobo, Dodi, and Chiku looking towards the glowing crystal gateway"
-                className="w-full h-full object-cover object-center select-none pointer-events-none"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-
-            {/* Atmospheric lighting overlays */}
-            {/* Desktop: Compact midnight-indigo gradient on the far left ensures clear heading contrast while keeping the magical crystal doorway and sunset completely unobstructed */}
-            <div
-              className="hidden md:block absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(to right, rgba(9, 14, 28, 0.88) 0%, rgba(9, 14, 28, 0.65) 24%, rgba(9, 14, 28, 0.15) 36%, transparent 48%)'
-              }}
+      {/* SECTION 9: FINAL CTA — MAGICAL STORYBOOK FINALE (FULL-WIDTH CINEMATIC PANORAMA) */}
+      <section className="relative w-full overflow-hidden bg-[#0B1224] border-t border-[#C7A451]/30 min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] flex items-center">
+        
+        {/* Background Scene: Desktop & Mobile Responsive High-Res Master Artwork */}
+        <div className="absolute inset-0 z-0">
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/storybook-finale-mobile.webp" type="image/webp" />
+            <source media="(max-width: 767px)" srcSet="/storybook-finale-mobile.jpg" type="image/jpeg" />
+            <source srcSet="/storybook-finale-desktop.webp" type="image/webp" />
+            <img
+              src="/storybook-finale-desktop.jpg"
+              alt="Zanarra magical storybook finale — Momo, Tobo, Dodi, and Chiku looking towards the glowing crystal gateway"
+              className="w-full h-full object-cover object-center select-none pointer-events-none"
+              loading="lazy"
+              decoding="async"
             />
+          </picture>
 
-            {/* Mobile: Top-down twilight gradient keeps headline & buttons readable against the starry sky */}
-            <div
-              className="md:hidden absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(to bottom, rgba(9, 14, 28, 0.92) 0%, rgba(9, 14, 28, 0.70) 30%, rgba(9, 14, 28, 0.15) 50%, transparent 70%)'
-              }}
-            />
+          {/* Atmospheric lighting overlays */}
+          {/* Desktop: Compact midnight-indigo gradient on the far left ensures clear heading contrast while keeping the magical crystal doorway and sunset completely unobstructed */}
+          <div
+            className="hidden md:block absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, rgba(9, 14, 28, 0.88) 0%, rgba(9, 14, 28, 0.65) 24%, rgba(9, 14, 28, 0.15) 36%, transparent 48%)'
+            }}
+          />
 
-            {/* Subtle warm horizon ambient glow behind the portal */}
-            <div className="absolute top-1/2 left-[28%] -translate-y-1/2 w-96 h-96 rounded-full bg-[#E5B558]/15 blur-3xl pointer-events-none" />
+          {/* Mobile: Top-down twilight gradient keeps headline & buttons readable against the starry sky */}
+          <div
+            className="md:hidden absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(9, 14, 28, 0.92) 0%, rgba(9, 14, 28, 0.70) 30%, rgba(9, 14, 28, 0.15) 50%, transparent 70%)'
+            }}
+          />
 
-            {/* Slow, gentle luminous shimmer on the winding golden stardust road */}
-            <div className="absolute bottom-6 left-[18%] sm:left-[24%] w-[38%] h-28 rounded-full bg-[#E5B558]/12 blur-2xl animate-pathway-pulse pointer-events-none" />
+          {/* Subtle warm horizon ambient glow behind the portal */}
+          <div className="absolute top-1/2 left-[28%] -translate-y-1/2 w-96 h-96 rounded-full bg-[#E5B558]/15 blur-3xl pointer-events-none" />
 
-            {/* Subtle twinkling celestial stars (tranquil, slow breathing) */}
-            <div className="absolute top-8 left-[14%] w-2 h-2 rounded-full bg-[#FAF7F0] shadow-[0_0_10px_#FFF] animate-star-breathe pointer-events-none" style={{ animationDelay: '0s' }} />
-            <div className="absolute top-20 left-[36%] w-1.5 h-1.5 rounded-full bg-[#E5C158] shadow-[0_0_8px_#E5C158] animate-star-breathe pointer-events-none" style={{ animationDelay: '2.5s' }} />
-            <div className="absolute top-10 right-[32%] w-2 h-2 rounded-full bg-[#FAF7F0] shadow-[0_0_10px_#FFF] animate-star-breathe pointer-events-none" style={{ animationDelay: '1.2s' }} />
-            <div className="absolute top-16 right-[18%] w-1.5 h-1.5 rounded-full bg-[#E5C158] shadow-[0_0_8px_#E5C158] animate-star-breathe pointer-events-none" style={{ animationDelay: '3.8s' }} />
+          {/* Slow, gentle luminous shimmer on the winding golden stardust road */}
+          <div className="absolute bottom-6 left-[18%] sm:left-[24%] w-[38%] h-28 rounded-full bg-[#E5B558]/12 blur-2xl animate-pathway-pulse pointer-events-none" />
 
-            {/* Gentle fireflies floating softly near the meadow & pathway */}
-            <div className="absolute top-[48%] left-[22%] w-1.5 h-1.5 rounded-full bg-[#FFE082] shadow-[0_0_8px_#FFD54F] animate-firefly-a pointer-events-none" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute top-[56%] left-[34%] w-2 h-2 rounded-full bg-[#FFD54F] shadow-[0_0_10px_#FFCA28] animate-firefly-b pointer-events-none" style={{ animationDelay: '3s' }} />
-            <div className="absolute top-[68%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#FFE082] shadow-[0_0_8px_#FFD54F] animate-firefly-a pointer-events-none" style={{ animationDelay: '5s' }} />
-            <div className="absolute top-[62%] right-[40%] w-1.5 h-1.5 rounded-full bg-[#FFD54F] shadow-[0_0_9px_#FFCA28] animate-firefly-b pointer-events-none" style={{ animationDelay: '1.8s' }} />
-          </div>
+          {/* Subtle twinkling celestial stars (tranquil, slow breathing) */}
+          <div className="absolute top-8 left-[14%] w-2 h-2 rounded-full bg-[#FAF7F0] shadow-[0_0_10px_#FFF] animate-star-breathe pointer-events-none" style={{ animationDelay: '0s' }} />
+          <div className="absolute top-20 left-[36%] w-1.5 h-1.5 rounded-full bg-[#E5C158] shadow-[0_0_8px_#E5C158] animate-star-breathe pointer-events-none" style={{ animationDelay: '2.5s' }} />
+          <div className="absolute top-10 right-[32%] w-2 h-2 rounded-full bg-[#FAF7F0] shadow-[0_0_10px_#FFF] animate-star-breathe pointer-events-none" style={{ animationDelay: '1.2s' }} />
+          <div className="absolute top-16 right-[18%] w-1.5 h-1.5 rounded-full bg-[#E5C158] shadow-[0_0_8px_#E5C158] animate-star-breathe pointer-events-none" style={{ animationDelay: '3.8s' }} />
 
-          {/* Foreground Storybook Content: Compact left placement gives maximum visibility to the crystal doorway & sunset */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-12 sm:py-16 flex flex-col justify-center">
-            <div className="w-full md:w-[48%] lg:w-[42%] xl:w-[38%] max-w-[460px] flex flex-col items-start text-left">
-              
-              {/* Eyebrow badge with compact, refined spacing */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E172E]/70 border border-[#E5C158]/40 backdrop-blur-md shadow-sm mb-4 sm:mb-5">
-                <span className="text-[#E5C158] text-xs leading-none">✨</span>
-                <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#E5C158]">
-                  The Horizon Awaits
-                </span>
-              </div>
+          {/* Gentle fireflies floating softly near the meadow & pathway */}
+          <div className="absolute top-[48%] left-[22%] w-1.5 h-1.5 rounded-full bg-[#FFE082] shadow-[0_0_8px_#FFD54F] animate-firefly-a pointer-events-none" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute top-[56%] left-[34%] w-2 h-2 rounded-full bg-[#FFD54F] shadow-[0_0_10px_#FFCA28] animate-firefly-b pointer-events-none" style={{ animationDelay: '3s' }} />
+          <div className="absolute top-[68%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#FFE082] shadow-[0_0_8px_#FFD54F] animate-firefly-a pointer-events-none" style={{ animationDelay: '5s' }} />
+          <div className="absolute top-[62%] right-[40%] w-1.5 h-1.5 rounded-full bg-[#FFD54F] shadow-[0_0_9px_#FFCA28] animate-firefly-b pointer-events-none" style={{ animationDelay: '1.8s' }} />
+        </div>
 
-              {/* Main Headline strictly broken into TWO balanced lines */}
-              <h2
-                className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[3.15rem] font-bold text-[#FAF7F0] leading-[1.18] tracking-tight mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]"
-                style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+        {/* Foreground Storybook Content: Aligned inside max-w-7xl global grid */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-24 flex flex-col justify-center">
+          <div className="w-full md:w-[48%] lg:w-[42%] xl:w-[38%] max-w-[460px] flex flex-col items-start text-left">
+            
+            {/* Eyebrow badge with compact, refined spacing */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E172E]/70 border border-[#E5C158]/40 backdrop-blur-md shadow-sm mb-4 sm:mb-5">
+              <span className="text-[#E5C158] text-xs leading-none">✨</span>
+              <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#E5C158]">
+                The Horizon Awaits
+              </span>
+            </div>
+
+            {/* Main Headline strictly broken into TWO balanced lines */}
+            <h2
+              className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[3.15rem] font-bold text-[#FAF7F0] leading-[1.18] tracking-tight mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]"
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif" }}
+            >
+              <span className="block">Every universe starts</span>
+              <span className="block text-[#FAF7F0]">with a little wonder.</span>
+            </h2>
+
+            {/* Supporting Line: Concise, compact and easy to read */}
+            <p className="text-xs sm:text-[15px] lg:text-base text-[#FAF7F0]/90 leading-[1.65] font-sans max-w-sm sm:max-w-md mb-6 sm:mb-7 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+              Your next adventure is waiting. Discover the friends, stories, and magical worlds of Zanarra.
+            </p>
+
+            {/* Two Clear Calls to Action */}
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5">
+              <Link
+                to="/universe"
+                className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FAF7F0] via-[#FFF9ED] to-[#F3E5C8] text-[#17233A] font-bold text-xs sm:text-sm tracking-wide shadow-[0_8px_24px_rgba(235,210,160,0.35)] hover:shadow-[0_12px_32px_rgba(235,210,160,0.55)] hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#C7A451] focus:ring-offset-2 focus:ring-offset-[#17233A] transition-all duration-200"
               >
-                <span className="block">Every universe starts</span>
-                <span className="block text-[#FAF7F0]">with a little wonder.</span>
-              </h2>
+                <span>Explore the Universe</span>
+                <ArrowRight className="w-4 h-4 text-[#17233A] group-hover:translate-x-1 transition-transform" />
+              </Link>
 
-              {/* Supporting Line: Concise, compact and easy to read */}
-              <p className="text-xs sm:text-[15px] lg:text-base text-[#FAF7F0]/90 leading-[1.65] font-sans max-w-sm sm:max-w-md mb-6 sm:mb-7 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
-                Your next adventure is waiting. Discover the friends, stories, and magical worlds of Zanarra.
-              </p>
-
-              {/* Two Clear Calls to Action */}
-              <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5">
-                <Link
-                  to="/universe"
-                  className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FAF7F0] via-[#FFF9ED] to-[#F3E5C8] text-[#17233A] font-bold text-xs sm:text-sm tracking-wide shadow-[0_8px_24px_rgba(235,210,160,0.35)] hover:shadow-[0_12px_32px_rgba(235,210,160,0.55)] hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#C7A451] focus:ring-offset-2 focus:ring-offset-[#17233A] transition-all duration-200"
-                >
-                  <span>Explore the Universe</span>
-                  <ArrowRight className="w-4 h-4 text-[#17233A] group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF7F0] border border-white/25 hover:border-white/40 font-bold text-xs sm:text-sm tracking-wide backdrop-blur-md shadow-sm active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#FAF7F0] focus:ring-offset-2 focus:ring-offset-[#17233A] transition-all duration-200"
-                >
-                  Get in Touch
-                </Link>
-              </div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF7F0] border border-white/25 hover:border-white/40 font-bold text-xs sm:text-sm tracking-wide backdrop-blur-md shadow-sm active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#FAF7F0] focus:ring-offset-2 focus:ring-offset-[#17233A] transition-all duration-200"
+              >
+                Get in Touch
+              </Link>
             </div>
           </div>
         </div>
