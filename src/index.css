@@ -197,3 +197,19 @@
     animation: none !important;
   }
 }
+
+/* Floating badge cards (used in BusinessPage hero) */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="animation"] {
+    animation: none !important;
+  }
+}
