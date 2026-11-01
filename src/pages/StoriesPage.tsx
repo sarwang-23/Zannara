@@ -172,7 +172,7 @@ export const StoriesPage: React.FC = () => {
   return (
     <div className="bg-[#FAF7F0] min-h-screen text-[#17233A]">
       {/* ── MAIN CONTENT CONTAINER (Matched precisely to Global Max-Width 1240px Grid) ── */}
-      <div className="pt-28 sm:pt-32 pb-16 sm:pb-20 max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
+      <div className="pt-6 sm:pt-8 pb-16 sm:pb-20 max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
         
         {/* ── 1. COMPACT MAGICAL STORYBOOK HERO ───────────────────────── */}
         <section className="relative w-full rounded-3xl bg-gradient-to-r from-white/95 via-[#FAF5EC]/95 to-[#F4ECE0]/95 border border-[#EBDCC8] shadow-[0_4px_24px_rgba(23,35,58,0.06)] p-6 sm:p-8 lg:p-9 mb-7 sm:mb-8 overflow-hidden">

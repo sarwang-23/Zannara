@@ -76,11 +76,11 @@ export const CharactersPage: React.FC = () => {
     <div className="min-h-screen bg-[#FAF7F0]">
 
       {/* ═══ SECTION 1 · MAGICAL HEADER + FILTERS ═══════════════════════ */}
-      <section className="relative pt-28 sm:pt-32 pb-10 sm:pb-14 overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[380px] opacity-55"
+      <section className="relative pt-6 sm:pt-8 pb-8 sm:pb-12 overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[320px] opacity-55"
           style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, #EDD89A44 0%, transparent 75%)' }} />
-        <span aria-hidden className="pointer-events-none absolute top-32 left-[9%] text-[#C7A451] text-lg opacity-65 animate-pulse">✦</span>
-        <span aria-hidden className="pointer-events-none absolute top-28 right-[7%] text-[#E5C158] text-sm opacity-55 animate-pulse" style={{ animationDelay: '0.8s' }}>✨</span>
+        <span aria-hidden className="pointer-events-none absolute top-14 left-[9%] text-[#C7A451] text-lg opacity-65 animate-pulse">✦</span>
+        <span aria-hidden className="pointer-events-none absolute top-12 right-[7%] text-[#E5C158] text-sm opacity-55 animate-pulse" style={{ animationDelay: '0.8s' }}>✨</span>
         <span aria-hidden className="pointer-events-none absolute bottom-8 left-[5%] text-[#0284C7] text-xs opacity-35 animate-pulse" style={{ animationDelay: '1.5s' }}>✧</span>
         <span aria-hidden className="pointer-events-none absolute bottom-6 right-[4%] text-[#C7A451] text-base opacity-50 animate-pulse" style={{ animationDelay: '0.4s' }}>✦</span>
 

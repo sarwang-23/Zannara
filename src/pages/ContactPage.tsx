@@ -79,7 +79,7 @@ export const ContactPage: React.FC = () => {
   const currentPathwayObj = pathways.find(p => p.id === selectedPathway) || pathways[0];
 
   return (
-    <div className="pt-32 pb-24 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-8 sm:pt-10 pb-20 space-y-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Page Header */}
       <section className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#C7A451]/30 text-[#C7A451] text-xs font-bold uppercase tracking-wider">
