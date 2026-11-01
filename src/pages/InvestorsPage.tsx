@@ -1,209 +1,131 @@
 import React, { useState } from 'react';
+import { InvestorHero } from '../components/investors/InvestorHero';
+import { ThesisPillars } from '../components/investors/ThesisPillars';
 import { FinancialChart } from '../components/investors/FinancialChart';
+import { CommercialRoadmap } from '../components/investors/CommercialRoadmap';
+import { FranchiseHorizons } from '../components/investors/FranchiseHorizons';
 import { InvestorEnquiryModal } from '../components/forms/InvestorEnquiryModal';
-import { INVESTMENT_THESIS_CARDS, FIVE_PHASES } from '../data/brandData';
-import { TrendingUp, ShieldAlert, FileText, ArrowRight, CheckCircle2, Lock, Sparkles, Building2 } from 'lucide-react';
+import { ArrowRight, Lock, Building2 } from 'lucide-react';
 
 export const InvestorsPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="pt-32 pb-24 space-y-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* SECTION A: INVESTMENT THESIS */}
-      <section className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#C7A451]/30 text-[#C7A451] text-xs font-bold uppercase tracking-wider">
-          <TrendingUp className="w-3.5 h-3.5" /> Institutional Overview
+    <div className="w-full min-h-screen bg-[#FAF7F0] overflow-x-hidden flex flex-col">
+      {/* ── SECTION A: MASTER HERO (INVESTOR RECREATION) ── */}
+      <InvestorHero onRequestPresentation={() => setIsModalOpen(true)} />
+
+      {/* ── MAIN INSTITUTIONAL INVESTOR CONTENT ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 space-y-20 lg:space-y-28 w-full">
+        
+        {/* ── SECTION 1: WHY THIS BUSINESS (Strategic Hypotheses & Edge) ── */}
+        <ThesisPillars />
+
+        {/* ── SECTION 2: FIVE-YEAR FINANCIAL PROJECTIONS (Base Case) ── */}
+        <section className="space-y-4">
+          <FinancialChart />
+        </section>
+
+        {/* ── SECTION 3: COMMERCIAL ROADMAP (The Path to ₹100–120 Cr) ── */}
+        <CommercialRoadmap />
+
+        {/* ── SECTION 4: MULTI-GENERATIONAL HORIZONS (Franchise Ecosystem) ── */}
+        <FranchiseHorizons />
+
+        {/* ── SECTION 5: CINEMATIC INVESTOR FINALE CTA (FULL-WIDTH PANORAMIC) ── */}
+      </div>
+
+      {/* Full-bleed cinematic CTA — outside the max-w-7xl container so it spans edge-to-edge */}
+      <section className="relative w-full overflow-hidden bg-[#0B1224] border-t border-[#C58B39]/30 min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] flex items-center">
+
+        {/* Background Artwork: Investor Hero Panoramic (characters on glowing storybook + celestial globe) */}
+        <div className="absolute inset-0 z-0">
+          <picture>
+            <source srcSet="/investor-hero-panoramic.webp" type="image/webp" />
+            <img
+              src="/investor-hero-panoramic.png"
+              alt="Zanarra character universe — Momo, Tobo, Dodi, Chiku pointing towards the celestial horizon"
+              className="w-full h-full object-cover object-[68%_center] lg:object-[75%_center] select-none pointer-events-none"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+
+          {/* Desktop: strong left-to-centre gradient so text pops cleanly */}
+          <div
+            className="hidden md:block absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, rgba(9,14,36,0.96) 0%, rgba(9,14,36,0.82) 28%, rgba(9,14,36,0.45) 48%, rgba(9,14,36,0.10) 62%, transparent 75%)'
+            }}
+          />
+
+          {/* Mobile: top-to-bottom gradient */}
+          <div
+            className="md:hidden absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(9,14,36,0.94) 0%, rgba(9,14,36,0.72) 35%, rgba(9,14,36,0.20) 55%, transparent 72%)'
+            }}
+          />
+
+          {/* Subtle warm gold ambient radiance behind the characters */}
+          <div className="absolute top-1/2 right-[30%] -translate-y-1/2 w-80 h-80 rounded-full bg-[#C58B39]/12 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-4 left-[40%] w-[28%] h-24 rounded-full bg-[#C58B39]/08 blur-2xl pointer-events-none" />
+
+          {/* Delicate twinkling accent stars */}
+          <div className="absolute top-10 left-[14%] w-1.5 h-1.5 rounded-full bg-white/80 shadow-[0_0_8px_#fff] animate-pulse pointer-events-none" style={{ animationDuration: '3.2s' }} />
+          <div className="absolute top-20 left-[28%] w-1 h-1 rounded-full bg-[#D4AF37]/90 shadow-[0_0_6px_#D4AF37] animate-pulse pointer-events-none" style={{ animationDuration: '5s' }} />
+          <div className="absolute top-14 right-[38%] w-1.5 h-1.5 rounded-full bg-white/70 shadow-[0_0_8px_#fff] animate-pulse pointer-events-none" style={{ animationDuration: '4.1s' }} />
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#17233A] leading-tight">
-          Building a global children's IP company from India.
-        </h1>
+        {/* Foreground Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-24 flex flex-col justify-center">
+          <div className="w-full md:w-[52%] lg:w-[46%] xl:w-[42%] max-w-[520px] flex flex-col items-start text-left">
 
-        <p className="text-base sm:text-lg text-[#17233A]/80 leading-relaxed max-w-2xl mx-auto">
-          Zanarra combines original character creation, AI-assisted production and localisation, audience development and a diversified IP monetisation strategy.
-        </p>
-
-        <p className="text-xs sm:text-sm text-gray-500 italic max-w-xl mx-auto">
-          "Our ambition is to build a portfolio of enduring characters and interconnected worlds that can scale across formats, markets and generations."
-        </p>
-
-        <div className="pt-2">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="px-8 py-3.5 rounded-full bg-[#17233A] text-white font-bold text-xs hover:bg-[#2A3F66] transition-all shadow-md inline-flex items-center gap-2"
-          >
-            <Lock className="w-3.5 h-3.5 text-[#C7A451]" />
-            <span>Request Confidential Investor Presentation</span>
-          </button>
-        </div>
-      </section>
-
-      {/* SECTION B: WHY THIS BUSINESS (5 Thesis Cards) */}
-      <section className="space-y-6">
-        <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
-            Strategic Hypotheses & Edge
-          </span>
-          <h2 className="font-serif text-3xl font-bold text-[#17233A]">
-            Why This Business
-          </h2>
-          <p className="text-sm text-[#17233A]/70 mt-1">
-            Five core thesis pillars that underpin the long-term compounding economics of Zanarra.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {INVESTMENT_THESIS_CARDS.map((card, idx) => (
-            <div
-              key={card.num}
-              className={`bg-white rounded-3xl border border-[#C7A451]/25 p-6 sm:p-8 flex flex-col justify-between hover:shadow-lg transition-all ${
-                idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''
-              }`}
-            >
-              <div>
-                <span className="text-xs font-bold text-[#C7A451] tracking-widest block mb-2">
-                  THESIS {card.num}
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-[#17233A] mb-2">
-                  {card.title}
-                </h3>
-                <p className="text-xs font-bold text-[#17233A]/80 mb-3">
-                  {card.summary}
-                </p>
-                <p className="text-xs text-[#17233A]/75 leading-relaxed">
-                  {card.detail}
-                </p>
-              </div>
-
-              <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400">
-                <span>Strategic Hypothesis</span>
-                <span className="font-bold text-[#17233A]">Zanarra Edge</span>
-              </div>
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E172E]/70 border border-[#C58B39]/50 backdrop-blur-md shadow-sm mb-4 sm:mb-5">
+              <Building2 className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#D4AF37]">
+                Capital &amp; Strategic Partnership
+              </span>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* SECTION C: FIVE-YEAR FINANCIAL AMBITION CHART */}
-      <section className="space-y-6">
-        <FinancialChart />
-      </section>
-
-      {/* SECTION D: THE PATH TO ₹100–120 CR */}
-      <section className="bg-white rounded-3xl border border-[#C7A451]/25 p-8 sm:p-12 shadow-sm space-y-8">
-        <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
-            Commercial Roadmap
-          </span>
-          <h2 className="font-serif text-3xl font-bold text-[#17233A]">
-            The Path to ₹100–120 Cr
-          </h2>
-          <p className="text-sm text-[#17233A]/70 mt-1">
-            Structured in five sequential milestones to expand from proof-of-concept into a multi-channel franchise powerhouse.
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          {FIVE_PHASES.map((p, idx) => (
-            <div
-              key={p.phase}
-              className="p-5 rounded-2xl bg-[#FAF7F0] border border-gray-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+            {/* Main Headline */}
+            <h2
+              className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] font-bold text-[#FAF7F0] leading-[1.14] tracking-tight mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]"
+              style={{ fontFamily: "'Playfair Display', 'DM Serif Display', Georgia, serif" }}
             >
-              <div className="flex items-start sm:items-center gap-4">
-                <span className="w-10 h-10 rounded-xl bg-[#17233A] text-white flex items-center justify-center font-bold text-xs shrink-0">
-                  0{idx + 1}
-                </span>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-bold text-[#C7A451] uppercase">{p.phase}</span>
-                    <span className="text-xs text-gray-400">•</span>
-                    <h4 className="font-bold text-sm sm:text-base text-[#17233A]">{p.name}</h4>
-                  </div>
-                  <p className="text-xs text-[#17233A]/75 mt-0.5">{p.focus}</p>
-                </div>
-              </div>
-
-              <div className="text-right shrink-0">
-                <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-600">
-                  {idx === 0 ? 'Active Phase' : 'Planned Roadblock'}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2 text-xs text-gray-500 italic pt-2">
-          <ShieldAlert className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-          <span>Notice: Phases 2 through 5 are staged milestone targets and are not represented as completed.</span>
-        </div>
-      </section>
-
-      {/* SECTION E: LONG-TERM AMBITION */}
-      <section className="bg-[#FAF7F0] rounded-3xl border border-[#C7A451]/25 p-8 sm:p-12 shadow-sm space-y-6">
-        <div className="max-w-3xl space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451]">
-            Multi-Generational Horizons
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#17233A]">
-            From original characters to enduring global franchises.
-          </h2>
-          <p className="text-sm text-[#17233A]/85 leading-relaxed">
-            In the global entertainment and toy industry, authentic character affinity creates durable, decade-long cash flows. As Zanarra scales from the trio of Momo, Tobo, and Dodi across publishing, games, educational partnerships, and global animation licensing, the potential pathway points toward an institution valued at ₹1,000 Cr-plus.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-gray-200">
-          <div className="p-4 rounded-xl bg-white border border-gray-200">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block">Multiple Drivers</span>
-            <span className="font-bold text-sm text-[#17233A] mt-1 block">IP Compounding & Global Licensing</span>
-            <span className="text-[11px] text-gray-500 mt-0.5 block">High recurring margin profile</span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-white border border-gray-200">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block">Capital Efficiency</span>
-            <span className="font-bold text-sm text-[#17233A] mt-1 block">AI-Assisted Production Velocity</span>
-            <span className="text-[11px] text-gray-500 mt-0.5 block">Lower fixed studio overheads</span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-white border border-gray-200">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block">Market Size</span>
-            <span className="font-bold text-sm text-[#17233A] mt-1 block">$100B+ Global Kids Licensing</span>
-            <span className="text-[11px] text-gray-500 mt-0.5 block">Massive international headroom</span>
-          </div>
-        </div>
-
-        <p className="text-xs text-amber-900/80 italic bg-amber-50 p-3 rounded-xl border border-amber-200/60 leading-relaxed">
-          *Important Valuation Disclosure: The ₹1,000 Cr valuation ambition represents a long-term strategic objective, not a guaranteed outcome. Realized valuation will depend upon future audited revenues, operating margins, market appetite, and prevailing valuation multiples at that time.
-        </p>
-      </section>
-
-      {/* SECTION F: INVESTOR CTA */}
-      <section className="bg-[#17233A] text-white rounded-3xl p-8 sm:p-14 shadow-xl border border-[#C7A451]/30">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451]">
-              Capital & Growth Partnership
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold">
-              Interested in building Zanarra with us?
+              <span className="block">Interested in building</span>
+              <span className="block text-[#D4AF37]">Zanarra with us?</span>
             </h2>
-            <p className="text-sm text-gray-300 max-w-xl leading-relaxed">
-              We welcome conversations with investors who bring more than capital — including distribution, retail, media, education and international market access.
-            </p>
-          </div>
 
-          <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="px-8 py-3.5 rounded-full bg-[#C7A451] text-[#17233A] font-bold text-xs hover:bg-[#b89543] transition-all shadow-md flex items-center gap-2"
-            >
-              <span>Request Investor Information</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {/* Supporting Body */}
+            <p className="text-[#FAF7F0]/85 text-[15px] sm:text-[16px] leading-[1.68] max-w-[480px] mb-7 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+              We welcome conversations with institutional investors and strategic partners who bring more than capital — including broadcast distribution, retail manufacturing, global media syndication, and international market access.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FAF7F0] via-[#FFF8EC] to-[#D4AF37] text-[#0B1B36] font-bold text-sm tracking-wide shadow-[0_8px_24px_rgba(212,175,55,0.30)] hover:shadow-[0_12px_32px_rgba(212,175,55,0.50)] hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer"
+              >
+                <Lock className="w-4 h-4 text-[#0B1B36]" strokeWidth={2.2} />
+                <span>Request Investor Presentation</span>
+                <ArrowRight className="w-4 h-4 text-[#0B1B36] group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <span className="text-[12px] text-[#FAF7F0]/55 italic sm:self-center sm:pl-1">
+                Confidential overview &amp; audited deck
+              </span>
+            </div>
+
           </div>
         </div>
       </section>
 
+
+
+      {/* ── INVESTOR ENQUIRY MODAL ── */}
       <InvestorEnquiryModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
