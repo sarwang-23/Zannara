@@ -104,13 +104,28 @@ export const ZanarraLogo: React.FC<LogoProps> = ({
         </div>
       </div>
 
-      {/* Official ZANARRA Wordmark */}
+      {/* Official ZANARRA Wordmark + Tagline */}
       <div className="flex flex-col justify-center">
         <img
           src={isLight ? '/zanarra-text-light.png' : '/zanarra-text-transparent.png'}
           alt="Zanarra"
           className={`w-auto object-contain object-left transition-all duration-300 drop-shadow-[0_1.5px_3px_rgba(23,35,58,0.12)] group-hover:drop-shadow-[0_3px_12px_rgba(199,164,81,0.35)] group-hover:brightness-[1.06] ${textHeightClasses[size]}`}
         />
+        {showTagline && (
+          <div
+            className={`flex items-center gap-1 sm:gap-1.5 mt-0.5 font-medium tracking-[0.06em] sm:tracking-[0.1em] leading-none select-none ${
+              size === 'sm' ? 'text-[8px]' : size === 'lg' ? 'text-[9.5px] sm:text-[10.5px]' : 'text-[8.5px] sm:text-[9.5px]'
+            } ${isLight ? 'text-[#FAF7F0]/85' : 'text-[#17233A]/75'}`}
+          >
+            <span>Dream</span>
+            <span className="text-[#F59E0B] font-black text-[8px] sm:text-[9px]">•</span>
+            <span>Play</span>
+            <span className="text-[#14B8A6] font-black text-[8px] sm:text-[9px]">•</span>
+            <span>Explore</span>
+            <span className="text-[#A855F7] font-black text-[8px] sm:text-[9px]">•</span>
+            <span>Together</span>
+          </div>
+        )}
       </div>
     </Link>
   );

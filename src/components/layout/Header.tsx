@@ -105,10 +105,23 @@ export const Header: React.FC = () => {
                     src="/zanarra-text-transparent.png"
                     alt="Zanarra — Dream • Play • Explore • Together"
                     className={`w-auto object-contain object-left transition-all duration-300 drop-shadow-[0_1.5px_3px_rgba(23,35,58,0.12)] group-hover:drop-shadow-[0_3px_12px_rgba(199,164,81,0.35)] group-hover:brightness-[1.06] ${
-                      isScrolled ? 'h-[26px] sm:h-[28px]' : 'h-[30px] sm:h-[34px]'
+                      isScrolled ? 'h-[22px] sm:h-[25px]' : 'h-[26px] sm:h-[29px]'
                     }`}
                     draggable={false}
                   />
+                  <div
+                    className={`flex items-center gap-1 sm:gap-1.5 mt-0.5 tracking-[0.06em] sm:tracking-[0.1em] font-medium leading-none select-none text-[#17233A]/75 ${
+                      isScrolled ? 'text-[7.5px] sm:text-[8.5px]' : 'text-[8.5px] sm:text-[9.5px]'
+                    }`}
+                  >
+                    <span>Dream</span>
+                    <span className="text-[#F59E0B] font-black text-[8px] sm:text-[9px]">•</span>
+                    <span>Play</span>
+                    <span className="text-[#14B8A6] font-black text-[8px] sm:text-[9px]">•</span>
+                    <span>Explore</span>
+                    <span className="text-[#A855F7] font-black text-[8px] sm:text-[9px]">•</span>
+                    <span>Together</span>
+                  </div>
                 </div>
               </Link>
             </div>
