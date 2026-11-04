@@ -206,10 +206,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'We Create the IP. We Build the Audience. We Scale the Universe. | Zanarra Business',
     description: 'Zanarra is an original children’s entertainment and intellectual property studio building globally scalable franchises. From original character lore to episodic animation, publishing, music, merchandise, and territorial licensing.',
     canonicalPath: '/business',
-    image: '/business-hero-storyworld.jpg',
+    image: '/business-hero-clean.jpg',
     imageAlt: 'Zanarra franchise business model showing character universe, open book, and global entertainment horizons',
-    imageWidth: 1024,
-    imageHeight: 576,
+    imageWidth: 2752,
+    imageHeight: 1536,
     type: 'website',
     keywords: [
       'Zanarra business model',

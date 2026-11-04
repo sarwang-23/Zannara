@@ -115,5 +115,36 @@ export const SEO: React.FC<SEOProps> = ({ pageConfig, ...customProps }) => {
     merged.jsonLd,
   ]);
 
-  return null;
+  const fullCanonicalUrl = `${SITE_URL}${merged.canonicalPath}`;
+  const fullImageUrl = merged.image.startsWith('http') ? merged.image : `${SITE_URL}${merged.image}`;
+
+  return (
+    <>
+      <title>{merged.title}</title>
+      <meta name="description" content={merged.description} />
+      <meta name="keywords" content={merged.keywords.join(', ')} />
+      <meta name="author" content="Zanarra Studios" />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <link rel="canonical" href={fullCanonicalUrl} />
+
+      {/* Open Graph Tags */}
+      <meta property="og:title" content={merged.title} />
+      <meta property="og:description" content={merged.description} />
+      <meta property="og:url" content={fullCanonicalUrl} />
+      <meta property="og:type" content={merged.type ?? 'website'} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:image" content={fullImageUrl} />
+      <meta property="og:image:alt" content={merged.imageAlt} />
+
+      {/* Twitter Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={TWITTER_HANDLE} />
+      <meta name="twitter:creator" content={TWITTER_HANDLE} />
+      <meta name="twitter:title" content={merged.title} />
+      <meta name="twitter:description" content={merged.description} />
+      <meta name="twitter:image" content={fullImageUrl} />
+      <meta name="twitter:image:alt" content={merged.imageAlt} />
+    </>
+  );
 };

@@ -25,7 +25,7 @@ export const BusinessPage: React.FC = () => {
       <BusinessHero />
 
       {/* ── EXECUTIVE CREDENTIALS & METRICS RIBBON ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-7 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 md:-mt-6 lg:-mt-7 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#C7A451]/30 p-4 sm:p-5 shadow-[0_8px_30px_rgba(23,35,58,0.08)]">
           <div className="flex items-center gap-3.5 px-2">
             <div className="w-11 h-11 rounded-xl bg-[#FAF5E8] border border-[#E0CE9F] flex items-center justify-center font-serif text-xl font-bold text-[#17233A] shrink-0">

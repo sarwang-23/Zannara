@@ -150,13 +150,13 @@ export const InvestorHero: React.FC<InvestorHeroProps> = ({ onRequestPresentatio
         <div className="pt-2">
           <button
             onClick={onRequestPresentation}
-            className="w-full group inline-flex items-center justify-between px-6 py-3.5 rounded-full bg-[#0A1932] text-white font-medium text-[13.5px] hover:bg-[#122446] shadow-md border border-[#C58B39]/40 cursor-pointer"
+            className="w-full group inline-flex items-center justify-between px-4 sm:px-6 py-3.5 rounded-full bg-[#0A1932] text-white font-medium text-[12px] sm:text-[13.5px] hover:bg-[#122446] shadow-md border border-[#C58B39]/40 cursor-pointer"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               <User className="w-4 h-4 text-[#D4AF37] shrink-0" strokeWidth={2.2} />
-              <span className="tracking-wide">Request Confidential Investor Presentation</span>
+              <span className="tracking-wide truncate">Request Confidential Investor Presentation</span>
             </div>
-            <ChevronRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform shrink-0" strokeWidth={2.4} />
+            <ChevronRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform shrink-0 ml-2" strokeWidth={2.4} />
           </button>
         </div>
 

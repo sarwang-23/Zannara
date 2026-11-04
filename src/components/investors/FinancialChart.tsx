@@ -280,16 +280,16 @@ export const FinancialChart: React.FC = () => {
           <div className="rounded-2xl bg-white border border-[#E3D6C1] shadow-[0_6px_24px_rgba(11,27,54,0.04)] overflow-hidden">
             
             {/* Chart Sub-Header */}
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#EDE3D2] bg-[#FAF7F0]/60">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-3 sm:px-5 py-3.5 border-b border-[#EDE3D2] bg-[#FAF7F0]/60">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#0B1B36]" />
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#0B1B36]">
+                <span className="text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B1B36]">
                   5-Year Revenue Trajectory (₹ Cr)
                 </span>
               </div>
 
               {/* Legend */}
-              <div className="flex items-center gap-3 text-[10.5px]">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-[10.5px]">
                 <span className="flex items-center gap-1.5 text-[#5C6E85] font-semibold">
                   <span className="w-2.5 h-2.5 rounded-xs bg-[#0B1B36]" />
                   Base Scale
@@ -306,10 +306,10 @@ export const FinancialChart: React.FC = () => {
             </div>
 
             {/* Chart Canvas Area */}
-            <div className="px-5 pt-6 pb-4">
+            <div className="px-2.5 sm:px-5 pt-6 pb-4">
 
               {/* Revenue Numbers Above Bars */}
-              <div className="flex gap-2 sm:gap-3 mb-3">
+              <div className="flex gap-1.5 sm:gap-3 mb-3">
                 {strategicMilestones.map((item, i) => {
                   const isSelected = selectedBar === i;
                   const isTarget   = item.type === 'target';
@@ -326,7 +326,7 @@ export const FinancialChart: React.FC = () => {
 
                   return (
                     <div key={item.year} className="flex-1 flex justify-center">
-                      <span className={`inline-block text-[10px] sm:text-[11px] px-2 py-0.5 rounded-md border transition-all whitespace-nowrap ${badgeStyle}`}>
+                      <span className={`inline-block text-[9px] sm:text-[11px] px-1 sm:px-2 py-0.5 rounded-md border transition-all whitespace-nowrap ${badgeStyle}`}>
                         {item.label}
                       </span>
                     </div>
@@ -335,7 +335,7 @@ export const FinancialChart: React.FC = () => {
               </div>
 
               {/* Bar Canvas — Fixed Height */}
-              <div className="relative flex items-end gap-2 sm:gap-3" style={{ height: `${CHART_H}px` }}>
+              <div className="relative flex items-end gap-1.5 sm:gap-3" style={{ height: `${CHART_H}px` }}>
 
                 {/* Horizontal Guide Gridlines */}
                 <div className="absolute inset-0 pointer-events-none">
@@ -418,7 +418,7 @@ export const FinancialChart: React.FC = () => {
               </div>
 
               {/* X-Axis Labels */}
-              <div className="flex gap-2 sm:gap-3 mt-3 pt-3 border-t border-[#EDE3D2]">
+              <div className="flex gap-1.5 sm:gap-3 mt-3 pt-3 border-t border-[#EDE3D2]">
                 {strategicMilestones.map((item, idx) => (
                   <div
                     key={item.year}
@@ -426,7 +426,7 @@ export const FinancialChart: React.FC = () => {
                     className="flex-1 text-center cursor-pointer transition-transform hover:scale-105"
                   >
                     <span
-                      className={`text-[11px] font-bold block ${
+                      className={`text-[10px] sm:text-[11px] font-bold block ${
                         selectedBar === idx
                           ? 'text-[#0B1B36]'
                           : 'text-[#64748B] hover:text-[#0B1B36]'
@@ -434,7 +434,7 @@ export const FinancialChart: React.FC = () => {
                     >
                       {item.year}
                     </span>
-                    <span className="text-[9px] text-[#8C9AA9] font-medium block leading-tight truncate">
+                    <span className="text-[8.5px] sm:text-[9px] text-[#8C9AA9] font-medium block leading-tight truncate">
                       {item.phase}
                     </span>
                   </div>

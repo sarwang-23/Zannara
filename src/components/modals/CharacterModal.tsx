@@ -195,10 +195,10 @@ export const CharacterModal: React.FC<CharacterModalProps> = ({
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="flex border-b border-gray-100 bg-[#FAF7F0]/60 px-6 pt-3 gap-2">
+        <div className="flex border-b border-gray-100 bg-[#FAF7F0]/60 px-3 sm:px-6 pt-3 gap-0 overflow-x-auto scrollbar-none">
           <button
             onClick={() => setActiveTab('story')}
-            className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 transition-all ${
+            className={`pb-3 px-3 sm:px-4 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 whitespace-nowrap ${
               activeTab === 'story'
                 ? 'border-[#17233A] text-[#17233A]'
                 : 'border-transparent text-gray-500 hover:text-[#17233A]'
@@ -208,17 +208,17 @@ export const CharacterModal: React.FC<CharacterModalProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('inventions')}
-            className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 transition-all ${
+            className={`pb-3 px-3 sm:px-4 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 whitespace-nowrap ${
               activeTab === 'inventions'
                 ? 'border-[#17233A] text-[#17233A]'
                 : 'border-transparent text-gray-500 hover:text-[#17233A]'
             }`}
           >
-            Signature Gear & Tools
+            Signature Gear
           </button>
           <button
             onClick={() => setActiveTab('qa')}
-            className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 transition-all ${
+            className={`pb-3 px-3 sm:px-4 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 whitespace-nowrap ${
               activeTab === 'qa'
                 ? 'border-[#17233A] text-[#17233A]'
                 : 'border-transparent text-gray-500 hover:text-[#17233A]'
@@ -229,7 +229,7 @@ export const CharacterModal: React.FC<CharacterModalProps> = ({
         </div>
 
         {/* Modal Body Content */}
-        <div className="p-6 sm:p-8 space-y-6 max-h-[50vh] overflow-y-auto">
+        <div className="p-4 sm:p-8 space-y-6 max-h-[45vh] sm:max-h-[50vh] overflow-y-auto">
           {activeTab === 'story' && (
             <div className="space-y-4">
               <div>

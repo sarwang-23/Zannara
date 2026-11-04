@@ -302,19 +302,19 @@ export const BusinessHero: React.FC<BusinessHeroProps> = ({ onDiscoverBusiness }
         </p>
 
         {/* Mobile Capability Badges Strip (Scrollable / Compact) */}
-        <div className="bg-[#FAF4E6] border border-[#E0CE9F] rounded-2xl p-2.5 grid grid-cols-5 gap-1 shadow-2xs">
+        <div className="bg-[#FAF4E6] border border-[#E0CE9F] rounded-2xl p-2 sm:p-2.5 grid grid-cols-5 gap-1 shadow-2xs">
           {capabilities.map((cap) => {
             const Icon = cap.icon;
             return (
-              <div key={cap.id} className="flex flex-col items-center text-center">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-b from-[#F9EED4] to-[#E9D19E] border border-[#DDBF7E]/70 flex items-center justify-center text-[#7A5016]">
+              <div key={cap.id} className="flex flex-col items-center text-center min-w-0">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#F9EED4] to-[#E9D19E] border border-[#DDBF7E]/70 flex items-center justify-center text-[#7A5016] shrink-0">
                   <Icon
-                    className="w-3.5 h-3.5 text-[#7A5016]"
+                    className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#7A5016]"
                     strokeWidth={2.2}
                     fill={cap.iconFill ? '#7A5016' : 'none'}
                   />
                 </div>
-                <span className="text-[9.5px] font-bold text-[#17233A] tracking-tight mt-1 leading-tight">
+                <span className="text-[8px] sm:text-[9.5px] font-bold text-[#17233A] tracking-tight mt-1 leading-tight break-words">
                   {cap.label}
                 </span>
               </div>

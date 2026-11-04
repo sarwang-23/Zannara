@@ -110,7 +110,7 @@ export const RealmModal: React.FC<RealmModalProps> = ({
         </div>
 
         {/* Realm Body Content */}
-        <div className="p-6 sm:p-8 space-y-6 max-h-[55vh] overflow-y-auto">
+        <div className="p-4 sm:p-8 space-y-5 sm:space-y-6 max-h-[45vh] sm:max-h-[55vh] overflow-y-auto">
           {/* Landscape and World Lore */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#C7A451] mb-1.5">

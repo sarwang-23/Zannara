@@ -34,6 +34,8 @@ function ScrollToTop() {
 function NotFound() {
   return (
     <div className="pt-40 pb-32 text-center max-w-xl mx-auto px-4">
+      <title>404 — Realm Not Found | Zanarra</title>
+      <meta name="robots" content="noindex, nofollow" />
       <span className="text-xs font-bold uppercase tracking-widest text-[#C7A451] block mb-2">
         Realm Exploration Detour
       </span>

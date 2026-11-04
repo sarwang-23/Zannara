@@ -179,7 +179,7 @@ export const BusinessFlywheel: React.FC = () => {
         </div>
 
         {/* Stepper & Auto-play controls */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={() => setIsAutoPlaying(!isAutoPlaying)}
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all border ${
@@ -288,7 +288,7 @@ export const BusinessFlywheel: React.FC = () => {
 
             {/* Central Hub Core */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-36 h-36 rounded-full bg-[#FAF7F0] border border-[#C7A451]/40 shadow-inner flex flex-col items-center justify-center text-center p-3 z-10">
+              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#FAF7F0] border border-[#C7A451]/40 shadow-inner flex flex-col items-center justify-center text-center p-2 sm:p-3 z-10">
                 <span className="w-2 h-2 rounded-full bg-[#C7A451] animate-ping mb-1" />
                 <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#C7A451]">
                   Core Engine
@@ -321,8 +321,8 @@ export const BusinessFlywheel: React.FC = () => {
                   }}
                   className={`group absolute -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center transition-all duration-300 z-20 ${
                     isActive
-                      ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[#17233A] text-white shadow-xl scale-110 ring-4 ring-[#C7A451]/60'
-                      : 'w-11 h-11 sm:w-12 sm:h-12 bg-white text-[#17233A] hover:bg-[#FAF7F0] border border-[#E8DEC9] hover:border-[#C7A451] shadow-md hover:scale-105'
+                      ? 'w-12 h-12 sm:w-16 sm:h-16 bg-[#17233A] text-white shadow-xl scale-110 ring-2 sm:ring-4 ring-[#C7A451]/60'
+                      : 'w-9 h-9 sm:w-12 sm:h-12 bg-white text-[#17233A] hover:bg-[#FAF7F0] border border-[#E8DEC9] hover:border-[#C7A451] shadow-md hover:scale-105'
                   }`}
                   style={{
                     left: `${leftPercent}%`,
