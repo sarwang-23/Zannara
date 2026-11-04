@@ -81,42 +81,6 @@ export const BusinessHero: React.FC<BusinessHeroProps> = ({ onDiscoverBusiness }
       <div className="hidden md:flex relative z-10 w-full pl-8 sm:pl-12 lg:pl-20 xl:pl-28 pr-6 py-8 md:min-h-[calc(100vh-72px)] items-center">
         <div className="w-[48%] lg:w-[44%] xl:w-[42%] max-w-[560px] flex flex-col justify-center text-left my-auto">
           
-          {/* Logo Lockup: Golden Shooting Star + ZANARRA */}
-          <div className="flex items-center gap-3 mb-4 lg:mb-5 select-none">
-            <svg
-              viewBox="0 0 85 52"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-11 h-8 shrink-0 drop-shadow-[0_2px_4px_rgba(180,130,40,0.35)]"
-            >
-              <defs>
-                <linearGradient id="zanGoldGradDesk" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#F5D77F" />
-                  <stop offset="45%" stopColor="#D4A347" />
-                  <stop offset="85%" stopColor="#B37C22" />
-                  <stop offset="100%" stopColor="#8C5C12" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M 16 44 C 12 37 14 27 24 19 C 36 10 52 6 68 5 C 51 8 36 15 26 24 C 20 30 19 36 23 40 C 29 44 44 44 58 37 C 44 41 24 46 16 44 Z"
-                fill="url(#zanGoldGradDesk)"
-              />
-              <path
-                d="M 11 38 C 14 24 30 13 56 7 C 43 11 28 19 22 31 C 29 23 45 14 64 9 L 60 12 C 45 16 32 25 24 36 C 18 39 13 40 11 38 Z"
-                fill="url(#zanGoldGradDesk)"
-              />
-              <polygon
-                points="65,1 69,9 78,9 71,15 74,23 65,18 58,23 60,15 53,9 62,9"
-                fill="url(#zanGoldGradDesk)"
-              />
-            </svg>
-            <span
-              className="font-serif font-bold text-[#17233A] tracking-[0.24em] text-xl lg:text-2xl uppercase leading-none drop-shadow-2xs"
-              style={{ fontFamily: "'Playfair Display', 'DM Serif Display', Georgia, serif" }}
-            >
-              ZANARRA
-            </span>
-          </div>
 
           {/* Master Headline: Exactly 3 editorial lines as in reference design */}
           <h1
@@ -214,42 +178,6 @@ export const BusinessHero: React.FC<BusinessHeroProps> = ({ onDiscoverBusiness }
       {/* ── MOBILE & COMPACT TABLET STACKED LAYOUT (< md) ── */}
       <div className="md:hidden relative z-10 w-full flex flex-col bg-[#FAF6EE] pt-8 pb-10 px-5 space-y-5">
         
-        {/* Mobile Logo Lockup */}
-        <div className="flex items-center gap-2 select-none">
-          <svg
-            viewBox="0 0 85 52"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-9 h-6 shrink-0"
-          >
-            <defs>
-              <linearGradient id="zanGoldGradMob" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#F5D77F" />
-                <stop offset="45%" stopColor="#D4A347" />
-                <stop offset="85%" stopColor="#B37C22" />
-                <stop offset="100%" stopColor="#8C5C12" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 16 44 C 12 37 14 27 24 19 C 36 10 52 6 68 5 C 51 8 36 15 26 24 C 20 30 19 36 23 40 C 29 44 44 44 58 37 C 44 41 24 46 16 44 Z"
-              fill="url(#zanGoldGradMob)"
-            />
-            <path
-              d="M 11 38 C 14 24 30 13 56 7 C 43 11 28 19 22 31 C 29 23 45 14 64 9 L 60 12 C 45 16 32 25 24 36 C 18 39 13 40 11 38 Z"
-              fill="url(#zanGoldGradMob)"
-            />
-            <polygon
-              points="65,1 69,9 78,9 71,15 74,23 65,18 58,23 60,15 53,9 62,9"
-              fill="url(#zanGoldGradMob)"
-            />
-          </svg>
-          <span
-            className="font-serif font-bold text-[#17233A] tracking-[0.20em] text-lg uppercase leading-none"
-            style={{ fontFamily: "'Playfair Display', 'DM Serif Display', Georgia, serif" }}
-          >
-            ZANARRA
-          </span>
-        </div>
 
         {/* Mobile Character Universe Visual Window */}
         <div className="relative w-full rounded-2xl overflow-hidden shadow-md border border-[#E0CE9F] bg-gradient-to-b from-[#FAF5E8] to-[#F5EEDB]">
