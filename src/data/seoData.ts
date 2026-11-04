@@ -13,7 +13,7 @@ export interface SEOConfig {
 
 export const SITE_URL = 'https://zanarra.com';
 export const SITE_NAME = 'Zanarra';
-export const DEFAULT_OG_IMAGE = '/hero-panoramic-ultra.png';
+export const DEFAULT_OG_IMAGE = '/og/og-home.jpg';
 export const TWITTER_HANDLE = '@ZanarraStudio';
 
 export const PAGE_SEO: Record<string, SEOConfig> = {
@@ -21,10 +21,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Zanarra — One Universe. Infinite Stories. | Original Children’s IP & Entertainment Studio',
     description: 'Zanarra is an original children’s entertainment and intellectual property studio building globally scalable franchises from India for the world. Meet Momo, Tobo, Dodi and Chiku across animation, publishing, music, and toys.',
     canonicalPath: '/',
-    image: '/hero-panoramic-ultra.png',
+    image: '/og/og-home.jpg',
     imageAlt: 'Momo, Tobo, Dodi, and Chiku looking towards floating sky islands in the magical universe of Zanarra',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Zanarra',
@@ -83,10 +83,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'The Five Magical Realms | Explore the Zanarra Universe & Multiverse Lore',
     description: 'Journey through the five interconnected story realms of Zanarra: Terra Viva, Mechanika, Cosmara, Mythara, and Sonika. A living universe designed to nurture boundless curiosity and scientific wonder.',
     canonicalPath: '/universe',
-    image: '/world-zanarra-panorama.jpg',
+    image: '/og/og-universe.jpg',
     imageAlt: 'The enchanted panoramic landscape of Zanarra featuring floating celestial islands, the Five Realms sanctuary, and glowing storybook',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Zanarra Universe',
@@ -123,10 +123,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Meet the Characters — Momo, Tobo, Dodi & Chiku | The Zanarra Ensemble',
     description: 'Discover the original character trio and their trusty canine companion: fearless explorer Momo (age 7), clumsy inventor Tobo (age 6), deeply observant seeker Dodi (age 4), and Chiku the golden puppy.',
     canonicalPath: '/characters',
-    image: '/hero-chars-ultra.png',
+    image: '/og/og-characters.jpg',
     imageAlt: 'Official character lineup of Momo, Tobo, Dodi, and adventure puppy Chiku',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Momo the Adventurer',
@@ -178,10 +178,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Original Stories, Books & Episodic Lore | The Zanarra Storybook Library',
     description: 'Immerse in bedtime tales, picture books, and episodic digital stories from Zanarra. Discover adventures like The Cloud Catcher, The Raindance Geysers, and The River of Whispering Leaves.',
     canonicalPath: '/stories',
-    image: '/stories-hero-storybook.jpg',
+    image: '/og/og-stories.jpg',
     imageAlt: 'Enchanted glowing storybook castle library filled with illuminated adventure pages',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Zanarra stories',
@@ -206,10 +206,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'We Create the IP. We Build the Audience. We Scale the Universe. | Zanarra Business',
     description: 'Zanarra is an original children’s entertainment and intellectual property studio building globally scalable franchises. From original character lore to episodic animation, publishing, music, merchandise, and territorial licensing.',
     canonicalPath: '/business',
-    image: '/business-hero-clean.jpg',
+    image: '/og/og-business.jpg',
     imageAlt: 'Zanarra franchise business model showing character universe, open book, and global entertainment horizons',
-    imageWidth: 2752,
-    imageHeight: 1536,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Zanarra business model',
@@ -234,10 +234,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Institutional Investor Overview & IP Economics | Building Global IP from India',
     description: 'Institutional overview of Zanarra: 100% proprietary IP, 5-year commercial roadmap to ₹100–120 Cr ARR, compounding flywheel economics, and multi-generational franchise horizons.',
     canonicalPath: '/investors',
-    image: '/investor-hero-panoramic.png',
+    image: '/og/og-investors.jpg',
     imageAlt: 'Zanarra institutional presentation key art showing the world on glowing book with celestial castle',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Zanarra investors',
@@ -261,10 +261,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Global Co-Production, Syndication & Licensing Partnerships | Zanarra',
     description: 'Collaborate with Zanarra across international broadcast syndication, retail merchandise manufacturing, picture book publishing co-editions, and location-based entertainment experiences.',
     canonicalPath: '/partnerships',
-    image: '/collab-partners-storybook.jpg',
+    image: '/og/og-partnerships.jpg',
     imageAlt: 'Enchanted library gateway representing global creative co-productions and brand licensing',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Zanarra partnerships',
@@ -287,10 +287,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Our Origin, Mission & Philosophical Foundations | About Zanarra Studios',
     description: 'Learn why Zanarra exists: to build a new generation of children’s stories rooted in Indian imagination and universal heart. Explore our four pillars: Curiosity, Creativity, Connection, and Discovery.',
     canonicalPath: '/about',
-    image: '/franchise-headquarters.jpg',
+    image: '/og/og-about.jpg',
     imageAlt: 'Zanarra Studio vision and creative worldbuilding headquarters',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'About Zanarra',
@@ -313,10 +313,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     title: 'Connect With Our Creative Studio & Executive Team | Contact Zanarra',
     description: 'Reach out to Zanarra for co-production proposals, commercial licensing, press inquiries, investor relations, or early universe access.',
     canonicalPath: '/contact',
-    image: '/early-access-story-chest.jpg',
+    image: '/og/og-contact.jpg',
     imageAlt: 'Enchanted golden treasure chest of stories inviting conversation with Zanarra creators',
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1200,
+    imageHeight: 630,
     type: 'website',
     keywords: [
       'Contact Zanarra',
