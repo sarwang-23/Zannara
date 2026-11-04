@@ -1,4 +1,5 @@
 import React from 'react';
+import { BusinessHero } from '../components/business/BusinessHero';
 import { BusinessFlywheel } from '../components/business/BusinessFlywheel';
 import { REVENUE_STREAMS } from '../data/brandData';
 import {
@@ -8,283 +9,76 @@ import {
   RotateCw,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// IP Format pillars displayed as visual tags on the hero
-const IP_FORMATS = [
-  { label: 'Original Stories', icon: BookOpen, color: '#4A7C59', bg: '#F0F7F3', border: '#B8D4B4' },
-  { label: 'Music & Songs', icon: Music, color: '#E11D48', bg: '#FFF1F2', border: '#FECDD3' },
-  { label: 'Animation', icon: Film, color: '#0284C7', bg: '#F0F9FF', border: '#BAE6FD' },
-  { label: 'Merchandise', icon: Package, color: '#D97706', bg: '#FEF7EC', border: '#FCD34D' },
-  { label: 'Licensing', icon: Globe, color: '#7C3AED', bg: '#F9F5FF', border: '#DDD6FE' },
-];
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 
 export const BusinessPage: React.FC = () => {
   return (
     <div className="bg-[#FAF7F0] min-h-screen">
+      <SEO pageConfig={PAGE_SEO.business} />
 
       {/* ═══════════════════════════════════════════════════════════════════
-          PREMIUM CORPORATE IP & ENTERTAINMENT HERO
-          Left: Authoritative corporate headline, metrics, capability tags & CTAs
-          Right: Dominant studio-grade franchise key art showcasing Momo, Tobo & Dodi
+          MASTER STUDIO ENTERTAINMENT & IP HERO
+          "We create the IP. We build the audience. We scale the universe."
+          Matches reference design with panoramic character artwork & interactive capabilities
           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-24 sm:pt-28 pb-14 sm:pb-16 overflow-hidden border-b border-[#E8DEC9]">
-        {/* Subtle ambient corporate illumination */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-[480px] opacity-60"
-          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, #EDD89A38 0%, transparent 75%)' }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-24 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 bg-[#C7A451]"
-        />
+      <BusinessHero />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
-
-            {/* Left 7 Columns: Corporate Value Proposition & Credentials */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left">
-              
-              {/* Executive Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#C7A451]/40 shadow-2xs mb-4 hover:border-[#C7A451] transition-colors">
-                <span className="w-2 h-2 rounded-full bg-[#C7A451] animate-pulse" />
-                <span className="text-[#C7A451] text-[10.5px] font-black uppercase tracking-[0.24em]">
-                  Media &amp; Intellectual Property Model
-                </span>
-              </div>
-
-              {/* Master Headline */}
-              <h1
-                className="font-serif font-bold text-[#17233A] tracking-[-0.015em] mb-4"
-                style={{
-                  fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif",
-                  fontSize: 'clamp(2.4rem, 4.1vw, 3.8rem)',
-                  lineHeight: 1.08,
-                }}
-              >
-                <span className="block">We create the IP.</span>
-                <span className="block">We build the audience.</span>
-                <span className="block text-[#C7A451]">
-                  We scale the universe.
-                </span>
-              </h1>
-
-              {/* Executive Summary */}
-              <p className="text-[#17233A]/80 text-[15px] sm:text-[16px] leading-[1.65] mb-5 max-w-[560px] font-sans">
-                Zanarra is an original children's entertainment and intellectual property studio building globally scalable franchises. From original character lore to episodic animation, publishing, music, merchandise, and territorial licensing.
-              </p>
-
-              {/* IP Capabilities Pills */}
-              <div className="flex flex-wrap items-center gap-2 mb-6">
-                {IP_FORMATS.map((format) => {
-                  const Icon = format.icon;
-                  return (
-                    <div
-                      key={format.label}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E8DEC9] text-[#17233A] text-xs font-semibold shadow-2xs hover:border-[#C7A451]/60 transition-colors"
-                    >
-                      <Icon className="w-3.5 h-3.5" style={{ color: format.color }} />
-                      <span>{format.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Executive Metrics Strip */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full max-w-xl mb-7">
-                <div className="bg-white rounded-2xl border border-[#C7A451]/30 p-3.5 sm:p-4 shadow-xs hover:border-[#C7A451]/60 transition-colors">
-                  <div className="font-serif text-[1.85rem] font-bold text-[#17233A] leading-none mb-1">
-                    100%
-                  </div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#C7A451]">
-                    Proprietary IP
-                  </div>
-                  <div className="text-[11px] text-[#17233A]/65 mt-1 leading-snug">
-                    Zero third-party rights encumbrance
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl border border-[#C7A451]/30 p-3.5 sm:p-4 shadow-xs hover:border-[#C7A451]/60 transition-colors">
-                  <div className="font-serif text-[1.85rem] font-bold text-[#17233A] leading-none mb-1">
-                    5
-                  </div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#C7A451]">
-                    Story Realms
-                  </div>
-                  <div className="text-[11px] text-[#17233A]/65 mt-1 leading-snug">
-                    Interconnected transmedia lore
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl border border-[#C7A451]/30 p-3.5 sm:p-4 shadow-xs col-span-2 sm:col-span-1 hover:border-[#C7A451]/60 transition-colors">
-                  <div className="font-serif text-[1.85rem] font-bold text-[#17233A] leading-none mb-1">
-                    8+
-                  </div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#C7A451]">
-                    Revenue Horizons
-                  </div>
-                  <div className="text-[11px] text-[#17233A]/65 mt-1 leading-snug">
-                    Compounding commercial flywheel
-                  </div>
-                </div>
-              </div>
-
-              {/* Primary Call to Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Link
-                  to="/investors"
-                  className="inline-flex items-center gap-2 h-11 px-7 rounded-full bg-[#17233A] hover:bg-[#233554] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all"
-                >
-                  <span>Investor Overview</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C7A451]" />
-                </Link>
-
-                <Link
-                  to="/partnerships"
-                  className="inline-flex items-center gap-2 h-11 px-7 rounded-full bg-white hover:bg-gray-50 border border-[#17233A]/20 hover:border-[#C7A451] text-[#17233A] text-xs font-bold uppercase tracking-wider shadow-xs hover:-translate-y-0.5 active:translate-y-0 transition-all"
-                >
-                  <span>Partner With Us</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#C7A451]" />
-                </Link>
-              </div>
-
+      {/* ── EXECUTIVE CREDENTIALS & METRICS RIBBON ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-7 relative z-20">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#C7A451]/30 p-4 sm:p-5 shadow-[0_8px_30px_rgba(23,35,58,0.08)]">
+          <div className="flex items-center gap-3.5 px-2">
+            <div className="w-11 h-11 rounded-xl bg-[#FAF5E8] border border-[#E0CE9F] flex items-center justify-center font-serif text-xl font-bold text-[#17233A] shrink-0">
+              100%
             </div>
-
-            {/* Right 5 Columns: Studio Franchise Key Art & IP Dossier Presentation */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="w-full max-w-[500px] bg-white rounded-3xl border border-[#C7A451]/25 p-4 sm:p-5 shadow-[0_12px_40px_-8px_rgba(23,35,58,0.08),0_2px_8px_rgba(199,164,81,0.06)] relative overflow-hidden">
-                
-                {/* Dossier Header Bar */}
-                <div className="flex items-center justify-between border-b border-[#E8DEC9]/80 pb-3 mb-3.5">
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C7A451]" />
-                    <span className="text-[10.5px] font-black uppercase tracking-[0.2em] text-[#17233A]">
-                      Core Franchise IP · Master Asset
-                    </span>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 text-[9.5px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Production-Ready
-                  </span>
-                </div>
-
-                {/* Cinematic Franchise Key Art Window: Momo, Tobo & Dodi (Visually Dominant) */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#0E1726] shadow-inner mb-3.5 group select-none">
-                  
-                  {/* Atmospheric Cinematic Environment Backdrop */}
-                  <div className="absolute inset-0">
-                    <picture>
-                      <source srcSet="/collab-investors-universe.webp" type="image/webp" />
-                      <img
-                        src="/collab-investors-universe.jpg"
-                        alt="Zanarra Universe Landscape"
-                        className="w-full h-full object-cover object-center filter brightness-[0.70] contrast-[1.05] blur-[0.5px] scale-102 group-hover:scale-106 transition-transform duration-700"
-                      />
-                    </picture>
-                    {/* Cinematic lighting and depth vignettes */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E1726]/90 via-[#0E1726]/20 to-transparent pointer-events-none" />
-                  </div>
-
-                  {/* High-Resolution Character Key Art (Foreground: Momo, Tobo & Dodi) */}
-                  <div className="absolute inset-x-0 bottom-0 top-2 flex items-end justify-center z-10 pointer-events-none">
-                    <picture>
-                      <source srcSet="/hero-chars-ultra.webp" type="image/webp" />
-                      <img
-                        src="/hero-chars-ultra.png"
-                        alt="Momo, Tobo and Dodi — Original Zanarra Characters"
-                        className="w-[96%] max-w-[450px] h-full object-contain object-bottom drop-shadow-[0_18px_32px_rgba(0,0,0,0.65)]"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </picture>
-                  </div>
-
-                  {/* Sleek Studio Character Identification Bar */}
-                  <div className="absolute bottom-2.5 inset-x-2.5 z-20 flex items-center justify-between px-3.5 py-2 rounded-xl bg-[#0E1726]/85 backdrop-blur-md border border-white/10 text-white">
-                    <div>
-                      <div className="font-serif text-[13px] font-bold text-white leading-tight">
-                        Momo, Tobo &amp; Dodi
-                      </div>
-                      <div className="text-[9.5px] text-[#C7A451] font-semibold tracking-wide">
-                        The Original Ensemble Cast
-                      </div>
-                    </div>
-                    <span className="text-[9px] text-white/70 font-mono font-medium tracking-wider bg-white/10 px-2 py-0.5 rounded-md border border-white/10">
-                      100% OWNED IP
-                    </span>
-                  </div>
-                </div>
-
-                {/* Streamlined Franchise Portfolio Specifications */}
-                <div className="grid grid-cols-2 gap-2 text-xs mb-3">
-                  <div className="bg-[#FAF7F0] px-3 py-2 rounded-xl border border-[#E8DEC9]/70">
-                    <span className="block text-[9px] font-bold uppercase tracking-[0.14em] text-[#C7A451]">
-                      Target Demographic
-                    </span>
-                    <span className="font-bold text-[#17233A] text-[11.5px] block leading-tight mt-0.5">
-                      Ages 3–9 Global &amp; Co-Viewing
-                    </span>
-                  </div>
-
-                  <div className="bg-[#FAF7F0] px-3 py-2 rounded-xl border border-[#E8DEC9]/70">
-                    <span className="block text-[9px] font-bold uppercase tracking-[0.14em] text-[#C7A451]">
-                      Rights Portfolio
-                    </span>
-                    <span className="font-bold text-[#17233A] text-[11.5px] block leading-tight mt-0.5">
-                      Animation, Publishing &amp; Toys
-                    </span>
-                  </div>
-                </div>
-
-                {/* Character Roster Strip & Bible Link */}
-                <div className="pt-2.5 border-t border-[#E8DEC9]/80 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-1.5">
-                      <img
-                        src="/momo-portrait.png"
-                        alt="Momo"
-                        className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-2xs"
-                      />
-                      <img
-                        src="/tobo-portrait.png"
-                        alt="Tobo"
-                        className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-2xs"
-                      />
-                      <img
-                        src="/dodi-portrait.png"
-                        alt="Dodi"
-                        className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-2xs"
-                      />
-                    </div>
-                    <span className="text-[11px] font-bold text-[#17233A]">
-                      Franchise Character Roster
-                    </span>
-                  </div>
-
-                  <Link
-                    to="/characters"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-[#17233A] hover:text-[#C7A451] transition-colors"
-                  >
-                    <span>Character Bible</span>
-                    <ArrowRight className="w-3 h-3 text-[#C7A451]" />
-                  </Link>
-                </div>
-
+            <div>
+              <div className="text-[10.5px] font-bold uppercase tracking-wider text-[#C7A451]">
+                Proprietary IP
+              </div>
+              <div className="text-[12px] text-[#17233A]/70 leading-snug">
+                Zero third-party rights encumbrance
               </div>
             </div>
+          </div>
 
+          <div className="flex items-center gap-3.5 px-2 border-t sm:border-t-0 sm:border-l border-[#E8DEC9]/70 pt-3 sm:pt-0">
+            <div className="w-11 h-11 rounded-xl bg-[#FAF5E8] border border-[#E0CE9F] flex items-center justify-center font-serif text-xl font-bold text-[#17233A] shrink-0">
+              5
+            </div>
+            <div>
+              <div className="text-[10.5px] font-bold uppercase tracking-wider text-[#C7A451]">
+                Story Realms
+              </div>
+              <div className="text-[12px] text-[#17233A]/70 leading-snug">
+                Interconnected transmedia lore
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3.5 px-2 border-t sm:border-t-0 sm:border-l border-[#E8DEC9]/70 pt-3 sm:pt-0">
+            <div className="w-11 h-11 rounded-xl bg-[#FAF5E8] border border-[#E0CE9F] flex items-center justify-center font-serif text-xl font-bold text-[#17233A] shrink-0">
+              8+
+            </div>
+            <div>
+              <div className="text-[10.5px] font-bold uppercase tracking-wider text-[#C7A451]">
+                Revenue Horizons
+              </div>
+              <div className="text-[12px] text-[#17233A]/70 leading-snug">
+                Compounding commercial flywheel
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <div className="pt-4 pb-24 space-y-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="pt-10 pb-24 space-y-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 1: THE THREE-STAGE ENGINE
           A visually connected 3-stage business roadmap:
           Create (Genesis) ➔ Build (Distribution) ➔ Monetise & Expand (Compounding)
           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="space-y-10">
+      <section id="engine" className="space-y-10 scroll-mt-24">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 max-w-4xl">

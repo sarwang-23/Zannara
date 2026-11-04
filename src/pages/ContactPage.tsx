@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MessageSquare, Briefcase, TrendingUp, Sparkles, Send, CheckCircle, AlertCircle, Shield } from 'lucide-react';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 
 export const ContactPage: React.FC = () => {
   const [selectedPathway, setSelectedPathway] = useState<string>('General enquiries');
@@ -80,6 +82,7 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="pt-8 sm:pt-10 pb-20 space-y-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SEO pageConfig={PAGE_SEO.contact} />
       {/* Page Header */}
       <section className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#C7A451]/30 text-[#C7A451] text-xs font-bold uppercase tracking-wider">

@@ -4,6 +4,8 @@ import { CharacterVisual } from '../components/visuals/CharacterVisual';
 import { CharacterModal } from '../components/modals/CharacterModal';
 import { Sparkles, Heart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 
 /* shared centered container */
 const Container: React.FC<{ children: React.ReactNode; className?: string }> = ({
@@ -74,6 +76,7 @@ export const CharactersPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF7F0]">
+      <SEO pageConfig={PAGE_SEO.characters} />
 
       {/* ═══ SECTION 1 · MAGICAL HEADER + FILTERS ═══════════════════════ */}
       <section className="relative pt-6 sm:pt-8 pb-8 sm:pb-12 overflow-hidden">

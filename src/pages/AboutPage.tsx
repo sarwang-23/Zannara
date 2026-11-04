@@ -16,6 +16,8 @@ import {
   Award
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 
 export const AboutPage: React.FC = () => {
   const valueIcons = [
@@ -46,6 +48,7 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div className="pt-8 sm:pt-10 pb-20 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SEO pageConfig={PAGE_SEO.about} />
       
       {/* ── 1. CINEMATIC PAGE HERO ── */}
       <section className="text-center max-w-4xl mx-auto space-y-5">

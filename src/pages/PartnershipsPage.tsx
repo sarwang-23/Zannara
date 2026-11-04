@@ -1,5 +1,7 @@
 import React from 'react';
 import { PartnershipForm } from '../components/forms/PartnershipForm';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 import { 
   ShoppingBag, 
   BookOpen, 
@@ -61,6 +63,7 @@ export const PartnershipsPage: React.FC = () => {
 
   return (
     <div className="pt-8 sm:pt-10 pb-20 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SEO pageConfig={PAGE_SEO.partnerships} />
       
       {/* ── 1. PAGE HEADER ── */}
       <section className="text-center max-w-4xl mx-auto space-y-5">

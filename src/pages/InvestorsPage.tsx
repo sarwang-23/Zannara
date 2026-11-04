@@ -6,12 +6,15 @@ import { CommercialRoadmap } from '../components/investors/CommercialRoadmap';
 import { FranchiseHorizons } from '../components/investors/FranchiseHorizons';
 import { InvestorEnquiryModal } from '../components/forms/InvestorEnquiryModal';
 import { ArrowRight, Lock, Building2 } from 'lucide-react';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 
 export const InvestorsPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="w-full min-h-screen bg-[#FAF7F0] overflow-x-hidden flex flex-col">
+      <SEO pageConfig={PAGE_SEO.investors} />
       {/* ── SECTION A: MASTER HERO (INVESTOR RECREATION) ── */}
       <InvestorHero onRequestPresentation={() => setIsModalOpen(true)} />
 

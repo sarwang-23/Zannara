@@ -27,10 +27,10 @@ export const Header: React.FC = () => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Explore Universe', path: '/universe' },
+    { name: 'Universe', path: '/universe' },
     { name: 'Characters', path: '/characters' },
-    { name: 'Stories & Experiences', path: '/stories' },
-    { name: 'Our Business', path: '/business' },
+    { name: 'Stories', path: '/stories' },
+    { name: 'Business', path: '/business' },
     { name: 'Investors', path: '/investors' },
     { name: 'About', path: '/about' },
   ];
@@ -60,8 +60,8 @@ export const Header: React.FC = () => {
         {/* Thin golden top accent line — brand-identity stripe */}
         <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C7A451]/60 to-transparent pointer-events-none" />
 
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-10">
-          <div className={`flex items-center justify-between gap-4 transition-all duration-300 ${
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-5 lg:px-8">
+          <div className={`flex items-center justify-between gap-2 sm:gap-4 transition-all duration-300 ${
             isScrolled ? 'h-[60px] sm:h-[64px]' : 'h-[68px] sm:h-[72px]'
           }`}>
 
@@ -69,24 +69,24 @@ export const Header: React.FC = () => {
             <div className="flex-shrink-0">
               <Link
                 to="/"
-                className="inline-flex items-center gap-3 sm:gap-3.5 group select-none py-1"
+                className="inline-flex items-center gap-2.5 sm:gap-3 group select-none py-1"
                 aria-label="Zanarra — Home"
               >
                 {/* Jewel-crafted Emblem Medallion */}
                 <div className="relative shrink-0">
                   {/* Ambient golden aura on hover */}
-                  <div className="absolute -inset-1.5 rounded-[22px] bg-gradient-to-r from-[#E7C97E]/30 via-[#C7A451]/25 to-[#9B7528]/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute -inset-1.5 rounded-[20px] bg-gradient-to-r from-[#E7C97E]/30 via-[#C7A451]/25 to-[#9B7528]/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                   {/* Multi-layered metallic gold bezel */}
                   <div
-                    className={`relative p-[1.5px] rounded-[16px] sm:rounded-[18px] bg-gradient-to-tr from-[#9B7528] via-[#F4DE9C] to-[#BF9738] shadow-[0_2px_10px_rgba(23,35,58,0.12),0_1px_3px_rgba(199,164,81,0.25)] transition-all duration-300 group-hover:shadow-[0_4px_22px_rgba(199,164,81,0.45)] group-hover:scale-[1.04] ${
-                      isScrolled ? 'w-10 h-10 sm:w-11 sm:h-11' : 'w-11 h-11 sm:w-12 sm:h-12'
+                    className={`relative p-[1.5px] rounded-[15px] sm:rounded-[17px] bg-gradient-to-tr from-[#9B7528] via-[#F4DE9C] to-[#BF9738] shadow-[0_2px_10px_rgba(23,35,58,0.12),0_1px_3px_rgba(199,164,81,0.25)] transition-all duration-300 group-hover:shadow-[0_4px_22px_rgba(199,164,81,0.45)] group-hover:scale-[1.04] ${
+                      isScrolled ? 'w-9 h-9 sm:w-10 sm:h-10' : 'w-10 h-10 sm:w-11 sm:h-11'
                     }`}
                   >
                     {/* Inner pearl vessel */}
-                    <div className="relative w-full h-full rounded-[14.5px] sm:rounded-[16.5px] overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F1E9D7] flex items-center justify-center">
+                    <div className="relative w-full h-full rounded-[13.5px] sm:rounded-[15.5px] overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F1E9D7] flex items-center justify-center">
                       <img
-                        src="/zanarra-emblem.png"
+                        src="/zanarra-logo-mark.png"
                         alt="Zanarra Shooting Star Emblem"
                         className="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105"
                         draggable={false}
@@ -94,28 +94,21 @@ export const Header: React.FC = () => {
                       {/* Glass specular sheen overlay */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/50 pointer-events-none" />
                       {/* Inner fine highlight border */}
-                      <div className="absolute inset-0 rounded-[14.5px] sm:rounded-[16.5px] ring-1 ring-inset ring-white/60 pointer-events-none" />
+                      <div className="absolute inset-0 rounded-[13.5px] sm:rounded-[15.5px] ring-1 ring-inset ring-white/60 pointer-events-none" />
                     </div>
                   </div>
                 </div>
 
-                {/* Studio Wordmark & Official Tagline Lockup */}
+                {/* Studio Wordmark Lockup */}
                 <div className="flex flex-col justify-center">
                   <img
                     src="/zanarra-text-transparent.png"
-                    alt="Zanarra"
+                    alt="Zanarra — Dream • Play • Explore • Together"
                     className={`w-auto object-contain object-left transition-all duration-300 drop-shadow-[0_1.5px_3px_rgba(23,35,58,0.12)] group-hover:drop-shadow-[0_3px_12px_rgba(199,164,81,0.35)] group-hover:brightness-[1.06] ${
-                      isScrolled ? 'h-[28px] sm:h-[30px]' : 'h-[32px] sm:h-[35px]'
+                      isScrolled ? 'h-[26px] sm:h-[28px]' : 'h-[30px] sm:h-[34px]'
                     }`}
                     draggable={false}
                   />
-                  <div className="flex items-center gap-1.5 mt-0.5 hidden sm:flex">
-                    <span className="text-[7px] text-[#C7A451] leading-none opacity-80">✦</span>
-                    <span className="text-[8.5px] sm:text-[9px] font-black uppercase tracking-[0.24em] text-[#9D762B] leading-none font-sans">
-                      Dream · Play · Explore · Together
-                    </span>
-                    <span className="text-[7px] text-[#C7A451] leading-none opacity-80">✦</span>
-                  </div>
                 </div>
               </Link>
             </div>
@@ -123,24 +116,23 @@ export const Header: React.FC = () => {
             {/* ── DESKTOP NAVIGATION ──────────────────────────────────── */}
             <nav
               aria-label="Main navigation"
-              className="hidden lg:flex items-center justify-center flex-1 px-4"
+              className="hidden lg:flex items-center justify-center flex-1 min-w-0 px-2"
             >
               {/* Pill container — frosted glass track */}
-              <div className="inline-flex items-center gap-0.5 bg-white/80 backdrop-blur-md border border-[#E4D8C4]/80 rounded-full px-1.5 py-1.5 shadow-[0_1px_8px_rgba(23,35,58,0.06)]">
+              <div className="inline-flex items-center gap-0.5 bg-white/85 backdrop-blur-md border border-[#E4D8C4]/80 rounded-full px-1.5 py-1 shadow-[0_1px_8px_rgba(23,35,58,0.06)]">
                 {navLinks.map((link) => {
                   const active = isActive(link.path);
                   return (
                     <Link
                       key={link.path}
                       to={link.path}
-                      className={`relative px-3.5 xl:px-4 py-1.5 rounded-full text-[12.5px] xl:text-[13px] font-semibold tracking-[0.01em] whitespace-nowrap transition-all duration-200 ${
+                      className={`relative px-3 xl:px-4 py-1.5 rounded-full text-[12px] xl:text-[13px] font-semibold tracking-[0.01em] whitespace-nowrap transition-all duration-200 ${
                         active
                           ? 'bg-[#17233A] text-white shadow-[0_2px_8px_rgba(23,35,58,0.25)] font-bold'
                           : 'text-[#17233A]/75 hover:text-[#17233A] hover:bg-[#F5EEE3]/80'
                       }`}
                     >
                       {link.name}
-                      {/* Subtle gold dot indicator for active */}
                       {active && (
                         <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#C7A451] opacity-0" />
                       )}
@@ -151,28 +143,28 @@ export const Header: React.FC = () => {
             </nav>
 
             {/* ── DESKTOP CTA ACTIONS ─────────────────────────────────── */}
-            <div className="hidden md:flex items-center gap-2.5 flex-shrink-0">
+            <div className="hidden md:flex items-center gap-2 xl:gap-2.5 shrink-0 min-w-max pr-1 sm:pr-2">
               {/* Secondary: Investor Enquiries */}
               <button
                 onClick={() => setIsInvestorModalOpen(true)}
-                className="inline-flex items-center gap-1.5 h-9 sm:h-10 px-3.5 sm:px-4 rounded-full text-[12px] sm:text-[12.5px] font-semibold text-[#17233A]/85 hover:text-[#17233A] bg-transparent hover:bg-white border border-transparent hover:border-[#E4D8C4] transition-all duration-200 cursor-pointer group/inv"
+                className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-2.5 sm:px-3 rounded-full text-[11px] xl:text-[12px] font-semibold text-[#17233A]/85 hover:text-[#17233A] bg-transparent hover:bg-white border border-transparent hover:border-[#E4D8C4] transition-all duration-200 cursor-pointer group/inv whitespace-nowrap shrink-0"
                 title="Investor Enquiries"
               >
-                <TrendingUp className="w-3.5 h-3.5 text-[#C7A451] group-hover/inv:scale-110 transition-transform flex-shrink-0" />
+                <TrendingUp className="w-3.5 h-3.5 text-[#C7A451] group-hover/inv:scale-110 transition-transform shrink-0" />
                 <span className="hidden xl:inline">Investor Enquiries</span>
                 <span className="xl:hidden">Investors</span>
               </button>
 
               {/* Divider */}
-              <div className="w-px h-5 bg-[#E4D8C4]" />
+              <div className="w-px h-4 bg-[#E4D8C4] shrink-0" />
 
               {/* Primary: Partner with Zanarra */}
               <Link
                 to="/partnerships"
-                className="inline-flex items-center gap-1.5 h-9 sm:h-10 px-4 sm:px-5 rounded-full text-[12px] sm:text-[12.5px] font-bold bg-[#17233A] text-white hover:bg-[#1E2E4A] shadow-[0_2px_10px_rgba(23,35,58,0.25)] hover:shadow-[0_4px_18px_rgba(23,35,58,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group/cta"
+                className="inline-flex items-center gap-1.5 h-8 sm:h-9 px-3.5 sm:px-4 xl:px-4.5 rounded-full text-[11.5px] sm:text-[12px] font-bold bg-[#17233A] text-white hover:bg-[#1E2E4A] shadow-[0_2px_10px_rgba(23,35,58,0.22)] hover:shadow-[0_4px_16px_rgba(23,35,58,0.32)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group/cta whitespace-nowrap shrink-0"
               >
                 <span>Partner with Zanarra</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#C7A451] group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#C7A451] group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform shrink-0" />
               </Link>
             </div>
 

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 import { Link } from 'react-router-dom';
 import { STORIES_CATALOG, StoryItem, REALMS } from '../data/brandData';
 import { LaunchInterestForm } from '../components/forms/LaunchInterestForm';
@@ -171,6 +173,7 @@ export const StoriesPage: React.FC = () => {
 
   return (
     <div className="bg-[#FAF7F0] min-h-screen text-[#17233A]">
+      <SEO pageConfig={PAGE_SEO.stories} />
       {/* ── MAIN CONTENT CONTAINER (Matched precisely to Global Max-Width 1240px Grid) ── */}
       <div className="pt-6 sm:pt-8 pb-16 sm:pb-20 max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
         

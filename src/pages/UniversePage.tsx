@@ -6,6 +6,8 @@ import { RealmModal } from '../components/modals/RealmModal';
 import { CharacterModal } from '../components/modals/CharacterModal';
 import { Compass, Sparkles, MapPin, BookOpen, Layers, ArrowRight, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 
 export const UniversePage: React.FC = () => {
   const [selectedRealm, setSelectedRealm] = useState<Realm>(REALMS[0]);
@@ -71,6 +73,7 @@ export const UniversePage: React.FC = () => {
 
   return (
     <div className="w-full overflow-x-hidden flex flex-col">
+      <SEO pageConfig={PAGE_SEO.universe} />
       {/* ══════════════════════════════════════════════════════════════
           SECTION 1: WORLD-BUILDING INTRODUCTION (FULL-WIDTH CINEMATIC HERO)
           Breathtaking fantasy panorama with Momo, Tobo, Dodi, Chiku,

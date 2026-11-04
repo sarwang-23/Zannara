@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/layout/SEO';
+import { PAGE_SEO } from '../data/seoData';
 import { TrioHeroVisual } from '../components/visuals/TrioHeroVisual';
 import { CharacterVisual } from '../components/visuals/CharacterVisual';
 import { RealmVisual, REALM_ARTWORK } from '../components/visuals/RealmVisual';
@@ -222,6 +224,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="w-full overflow-x-hidden flex flex-col">
+      <SEO pageConfig={PAGE_SEO.home} />
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 1: UNIFIED CINEMATIC HERO (EXACTLY MATCHING IMAGE 2)
           Single seamless panoramic background with warm ivory dream wash

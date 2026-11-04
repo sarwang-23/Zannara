@@ -62,7 +62,7 @@ export const ZanarraLogo: React.FC<LogoProps> = ({
               isLight ? 'bg-[#0E172A]' : 'bg-gradient-to-b from-[#FFFDF9] to-[#F1E9D7]'
             }`}>
               <img
-                src="/zanarra-emblem.png"
+                src="/zanarra-logo-mark.png"
                 alt="Zanarra Emblem"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               />
@@ -92,11 +92,11 @@ export const ZanarraLogo: React.FC<LogoProps> = ({
               isLight ? 'bg-[#0E172A]' : 'bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F1E9D7]'
             }`}
           >
-            <img
-              src="/zanarra-emblem.png"
-              alt="Zanarra Shooting Star Emblem"
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-            />
+              <img
+                src="/zanarra-logo-mark.png"
+                alt="Zanarra Shooting Star Emblem"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              />
             {/* Glass reflection overlay */}
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/45 pointer-events-none" />
             <div className={`absolute inset-0 ring-1 ring-inset ring-white/60 pointer-events-none ${innerRadius[size]}`} />
@@ -104,24 +104,13 @@ export const ZanarraLogo: React.FC<LogoProps> = ({
         </div>
       </div>
 
-      {/* Official ZANARRA Wordmark + Studio Tagline */}
+      {/* Official ZANARRA Wordmark */}
       <div className="flex flex-col justify-center">
         <img
           src={isLight ? '/zanarra-text-light.png' : '/zanarra-text-transparent.png'}
-          alt="Zanarra — Dream • Play • Explore • Together"
+          alt="Zanarra"
           className={`w-auto object-contain object-left transition-all duration-300 drop-shadow-[0_1.5px_3px_rgba(23,35,58,0.12)] group-hover:drop-shadow-[0_3px_12px_rgba(199,164,81,0.35)] group-hover:brightness-[1.06] ${textHeightClasses[size]}`}
         />
-        {showTagline && (
-          <div className="flex items-center gap-1.5 mt-0.5">
-            <span className="text-[7px] text-[#C7A451] leading-none opacity-80">✦</span>
-            <span className={`text-[8px] sm:text-[8.5px] font-black uppercase tracking-[0.24em] leading-none font-sans ${
-              isLight ? 'text-[#E8D4A8]' : 'text-[#9D762B]'
-            }`}>
-              Dream · Play · Explore · Together
-            </span>
-            <span className="text-[7px] text-[#C7A451] leading-none opacity-80">✦</span>
-          </div>
-        )}
       </div>
     </Link>
   );

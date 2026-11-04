@@ -34,6 +34,26 @@
   .font-child {
     font-family: 'Quicksand', system-ui, sans-serif;
   }
+
+  /* Kill browser-detected "smart links" (auto-detected addresses, phone numbers, keywords) */
+  a[x-apple-data-detectors],
+  a[data-cke-saved-href],
+  [data-link],
+  span[style*="text-decoration"] {
+    color: inherit !important;
+    text-decoration: none !important;
+    pointer-events: none !important;
+  }
+
+  /* Prevent auto-link highlighting from browser extensions */
+  p a:not([href]),
+  p a[href=""],
+  p a[href="#"] {
+    color: inherit !important;
+    text-decoration: none !important;
+    cursor: default !important;
+  }
+
 }
 
 /* Keyframes used by inline animation styles */
